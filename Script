@@ -134,7 +134,6 @@ local shootbind = CombatTab:CreateKeybind({
 	Callback = function(Keybind)
 		if _G.ESP.ShootEnabled() then
 			_G.ESP.updatePrediction()
-			shootMurderer()
 		else
 		end
 	end,
@@ -871,9 +870,9 @@ _G.ESP.updatePrediction = function()
 	if not murderer then
 		return
 	end
-
 	local predictedPos = getPredictedPosition(murderer, _G.ESP.ShootOffset(), _G.ESP.ShootPingMult())
 	if predictedPos then
+		shootMurderer()
 	else
 		print("  Не удалось вычислить предсказанную позицию.")
 	end
