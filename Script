@@ -15,6 +15,7 @@ local gundropmsg = false
 local w = rayfield:CreateWindow({
 	Name = "FemboyHub Public Beta",
 	LoadingTitle = ":3",
+	Icon = 13875807072,
 	LoadingSubtitle = "by undefinedfemboy",
 	ConfigurationSaving = {
 		Enabled = false,
@@ -33,9 +34,9 @@ local w = rayfield:CreateWindow({
 	DisableRayfieldPrompts = false,
 })
 
-local MainTab = w:CreateTab("Info", 4483362458)
-local CombatTab = w:CreateTab("Combat", 4483362458)
-local ESPTab = w:CreateTab("ESP", 4483362458)
+local MainTab = w:CreateTab("Info", "info")
+local CombatTab = w:CreateTab("Combat", "swords")
+local ESPTab = w:CreateTab("ESP", "eye")
 
 MainTab:CreateParagraph({
 	Title = "Welcome to FemboyHub\nHope you enjoy!",
