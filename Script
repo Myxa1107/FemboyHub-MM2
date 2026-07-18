@@ -39,7 +39,7 @@ local w = rayfield:CreateWindow({
 local MainTab = w:CreateTab("Info", "info")
 local CombatTab = w:CreateTab("Combat", "swords")
 local ESPTab = w:CreateTab("ESP", "eye")
-local AddTab = w:CreateTab("Additional", "circle-question-mark")
+local AddTab = w:CreateTab("Additional", 15928895003)
 
 local infyield = AddTab:CreateButton({
 	Name = "Inf. Yield",
