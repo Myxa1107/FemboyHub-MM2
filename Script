@@ -841,7 +841,7 @@ if not _G.ESP then
 end
 
 -- Проверяем, что функции предсказания существуют (если нет – создаём заглушку)
-local function getPredictedPosition(player, shootOffset, pingMult)
+function getPredictedPosition(player, shootOffset, pingMult)
 	-- Если функция уже определена где-то выше – используем её
 	if _G.getPredictedPosition then
 		return _G.getPredictedPosition(player, shootOffset, pingMult)
