@@ -47,6 +47,11 @@ ESPTab:CreateParagraph({
 	Content = "Script is very unstable. Because it's a public beta."
 })
 
+CombatTab:CreateParagraph({
+	Title = "!WARNING!",
+	Content = "Script is very unstable. Because it's a public beta."
+})
+
 local autograbguntoggle = CombatTab:CreateToggle({
 	Name = "Auto Grab Gun",
 	CurrentValue = false,
@@ -538,10 +543,10 @@ end)
 -- ===================================================================
 --  НАЗНАЧЕНИЕ СЕТТЕРОВ
 -- ===================================================================
-_G.ESP.ShowHighlights = makeSetting(true, RefreshHighlights)
-_G.ESP.ShowNames      = makeSetting(true, RefreshNames)
-_G.ESP.ShowGunDrop    = makeSetting(true, RefreshGun)
-_G.ESP.ShowTraps      = makeSetting(true, RefreshTraps)
+_G.ESP.ShowHighlights = makeSetting(false, RefreshHighlights)
+_G.ESP.ShowNames      = makeSetting(false, RefreshNames)
+_G.ESP.ShowGunDrop    = makeSetting(false, RefreshGun)
+_G.ESP.ShowTraps      = makeSetting(false, RefreshTraps)
 _G.ESP.AutoGrabGun    = makeSetting(false, nil)
 
 -- ===================================================================
