@@ -675,7 +675,24 @@ initSetting("ShootKey", Enum.KeyCode.F)
 initSetting("ShootOffset", 0)
 initSetting("ShootPingMult", 1.0)
 
+local function getPredictedPosition(player, shootOffset, pingMult)
+	-- Иначе своя реализация
+	local char = player.Character
+	if not char then return nil end
+	local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso")
+	local humanoid = char:FindFirstChild("Humanoid")
+	if not hrp or not humanoid then return nil end
 
+	local velocity = hrp.AssemblyLinearVelocity
+	local moveDirection = humanoid.MoveDirection
+	local predicted = hrp.Position + (velocity * Vector3.new(0.75, 0.5, 0.75)) * (shootOffset / 15) + moveDirection * shootOffset
+
+	local ping = game:GetService("Stats"):FindFirstChild("Network") and game:GetService("Stats").Network:FindFirstChild("Ping")
+	local pingMs = ping and ping.Value or 0
+	local pingFactor = 1 + (pingMs / 1000) * (pingMult - 1)
+	predicted = predicted * pingFactor
+	return predicted
+end
 
 -- ===================================================================
 --  ФУНКЦИЯ ВЫСТРЕЛА
@@ -839,28 +856,4 @@ Players.PlayerRemoving:Connect(untrackPlayer)
 if not _G.ESP then
 	warn("[Prediction] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
 	return
-end
-
-function getPredictedPosition(player, shootOffset, pingMult)
-	-- Если функция уже определена где-то выше – используем её
-	if _G.getPredictedPosition then
-		return _G.getPredictedPosition(player, shootOffset, pingMult)
-	end
-
-	-- Иначе своя реализация
-	local char = player.Character
-	if not char then return nil end
-	local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso")
-	local humanoid = char:FindFirstChild("Humanoid")
-	if not hrp or not humanoid then return nil end
-
-	local velocity = hrp.AssemblyLinearVelocity
-	local moveDirection = humanoid.MoveDirection
-	local predicted = hrp.Position + (velocity * Vector3.new(0.75, 0.5, 0.75)) * (shootOffset / 15) + moveDirection * shootOffset
-
-	local ping = game:GetService("Stats"):FindFirstChild("Network") and game:GetService("Stats").Network:FindFirstChild("Ping")
-	local pingMs = ping and ping.Value or 0
-	local pingFactor = 1 + (pingMs / 1000) * (pingMult - 1)
-	predicted = predicted * pingFactor
-	return predicted
 end
