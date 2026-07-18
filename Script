@@ -133,7 +133,7 @@ local shootbind = CombatTab:CreateKeybind({
 	CurrentKeybind = "C",
 	Callback = function(Keybind)
 		if _G.ESP.ShootEnabled() then
-			shootMurderer()
+			makeshootMurderer()
 		else
 		end
 	end,
@@ -856,4 +856,8 @@ Players.PlayerRemoving:Connect(untrackPlayer)
 if not _G.ESP then
 	warn("[Prediction] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
 	return
+end
+
+function makeshootMurderer()
+	shootMurderer()
 end
