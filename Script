@@ -133,6 +133,7 @@ local shootbind = CombatTab:CreateKeybind({
 	CurrentKeybind = "C",
 	Callback = function(Keybind)
 		if _G.ESP.ShootEnabled() then
+			_G.ESP.updatePrediction()
 			shootMurderer()
 		else
 		end
@@ -409,7 +410,6 @@ local function CreateGunESP(obj)
 		if plr:FindFirstChild("Backpack") and obj:IsDescendantOf(plr.Backpack) then inside = true break end
 	end
 	if inside then return end
-
 	local hl = Instance.new("Highlight")
 	hl.Name = "GunDropHL"
 	hl.FillColor = Color3.fromRGB(255, 255, 0)
@@ -460,7 +460,7 @@ local function RemoveGunESP(obj)
 		if gunESP[obj].Highlight then gunESP[obj].Highlight:Destroy() end
 		if gunESP[obj].Billboard then gunESP[obj].Billboard:Destroy() end
 		gunESP[obj] = nil
-		task.delay(0.1, function()
+		task.delay(0.5, function()
 			RefreshAll()
 		end)
 	end
@@ -676,53 +676,6 @@ initSetting("ShootKey", Enum.KeyCode.F)
 initSetting("ShootOffset", 0)
 initSetting("ShootPingMult", 1.0)
 
-
-
--- ===================================================================
---  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (поиск ролей, предсказание)
--- ===================================================================
-local function findMurderer()
-	if _G.findMurderer then return _G.findMurderer() end
-	for _, i in ipairs(game.Players:GetPlayers()) do
-		if i.Backpack:FindFirstChild("Knife") then return i end
-	end
-	for _, i in ipairs(game.Players:GetPlayers()) do
-		if not i.Character then continue end
-		if i.Character:FindFirstChild("Knife") then return i end
-	end
-	return nil
-end
-
-local function findSheriff()
-	if _G.findSheriff then return _G.findSheriff() end
-	for _, i in ipairs(game.Players:GetPlayers()) do
-		if i.Backpack:FindFirstChild("Gun") then return i end
-	end
-	for _, i in ipairs(game.Players:GetPlayers()) do
-		if not i.Character then continue end
-		if i.Character:FindFirstChild("Gun") then return i end
-	end
-	return nil
-end
-
-local function getPredictedPosition(player, shootOffset, pingMult)
-	local char = player.Character
-	if not char then return nil end
-	local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso")
-	local humanoid = char:FindFirstChild("Humanoid")
-	if not hrp or not humanoid then return nil end
-
-	local velocity = hrp.AssemblyLinearVelocity
-	local moveDirection = humanoid.MoveDirection
-	local predicted = hrp.Position + (velocity * Vector3.new(0.75, 0.5, 0.75)) * (shootOffset / 15) + moveDirection * shootOffset
-
-	local ping = game:GetService("Stats"):FindFirstChild("Network") and game:GetService("Stats").Network:FindFirstChild("Ping")
-	local pingMs = ping and ping.Value or 0
-	local pingFactor = 1 + (pingMs / 1000) * (pingMult - 1)
-	predicted = predicted * pingFactor
-	return predicted
-end
-
 -- ===================================================================
 --  ФУНКЦИЯ ВЫСТРЕЛА
 -- ===================================================================
@@ -874,3 +827,54 @@ end
 
 Players.PlayerAdded:Connect(trackPlayer)
 Players.PlayerRemoving:Connect(untrackPlayer)
+
+-- ===================================================================
+--  ФУНКЦИЯ ОБНОВЛЕНИЯ ВСЕХ ПРЕДИКТОВ (ДЛЯ ОТЛАДКИ)
+--  Вставьте этот код в конец вашего скрипта (после всех настроек).
+--  Теперь вы можете вызвать _G.ESP.updatePrediction(), чтобы увидеть текущие
+--  настройки и предсказанную позицию для убийцы.
+-- ===================================================================
+
+if not _G.ESP then
+	warn("[Prediction] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
+	return
+end
+
+-- Проверяем, что функции предсказания существуют (если нет – создаём заглушку)
+local function getPredictedPosition(player, shootOffset, pingMult)
+	-- Если функция уже определена где-то выше – используем её
+	if _G.getPredictedPosition then
+		return _G.getPredictedPosition(player, shootOffset, pingMult)
+	end
+
+	-- Иначе своя реализация
+	local char = player.Character
+	if not char then return nil end
+	local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso")
+	local humanoid = char:FindFirstChild("Humanoid")
+	if not hrp or not humanoid then return nil end
+
+	local velocity = hrp.AssemblyLinearVelocity
+	local moveDirection = humanoid.MoveDirection
+	local predicted = hrp.Position + (velocity * Vector3.new(0.75, 0.5, 0.75)) * (shootOffset / 15) + moveDirection * shootOffset
+
+	local ping = game:GetService("Stats"):FindFirstChild("Network") and game:GetService("Stats").Network:FindFirstChild("Ping")
+	local pingMs = ping and ping.Value or 0
+	local pingFactor = 1 + (pingMs / 1000) * (pingMult - 1)
+	predicted = predicted * pingFactor
+	return predicted
+end
+
+-- Создаём функцию обновления предиктов в _G.ESP
+_G.ESP.updatePrediction = function()
+	local murderer = findMurderer()
+	if not murderer then
+		return
+	end
+
+	local predictedPos = getPredictedPosition(murderer, _G.ESP.ShootOffset(), _G.ESP.ShootPingMult())
+	if predictedPos then
+	else
+		print("  Не удалось вычислить предсказанную позицию.")
+	end
+end
