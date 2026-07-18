@@ -52,11 +52,49 @@ CombatTab:CreateParagraph({
 	Content = "Script is very unstable. Because it's a public beta."
 })
 
+CombatTab:CreateParagraph({
+	Title = "Grab Gun",
+	Content = "Have fun!"
+})
+
 local autograbguntoggle = CombatTab:CreateToggle({
 	Name = "Auto Grab Gun",
 	CurrentValue = false,
 	Callback = function(Value)
 		_G.ESP.AutoGrabGun(Value)
+	end,
+})
+
+CombatTab:CreateParagraph({
+	Title = "Shoot Section",
+	Content = "Have Fun!"
+})
+
+local shoottoggle = CombatTab:CreateToggle({
+	Name = "Master Toggle",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShootEnabled(Value)
+	end,
+})
+
+local Slider = CombatTab:CreateSlider({
+	Name = "Ping Offset",
+	Range = {0, 2},
+	Increment = 0.01,
+	Suffix = "Studs",
+	CurrentValue = 1,
+	Callback = function(Value)
+		_G.ESP.ShootPingMult(Value)
+	end,
+})
+
+local shootbind = CombatTab:CreateKeybind({
+	Name = "Bind",
+	CurrentKeybind = "C",
+	HoldToInteract = false, -- A flag is the identifier for the configuration file. Make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Keybind)
+		_G.ESP.ShootKey(Keybind)
 	end,
 })
 
@@ -382,7 +420,7 @@ local function RemoveGunESP(obj)
 		if gunESP[obj].Highlight then gunESP[obj].Highlight:Destroy() end
 		if gunESP[obj].Billboard then gunESP[obj].Billboard:Destroy() end
 		gunESP[obj] = nil
-		
+
 	end
 end
 
@@ -553,9 +591,224 @@ _G.ESP.AutoGrabGun    = makeSetting(false, nil)
 -- ===================================================================
 --  ЗАПУСК
 -- ===================================================================
-task.wait(1)
-RefreshAll()
+task.delay(1,function()
+	RefreshAll()
+end)
+-- ===================================================================
+--  🔫 ДОПОЛНИТЕЛЬНЫЙ СКРИПТ: ВЫСТРЕЛ В УБИЙЦУ (С ПЕРЕЗАГРУЗКОЙ БИНДА)
+--  Вставьте этот код в КОНЕЦ вашего основного ESP-скрипта.
+--  Теперь при изменении бинда через _G.ESP.ShootKey() обработчик перезагружается.
+-- ===================================================================
 
+print("[Shoot] СКРИПТ ВЫСТРЕЛА ЗАГРУЖАЕТСЯ...")
+
+if not _G.ESP then
+	warn("[Shoot] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
+	return
+end
+
+-- Настройки стрельбы
+if not _G.ESP.ShootEnabled then
+	_G.ESP.ShootEnabled = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootEnabled", val) end
+		return rawget(_G.ESP, "_shootEnabled") or false
+	end
+end
+
+if not _G.ESP.ShootKey then
+	_G.ESP.ShootKey = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootKey", val) end
+		return rawget(_G.ESP, "_shootKey") or Enum.KeyCode.F
+	end
+end
+
+if not _G.ESP.ShootOffset then
+	_G.ESP.ShootOffset = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootOffset", val) end
+		return rawget(_G.ESP, "_shootOffset") or 2.8
+	end
+end
+
+if not _G.ESP.ShootPingMult then
+	_G.ESP.ShootPingMult = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootPingMult", val) end
+		return rawget(_G.ESP, "_shootPingMult") or 1.0
+	end
+end
+
+print("[Shoot] Настройки загружены. Текущий бинд: " .. tostring(_G.ESP.ShootKey()))
+
+-- Функции поиска ролей (если не определены глобально)
+local function findMurderer()
+	if _G.findMurderer then return _G.findMurderer() end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if i.Backpack:FindFirstChild("Knife") then return i end
+	end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Knife") then return i end
+	end
+	return nil
+end
+
+local function findSheriff()
+	if _G.findSheriff then return _G.findSheriff() end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if i.Backpack:FindFirstChild("Gun") then return i end
+	end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Gun") then return i end
+	end
+	return nil
+end
+
+local function getPredictedPosition(player, shootOffset, pingMult)
+	local char = player.Character
+	if not char then return nil end
+	local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso")
+	local humanoid = char:FindFirstChild("Humanoid")
+	if not hrp or not humanoid then return nil end
+
+	local velocity = hrp.AssemblyLinearVelocity
+	local moveDirection = humanoid.MoveDirection
+	local predicted = hrp.Position + (velocity * Vector3.new(0.75, 0.5, 0.75)) * (shootOffset / 15) + moveDirection * shootOffset
+
+	local ping = game:GetService("Stats"):FindFirstChild("Network") and game:GetService("Stats").Network:FindFirstChild("Ping")
+	local pingMs = ping and ping.Value or 0
+	local pingFactor = 1 + (pingMs / 1000) * (pingMult - 1)
+	predicted = predicted * pingFactor
+	return predicted
+end
+
+-- Функция выстрела
+local function shootMurderer()
+	print("[Shoot] Функция shootMurderer вызвана!")
+
+	local localplayer = game.Players.LocalPlayer
+
+	if localplayer ~= findSheriff() then
+		print("[Shoot] Вы не шериф/герой.")
+		return
+	end
+
+	local murderer = findMurderer()
+	if not murderer then
+		print("[Shoot] Убийца не найден.")
+		return
+	end
+
+	local gun = localplayer.Character:FindFirstChild("Gun")
+	if not gun then
+		local backpack = localplayer:FindFirstChild("Backpack")
+		if backpack then
+			gun = backpack:FindFirstChild("Gun")
+			if gun then
+				local hum = localplayer.Character:FindFirstChild("Humanoid")
+				if hum then
+					hum:EquipTool(gun)
+					task.wait(0.1)
+				end
+			end
+		end
+		if not gun then
+			print("[Shoot] Пистолет не найден.")
+			return
+		end
+	end
+
+	local murdererHRP = murderer.Character and murderer.Character:FindFirstChild("HumanoidRootPart")
+	if not murdererHRP then
+		print("[Shoot] У убийцы нет HumanoidRootPart.")
+		return
+	end
+
+	local offset = _G.ESP.ShootOffset()
+	local pingMult = _G.ESP.ShootPingMult()
+	local predictedPos = getPredictedPosition(murderer, offset, pingMult) or murdererHRP.Position
+
+	local rightHand = localplayer.Character:FindFirstChild("RightHand")
+	if not rightHand then
+		print("[Shoot] RightHand не найден.")
+		return
+	end
+
+	local args = {
+		CFrame.new(rightHand.Position),
+		CFrame.new(predictedPos)
+	}
+
+	local shootEvent = gun:FindFirstChild("Shoot")
+	if shootEvent then
+		shootEvent:FireServer(unpack(args))
+		print("[Shoot] Выстрел произведён!")
+	else
+		print("[Shoot] Событие Shoot не найдено в пистолете.")
+	end
+end
+
+-- Обработчик клавиатуры
+local UserInputService = game:GetService("UserInputService")
+local shootConnection = nil
+
+local function setupShootHandler()
+	if shootConnection then
+		shootConnection:Disconnect()
+		shootConnection = nil
+	end
+
+	shootConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		-- Игнорируем ввод только если игрок печатает в чат
+		if gameProcessed then
+			return
+		end
+
+		local key = _G.ESP.ShootKey()
+		if input.KeyCode == key then
+			print("[Shoot] Клавиша " .. tostring(key) .. " нажата!")
+			if _G.ESP.ShootEnabled() then
+				print("[Shoot] Стрельба включена, вызываем shootMurderer()")
+				shootMurderer()
+			else
+				print("[Shoot] Стрельба отключена (_G.ESP.ShootEnabled(false))")
+			end
+		end
+	end)
+
+	print("[Shoot] Обработчик клавиш установлен на бинд: " .. tostring(_G.ESP.ShootKey()))
+end
+
+-- Функция для ручной перезагрузки обработчика (при изменении бинда)
+_G.ESP.rebindShoot = function()
+	print("[Shoot] Перезагрузка обработчика клавиш...")
+	setupShootHandler()
+end
+
+-- Устанавливаем обработчик
+setupShootHandler()
+
+-- Автоматическая перезагрузка при изменении бинда (через метатаблицу)
+local originalShootKeySetter = _G.ESP.ShootKey
+_G.ESP.ShootKey = function(val)
+	local result = originalShootKeySetter(val)
+	if val ~= nil then
+		-- Перезагружаем обработчик при изменении бинда
+		print("[Shoot] Бинд изменён на: " .. tostring(val))
+		_G.ESP.rebindShoot()
+	end
+	return result
+end
+
+print("[Shoot] Скрипт выстрела загружен. Настройки:")
+print("  _G.ESP.ShootEnabled(true/false)  – включить/выключить")
+print("  _G.ESP.ShootKey(Enum.KeyCode.F)  – установить клавишу (по умолчанию F)")
+print("  _G.ESP.ShootOffset(2.8)          – смещение предсказания")
+print("  _G.ESP.ShootPingMult(1.0)        – множитель коррекции по пингу")
+print("  _G.ESP.rebindShoot()             – перезагрузить обработчик клавиш")
+print("[Shoot] Для отладки вызовите в консоли: _G.ESP.ShootEnabled(true) и нажмите клавишу.")
+
+_G.ESP.ShootKey(Enum.KeyCode.C)
+_G.ESP.ShootOffset(0)
 --[[rayfield:Notify({
 	Title = "X1nex Script",
 	Content = "Скрипт успешно загружен!\nВерсия: 3.0.0 Premium\nТема: Фиолетовая",
