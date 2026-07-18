@@ -89,10 +89,11 @@ local shoottoggle = CombatTab:CreateToggle({
 local shootbind = CombatTab:CreateKeybind({
 	Name = "Bind",
 	CurrentKeybind = "C",
-	HoldToInteract = false, -- A flag is the identifier for the configuration file. Make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 	Callback = function(Keybind)
-		_G.ESP.ShootKey(Keybind)
-		_G.ESP.rebindShoot()
+		if _G.ESP.ShootEnabled() then
+			shootMurderer()
+		else
+		end
 	end,
 })
 
@@ -289,7 +290,7 @@ for _, child in ipairs(ESPFolder:GetChildren()) do child:Destroy() end
 -- ===================================================================
 local playerHighlights = {}
 
-local function RefreshHighlights()
+function RefreshHighlights()
 	for _, hl in pairs(playerHighlights) do hl:Destroy() end
 	playerHighlights = {}
 	if not _G.ESP.ShowHighlights() then return end
@@ -317,7 +318,7 @@ end
 -- ===================================================================
 --  ИМЕНА
 -- ===================================================================
-local function RefreshNames()
+function RefreshNames()
 	for _, child in ipairs(ESPFolder:GetChildren()) do
 		if child:IsA("BillboardGui") and child.Name:match("_Name$") then child:Destroy() end
 	end
@@ -422,7 +423,7 @@ local function RemoveGunESP(obj)
 	end
 end
 
-local function RefreshGun()
+function RefreshGun()
 	for obj, _ in pairs(gunESP) do RemoveGunESP(obj) end
 	gunESP = {}
 	if not _G.ESP.ShowGunDrop() then return end
@@ -491,7 +492,7 @@ local function RemoveTrapESP(obj)
 	end
 end
 
-local function RefreshTraps()
+function RefreshTraps()
 	for obj, _ in pairs(trapESP) do RemoveTrapESP(obj) end
 	trapESP = {}
 	if not _G.ESP.ShowTraps() then return end
@@ -514,7 +515,7 @@ end)
 -- ===================================================================
 --  ОБНОВЛЕНИЕ ВСЕГО
 -- ===================================================================
-local function RefreshAll()
+function RefreshAll()
 	RefreshHighlights()
 	RefreshNames()
 	RefreshGun()
@@ -599,10 +600,7 @@ end)
 --  Теперь при изменении любой настройки через _G.ESP.Функция() изменения применяются сразу.
 -- ===================================================================
 
-print("[Shoot] СКРИПТ ВЫСТРЕЛА ЗАГРУЖАЕТСЯ...")
-
 if not _G.ESP then
-	warn("[Shoot] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
 	return
 end
 
@@ -615,7 +613,6 @@ local function initSetting(name, default)
 			if val ~= nil then
 				rawset(_G.ESP, "_" .. name, val)
 				-- Логируем изменение
-				print("[Shoot] Настройка " .. name .. " изменена на: " .. tostring(val))
 				-- Если изменили ShootKey – перезагружаем обработчик
 				if name == "ShootKey" then
 					if _G.ESP.rebindShoot then
@@ -624,7 +621,6 @@ local function initSetting(name, default)
 				end
 				-- Если изменили ShootEnabled – выводим состояние
 				if name == "ShootEnabled" then
-					print("[Shoot] Стрельба " .. (val and "ВКЛЮЧЕНА" or "ВЫКЛЮЧЕНА"))
 				end
 			end
 			return rawget(_G.ESP, "_" .. name) or default
@@ -637,8 +633,7 @@ initSetting("ShootKey", Enum.KeyCode.F)
 initSetting("ShootOffset", 0)
 initSetting("ShootPingMult", 1.0)
 
-print("[Shoot] Настройки инициализированы. Текущий бинд: " .. tostring(_G.ESP.ShootKey()))
-print("[Shoot] Стрельба: " .. (_G.ESP.ShootEnabled() and "ВКЛ" or "ВЫКЛ"))
+
 
 -- ===================================================================
 --  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (поиск ролей, предсказание)
@@ -688,19 +683,15 @@ end
 -- ===================================================================
 --  ФУНКЦИЯ ВЫСТРЕЛА
 -- ===================================================================
-local function shootMurderer()
-	print("[Shoot] Функция shootMurderer вызвана!")
+function shootMurderer()
 
 	local localplayer = game.Players.LocalPlayer
 
 	if localplayer ~= findSheriff() then
-		print("[Shoot] Вы не шериф/герой.")
 		return
 	end
-
 	local murderer = findMurderer()
 	if not murderer then
-		print("[Shoot] Убийца не найден.")
 		return
 	end
 
@@ -718,14 +709,12 @@ local function shootMurderer()
 			end
 		end
 		if not gun then
-			print("[Shoot] Пистолет не найден.")
 			return
 		end
 	end
 
 	local murdererHRP = murderer.Character and murderer.Character:FindFirstChild("HumanoidRootPart")
 	if not murdererHRP then
-		print("[Shoot] У убийцы нет HumanoidRootPart.")
 		return
 	end
 
@@ -735,7 +724,6 @@ local function shootMurderer()
 
 	local rightHand = localplayer.Character:FindFirstChild("RightHand")
 	if not rightHand then
-		print("[Shoot] RightHand не найден.")
 		return
 	end
 
@@ -747,9 +735,7 @@ local function shootMurderer()
 	local shootEvent = gun:FindFirstChild("Shoot")
 	if shootEvent then
 		shootEvent:FireServer(unpack(args))
-		print("[Shoot] Выстрел произведён!")
 	else
-		print("[Shoot] Событие Shoot не найдено в пистолете.")
 	end
 end
 
@@ -764,40 +750,15 @@ local function setupShootHandler()
 		shootConnection:Disconnect()
 		shootConnection = nil
 	end
-
-	shootConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		if gameProcessed then return end
-
-		local key = _G.ESP.ShootKey()
-		if input.KeyCode == key then
-			print("[Shoot] Клавиша " .. tostring(key) .. " нажата!")
-			if _G.ESP.ShootEnabled() then
-				print("[Shoot] Стрельба включена, вызываем shootMurderer()")
-				shootMurderer()
-			else
-				print("[Shoot] Стрельба отключена")
-			end
-		end
-	end)
-
-	print("[Shoot] Обработчик клавиш установлен на бинд: " .. tostring(_G.ESP.ShootKey()))
 end
 
 -- Функция для перезагрузки обработчика (доступна в _G.ESP)
 _G.ESP.rebindShoot = function()
-	print("[Shoot] Перезагрузка обработчика клавиш...")
 	setupShootHandler()
 end
 
 -- Запускаем обработчик
 setupShootHandler()
-
-print("[Shoot] Скрипт выстрела загружен. Команды:")
-print("  _G.ESP.ShootEnabled(true/false)  – включить/выключить")
-print("  _G.ESP.ShootKey(Enum.KeyCode.F)  – установить клавишу (по умолчанию F)")
-print("  _G.ESP.ShootOffset(2.8)          – смещение предсказания")
-print("  _G.ESP.ShootPingMult(1.0)        – множитель коррекции по пингу")
-print("  _G.ESP.rebindShoot()             – перезагрузить обработчик клавиш (автоматически при смене бинда)")
 
 _G.ESP.ShootKey(Enum.KeyCode.C)
 _G.ESP.ShootOffset(0)
