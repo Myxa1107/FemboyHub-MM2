@@ -697,7 +697,7 @@ end
 -- ===================================================================
 --  ФУНКЦИЯ ВЫСТРЕЛА
 -- ===================================================================
-function shootMurderer()
+local function shootMurderer()
 
 	local localplayer = game.Players.LocalPlayer
 
@@ -758,7 +758,7 @@ end
 local UserInputService = game:GetService("UserInputService")
 local shootConnection = nil
 
-function setupShootHandler()
+local function setupShootHandler()
 	if shootConnection then
 		shootConnection:Disconnect()
 		shootConnection = nil
@@ -794,7 +794,7 @@ local connections = {}
 
 
 
-function setupCharacterCollision(character)
+local function setupCharacterCollision(character)
 	local function disableCollide(part)
 		if antifling and part:IsA("BasePart") then
 			part.CanCollide = false
@@ -823,7 +823,7 @@ function setupCharacterCollision(character)
 	end)
 end
 
-function trackPlayer(player)
+local function trackPlayer(player)
 	if player == localPlayer then return end
 	local charAddedConn = player.CharacterAdded:Connect(setupCharacterCollision)
 	if player.Character then
