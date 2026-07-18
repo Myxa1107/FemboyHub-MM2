@@ -1,2 +1,6 @@
 # FemboyHub-MM2
-my own mm2 script
+
+My first MM2 script
+
+Made by undefinedfemboy (me) and DeepSeek uhh... nvm
+
