@@ -11,12 +11,14 @@ local LocalPlayer = Players.LocalPlayer
 local CoreGui = game:GetService("CoreGui")
 local Workspace = game:GetService("Workspace")
 local gundropmsg = false
+local antifling = false
 
 local w = rayfield:CreateWindow({
 	Name = "FemboyHub Public Beta",
 	LoadingTitle = ":3",
 	Icon = 13875807072,
 	LoadingSubtitle = "by undefinedfemboy",
+	Theme = "Bloom",
 	ConfigurationSaving = {
 		Enabled = false,
 		FolderName = "FemboyHub",
@@ -37,6 +39,37 @@ local w = rayfield:CreateWindow({
 local MainTab = w:CreateTab("Info", "info")
 local CombatTab = w:CreateTab("Combat", "swords")
 local ESPTab = w:CreateTab("ESP", "eye")
+local AddTab = w:CreateTab("Additional", "circle-question-mark")
+
+local infyield = AddTab:CreateButton({
+	Name = "Inf. Yield",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end,
+})
+
+local flinggui = AddTab:CreateButton({
+	Name = "Fling GUI",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/nvkob1/rbxscripts/refs/heads/main/FlingGUI/FlingGUI.lua"))()
+	end,
+})
+
+local invis = AddTab:CreateButton({
+	Name = "Invisibility",
+	Callback = function()
+		loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+	end,
+})
+
+local invis = AddTab:CreateButton({
+	Name = "Speed Glitch",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/princejerrondulatre-beep/Speed-Glitch/refs/heads/main/Speed%20Glitch%201.2"))()
+	end,
+})
+
+
 
 MainTab:CreateParagraph({
 	Title = "Welcome to FemboyHub\nHope you enjoy!",
@@ -73,6 +106,14 @@ local shoottoggle = CombatTab:CreateToggle({
 	CurrentValue = false,
 	Callback = function(Value)
 		_G.ESP.ShootEnabled(Value)
+	end,
+})
+
+local antiflingtoggle = MainTab:CreateToggle({
+	Name = "Anti Fling",
+	CurrentValue = false,
+	Callback = function(Value)
+		antifling = Value
 	end,
 })
 
@@ -767,3 +808,67 @@ _G.ESP.ShootOffset(0)
 	Duration = 6,
 	Image = 4483362458,
 })]]
+
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local CoreGui = game:GetService("CoreGui")
+
+local localPlayer = Players.LocalPlayer
+local connections = {}
+
+
+
+local function setupCharacterCollision(character)
+	local function disableCollide(part)
+		if antifling and part:IsA("BasePart") then
+			part.CanCollide = false
+		end
+	end
+
+	for _, part in ipairs(character:GetChildren()) do
+		disableCollide(part)
+	end
+
+	local childAddedConn = character.ChildAdded:Connect(disableCollide)
+
+	local steppedConn = RunService.Stepped:Connect(function()
+		if antifling and character:IsDescendantOf(workspace) then
+			for _, part in ipairs(character:GetChildren()) do
+				if part:IsA("BasePart") and part.CanCollide then
+					part.CanCollide = false
+				end
+			end
+		end
+	end)
+
+	character.Destroying:Connect(function()
+		childAddedConn:Disconnect()
+		steppedConn:Disconnect()
+	end)
+end
+
+local function trackPlayer(player)
+	if player == localPlayer then return end
+	local charAddedConn = player.CharacterAdded:Connect(setupCharacterCollision)
+	if player.Character then
+		setupCharacterCollision(player.Character)
+	end
+	connections[player] = charAddedConn
+end
+
+local function untrackPlayer(player)
+	if connections[player] then
+		connections[player]:Disconnect()
+		connections[player] = nil
+	end
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+	trackPlayer(player)
+end
+
+Players.PlayerAdded:Connect(trackPlayer)
+Players.PlayerRemoving:Connect(untrackPlayer)
