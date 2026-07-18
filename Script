@@ -460,7 +460,9 @@ local function RemoveGunESP(obj)
 		if gunESP[obj].Highlight then gunESP[obj].Highlight:Destroy() end
 		if gunESP[obj].Billboard then gunESP[obj].Billboard:Destroy() end
 		gunESP[obj] = nil
-		RefreshAll()
+		task.delay(0.1, function()
+			RefreshAll()
+		end)
 	end
 end
 
