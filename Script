@@ -103,13 +103,6 @@ local gunmsgtoggle = ESPTab:CreateToggle({
 local playerData = {}
 local playerDataReady = false
 
-local function RefreshAll()
-	RefreshHighlights()
-	RefreshNames()
-	RefreshGun()
-	RefreshTraps()
-end
-
 local function setupPlayerData()
 	local remotes = game.ReplicatedStorage:FindFirstChild("Remotes")
 	if remotes then
@@ -389,7 +382,7 @@ local function RemoveGunESP(obj)
 		if gunESP[obj].Highlight then gunESP[obj].Highlight:Destroy() end
 		if gunESP[obj].Billboard then gunESP[obj].Billboard:Destroy() end
 		gunESP[obj] = nil
-		RefreshAll()
+		
 	end
 end
 
@@ -485,7 +478,12 @@ end)
 -- ===================================================================
 --  ОБНОВЛЕНИЕ ВСЕГО
 -- ===================================================================
-
+local function RefreshAll()
+	RefreshHighlights()
+	RefreshNames()
+	RefreshGun()
+	RefreshTraps()
+end
 
 -- ===================================================================
 --  ПРИНУДИТЕЛЬНОЕ ОБНОВЛЕНИЕ КАЖДЫЕ 0.5 СЕКУНДЫ
