@@ -117,7 +117,7 @@ local antiflingtoggle = MainTab:CreateToggle({
 	end,
 })
 
---[[local Slider = CombatTab:CreateSlider({
+local Slider = CombatTab:CreateSlider({
 	Name = "Ping Offset",
 	Range = {0, 2},
 	Increment = 0.01,
@@ -126,7 +126,7 @@ local antiflingtoggle = MainTab:CreateToggle({
 	Callback = function(Value)
 		_G.ESP.ShootPingMult(Value)
 	end,
-})]]
+})
 
 local shootbind = CombatTab:CreateKeybind({
 	Name = "Bind",
