@@ -18,8 +18,8 @@ local w = rayfield:CreateWindow({
 	LoadingSubtitle = "by undefinedfemboy",
 	ConfigurationSaving = {
 		Enabled = false,
-		FolderName = "X1nexScriptV3",
-		FileName = "X1nexScript"
+		FolderName = "FemboyHub",
+		FileName = "Config"
 	},
 	KeySystem = true,
 	KeySettings = {
@@ -402,15 +402,14 @@ local function CreateGunESP(obj)
 
 	local role = GetRole(LocalPlayer)
 	if _G.ESP.AutoGrabGun() and role ~= "Dead" then
-		task.wait(1)
 		if not obj.Parent then return end
 		local char = LocalPlayer.Character
 		if not char then return end
 		local oldPos = char:GetPivot()
-		char:MoveTo(obj.Position)
+		obj:PivotTo(oldPos)
 		local backpack = LocalPlayer:FindFirstChild("Backpack")
 		if backpack then backpack.ChildAdded:Wait() end
-		char:PivotTo(oldPos)
+		obj:PivotTo(oldPos)
 	end
 end
 
@@ -704,7 +703,6 @@ function shootMurderer()
 				local hum = localplayer.Character:FindFirstChild("Humanoid")
 				if hum then
 					hum:EquipTool(gun)
-					task.wait(0.1)
 				end
 			end
 		end
