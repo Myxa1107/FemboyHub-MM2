@@ -1,4 +1,4 @@
-# FemboyHub-MM2
+# FemboyHub MM2
 
 My first MM2 script
 
