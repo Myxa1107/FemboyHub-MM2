@@ -52,6 +52,8 @@ CombatTab:CreateParagraph({
 	Content = "Script is very unstable. Because it's a public beta."
 })
 
+CombatTab:CreateDivider()
+
 CombatTab:CreateParagraph({
 	Title = "Grab Gun",
 	Content = "Have fun!"
@@ -65,13 +67,10 @@ local autograbguntoggle = CombatTab:CreateToggle({
 	end,
 })
 
-CombatTab:CreateParagraph({
-	Title = "Shoot Section",
-	Content = "Have Fun!"
-})
+CombatTab:CreateDivider()
 
 local shoottoggle = CombatTab:CreateToggle({
-	Name = "Master Toggle",
+	Name = "Toggle Shoot",
 	CurrentValue = false,
 	Callback = function(Value)
 		_G.ESP.ShootEnabled(Value)
@@ -594,10 +593,11 @@ _G.ESP.AutoGrabGun    = makeSetting(false, nil)
 task.delay(1,function()
 	RefreshAll()
 end)
+
 -- ===================================================================
---  🔫 ДОПОЛНИТЕЛЬНЫЙ СКРИПТ: ВЫСТРЕЛ В УБИЙЦУ (С ПЕРЕЗАГРУЗКОЙ БИНДА)
+--  🔫 ДОПОЛНИТЕЛЬНЫЙ СКРИПТ: ВЫСТРЕЛ В УБИЙЦУ (АВТООБНОВЛЕНИЕ НАСТРОЕК)
 --  Вставьте этот код в КОНЕЦ вашего основного ESP-скрипта.
---  Теперь при изменении бинда через _G.ESP.ShootKey() обработчик перезагружается.
+--  Теперь при изменении любой настройки через _G.ESP.Функция() изменения применяются сразу.
 -- ===================================================================
 
 print("[Shoot] СКРИПТ ВЫСТРЕЛА ЗАГРУЖАЕТСЯ...")
@@ -607,38 +607,43 @@ if not _G.ESP then
 	return
 end
 
--- Настройки стрельбы
-if not _G.ESP.ShootEnabled then
-	_G.ESP.ShootEnabled = function(val)
-		if val ~= nil then rawset(_G.ESP, "_shootEnabled", val) end
-		return rawget(_G.ESP, "_shootEnabled") or false
+-- ===================================================================
+--  ИНИЦИАЛИЗАЦИЯ НАСТРОЕК (если не существуют)
+-- ===================================================================
+local function initSetting(name, default)
+	if not _G.ESP[name] then
+		_G.ESP[name] = function(val)
+			if val ~= nil then
+				rawset(_G.ESP, "_" .. name, val)
+				-- Логируем изменение
+				print("[Shoot] Настройка " .. name .. " изменена на: " .. tostring(val))
+				-- Если изменили ShootKey – перезагружаем обработчик
+				if name == "ShootKey" then
+					if _G.ESP.rebindShoot then
+						_G.ESP.rebindShoot()
+					end
+				end
+				-- Если изменили ShootEnabled – выводим состояние
+				if name == "ShootEnabled" then
+					print("[Shoot] Стрельба " .. (val and "ВКЛЮЧЕНА" or "ВЫКЛЮЧЕНА"))
+				end
+			end
+			return rawget(_G.ESP, "_" .. name) or default
+		end
 	end
 end
 
-if not _G.ESP.ShootKey then
-	_G.ESP.ShootKey = function(val)
-		if val ~= nil then rawset(_G.ESP, "_shootKey", val) end
-		return rawget(_G.ESP, "_shootKey") or Enum.KeyCode.F
-	end
-end
+initSetting("ShootEnabled", false)
+initSetting("ShootKey", Enum.KeyCode.F)
+initSetting("ShootOffset", 2.8)
+initSetting("ShootPingMult", 1.0)
 
-if not _G.ESP.ShootOffset then
-	_G.ESP.ShootOffset = function(val)
-		if val ~= nil then rawset(_G.ESP, "_shootOffset", val) end
-		return rawget(_G.ESP, "_shootOffset") or 2.8
-	end
-end
+print("[Shoot] Настройки инициализированы. Текущий бинд: " .. tostring(_G.ESP.ShootKey()))
+print("[Shoot] Стрельба: " .. (_G.ESP.ShootEnabled() and "ВКЛ" or "ВЫКЛ"))
 
-if not _G.ESP.ShootPingMult then
-	_G.ESP.ShootPingMult = function(val)
-		if val ~= nil then rawset(_G.ESP, "_shootPingMult", val) end
-		return rawget(_G.ESP, "_shootPingMult") or 1.0
-	end
-end
-
-print("[Shoot] Настройки загружены. Текущий бинд: " .. tostring(_G.ESP.ShootKey()))
-
--- Функции поиска ролей (если не определены глобально)
+-- ===================================================================
+--  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (поиск ролей, предсказание)
+-- ===================================================================
 local function findMurderer()
 	if _G.findMurderer then return _G.findMurderer() end
 	for _, i in ipairs(game.Players:GetPlayers()) do
@@ -681,7 +686,9 @@ local function getPredictedPosition(player, shootOffset, pingMult)
 	return predicted
 end
 
--- Функция выстрела
+-- ===================================================================
+--  ФУНКЦИЯ ВЫСТРЕЛА
+-- ===================================================================
 local function shootMurderer()
 	print("[Shoot] Функция shootMurderer вызвана!")
 
@@ -747,7 +754,9 @@ local function shootMurderer()
 	end
 end
 
--- Обработчик клавиатуры
+-- ===================================================================
+--  ОБРАБОТЧИК КЛАВИАТУРЫ (с возможностью перезагрузки)
+-- ===================================================================
 local UserInputService = game:GetService("UserInputService")
 local shootConnection = nil
 
@@ -758,10 +767,7 @@ local function setupShootHandler()
 	end
 
 	shootConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		-- Игнорируем ввод только если игрок печатает в чат
-		if gameProcessed then
-			return
-		end
+		if gameProcessed then return end
 
 		local key = _G.ESP.ShootKey()
 		if input.KeyCode == key then
@@ -770,7 +776,7 @@ local function setupShootHandler()
 				print("[Shoot] Стрельба включена, вызываем shootMurderer()")
 				shootMurderer()
 			else
-				print("[Shoot] Стрельба отключена (_G.ESP.ShootEnabled(false))")
+				print("[Shoot] Стрельба отключена")
 			end
 		end
 	end)
@@ -778,34 +784,21 @@ local function setupShootHandler()
 	print("[Shoot] Обработчик клавиш установлен на бинд: " .. tostring(_G.ESP.ShootKey()))
 end
 
--- Функция для ручной перезагрузки обработчика (при изменении бинда)
+-- Функция для перезагрузки обработчика (доступна в _G.ESP)
 _G.ESP.rebindShoot = function()
 	print("[Shoot] Перезагрузка обработчика клавиш...")
 	setupShootHandler()
 end
 
--- Устанавливаем обработчик
+-- Запускаем обработчик
 setupShootHandler()
 
--- Автоматическая перезагрузка при изменении бинда (через метатаблицу)
-local originalShootKeySetter = _G.ESP.ShootKey
-_G.ESP.ShootKey = function(val)
-	local result = originalShootKeySetter(val)
-	if val ~= nil then
-		-- Перезагружаем обработчик при изменении бинда
-		print("[Shoot] Бинд изменён на: " .. tostring(val))
-		_G.ESP.rebindShoot()
-	end
-	return result
-end
-
-print("[Shoot] Скрипт выстрела загружен. Настройки:")
+print("[Shoot] Скрипт выстрела загружен. Команды:")
 print("  _G.ESP.ShootEnabled(true/false)  – включить/выключить")
 print("  _G.ESP.ShootKey(Enum.KeyCode.F)  – установить клавишу (по умолчанию F)")
 print("  _G.ESP.ShootOffset(2.8)          – смещение предсказания")
 print("  _G.ESP.ShootPingMult(1.0)        – множитель коррекции по пингу")
-print("  _G.ESP.rebindShoot()             – перезагрузить обработчик клавиш")
-print("[Shoot] Для отладки вызовите в консоли: _G.ESP.ShootEnabled(true) и нажмите клавишу.")
+print("  _G.ESP.rebindShoot()             – перезагрузить обработчик клавиш (автоматически при смене бинда)")
 
 _G.ESP.ShootKey(Enum.KeyCode.C)
 _G.ESP.ShootOffset(0)
