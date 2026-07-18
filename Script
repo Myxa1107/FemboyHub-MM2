@@ -133,7 +133,7 @@ local shootbind = CombatTab:CreateKeybind({
 	CurrentKeybind = "C",
 	Callback = function(Keybind)
 		if _G.ESP.ShootEnabled() then
-			_G.ESP.updatePrediction()
+			shootMurderer()
 		else
 		end
 	end,
@@ -400,7 +400,7 @@ end
 -- ===================================================================
 local gunESP = {}
 
-local function CreateGunESP(obj)
+function CreateGunESP(obj)
 	if not obj or obj.Name ~= "GunDrop" then return end
 	if gunESP[obj] then return end
 	local inside = false
@@ -488,7 +488,7 @@ end)
 -- ===================================================================
 local trapESP = {}
 
-local function CreateTrapESP(obj)
+function CreateTrapESP(obj)
 	if not obj or obj.Name ~= "Trap" then return end
 	if not (obj.Parent:IsA("Folder") or obj.Parent:IsA("Model")) then return end
 	if trapESP[obj] then return end
@@ -577,7 +577,7 @@ end)
 -- ===================================================================
 --  ОТСЛЕЖИВАНИЕ СОБЫТИЙ (Character, оружие, playerData уже обновляет)
 -- ===================================================================
-local function SetupPlayerTracking(player)
+function SetupPlayerTracking(player)
 	if not player then return end
 
 	local function onChanged()
@@ -649,7 +649,7 @@ end
 -- ===================================================================
 --  ИНИЦИАЛИЗАЦИЯ НАСТРОЕК (если не существуют)
 -- ===================================================================
-local function initSetting(name, default)
+function initSetting(name, default)
 	if not _G.ESP[name] then
 		_G.ESP[name] = function(val)
 			if val ~= nil then
@@ -739,7 +739,7 @@ end
 local UserInputService = game:GetService("UserInputService")
 local shootConnection = nil
 
-local function setupShootHandler()
+function setupShootHandler()
 	if shootConnection then
 		shootConnection:Disconnect()
 		shootConnection = nil
@@ -775,7 +775,7 @@ local connections = {}
 
 
 
-local function setupCharacterCollision(character)
+function setupCharacterCollision(character)
 	local function disableCollide(part)
 		if antifling and part:IsA("BasePart") then
 			part.CanCollide = false
@@ -804,7 +804,7 @@ local function setupCharacterCollision(character)
 	end)
 end
 
-local function trackPlayer(player)
+function trackPlayer(player)
 	if player == localPlayer then return end
 	local charAddedConn = player.CharacterAdded:Connect(setupCharacterCollision)
 	if player.Character then
@@ -862,18 +862,4 @@ function getPredictedPosition(player, shootOffset, pingMult)
 	local pingFactor = 1 + (pingMs / 1000) * (pingMult - 1)
 	predicted = predicted * pingFactor
 	return predicted
-end
-
--- Создаём функцию обновления предиктов в _G.ESP
-_G.ESP.updatePrediction = function()
-	local murderer = findMurderer()
-	if not murderer then
-		return
-	end
-	local predictedPos = getPredictedPosition(murderer, _G.ESP.ShootOffset(), _G.ESP.ShootPingMult())
-	if predictedPos then
-		shootMurderer()
-	else
-		print("  Не удалось вычислить предсказанную позицию.")
-	end
 end
