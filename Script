@@ -1,0 +1,558 @@
+local rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local plrs = game:GetService("Players")
+local cam = workspace.CurrentCamera
+local me = plrs.LocalPlayer
+local run = game:GetService("RunService")
+local tele = game:GetService("TeleportService")
+local uis = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local CoreGui = game:GetService("CoreGui")
+local Workspace = game:GetService("Workspace")
+local gundropmsg = false
+
+local w = rayfield:CreateWindow({
+	Name = "FemboyHub Public Beta",
+	LoadingTitle = ":3",
+	LoadingSubtitle = "by undefinedfemboy",
+	ConfigurationSaving = {
+		Enabled = false,
+		FolderName = "X1nexScriptV3",
+		FileName = "X1nexScript"
+	},
+	KeySystem = true,
+	KeySettings = {
+		Title = 'Type "ILoveFemboys" to continue',
+		Subtitle = "FemboyHub шотает",
+		Note = "ill wait :3",
+		FileName = "Key",
+		SaveKey = true,
+		Key = {"ILoveFemboys"},
+	},
+	DisableRayfieldPrompts = false,
+})
+
+local MainTab = w:CreateTab("Info", 4483362458)
+local CombatTab = w:CreateTab("Combat", 4483362458)
+local ESPTab = w:CreateTab("ESP", 4483362458)
+
+MainTab:CreateParagraph({
+	Title = "Welcome to FemboyHub\nHope you enjoy!",
+	Content = "\nCreated by undefinedfemboy and DeepSeek :/\nSpecial thanks to:\nCrystalex_0x\noxygen1337\nwunsss"
+})
+
+ESPTab:CreateParagraph({
+	Title = "!WARNING!",
+	Content = "Script is very unstable. Because it's a public beta."
+})
+
+local autograbguntoggle = CombatTab:CreateToggle({
+	Name = "Auto Grab Gun",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.AutoGrabGun(Value)
+	end,
+})
+
+local esptoggle = ESPTab:CreateToggle({
+	Name = "Highlight",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowHighlights(Value)
+	end,
+})
+
+local namestoggle = ESPTab:CreateToggle({
+	Name = "Names",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowNames(Value)
+	end,
+})
+
+local traptoggle = ESPTab:CreateToggle({
+	Name = "Show Traps (Unstable)",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowTraps(Value)
+	end,
+})
+
+local guntoggle = ESPTab:CreateToggle({
+	Name = "Gun Drop",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowGunDrop(Value)
+	end,
+})
+
+local gunmsgtoggle = ESPTab:CreateToggle({
+	Name = "Gun Drop Message",
+	CurrentValue = false,
+	Callback = function(Value)
+		gundropmsg = Value
+	end,
+})
+
+local playerData = {}
+local playerDataReady = false
+
+local function setupPlayerData()
+	local remotes = game.ReplicatedStorage:FindFirstChild("Remotes")
+	if remotes then
+		local gameplay = remotes:FindFirstChild("Gameplay")
+		if gameplay then
+			local playerDataChanged = gameplay:FindFirstChild("PlayerDataChanged")
+			if playerDataChanged then
+				playerDataChanged.OnClientEvent:Connect(function(data)
+					playerData = data
+					playerDataReady = true
+					RefreshAll()
+				end)
+				return true
+			end
+		end
+	end
+	return false
+end
+
+setupPlayerData()
+
+-- ===================================================================
+--  ФУНКЦИИ ПОИСКА РОЛЕЙ (ПРЯМО ИЗ YARHM)
+-- ===================================================================
+local function findMurderer()
+	if playerDataReady then
+		for playerName, data in playerData do
+			if data.Role == "Murderer" then
+				local player = game.Players:FindFirstChild(playerName)
+				if player then return player end
+			end
+		end
+	end
+
+	-- Fallback: проверяем Backpack
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if i.Backpack:FindFirstChild("Knife") then
+			return i
+		end
+	end
+
+	-- Fallback: проверяем Character
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Knife") then
+			return i
+		end
+	end
+
+	return nil
+end
+
+local function findSheriff()
+	if playerDataReady then
+		for playerName, data in playerData do
+			if data.Role == "Sheriff" then
+				local player = game.Players:FindFirstChild(playerName)
+				if player then return player end
+			end
+		end
+	end
+
+	-- Fallback: проверяем Backpack
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if i.Backpack:FindFirstChild("Gun") then
+			return i
+		end
+	end
+
+	-- Fallback: проверяем Character
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Gun") then
+			return i
+		end
+	end
+
+	return nil
+end
+
+-- ===================================================================
+--  ОПРЕДЕЛЕНИЕ РОЛИ (БЕЗ ПРОВЕРКИ ЗДОРОВЬЯ, ТОЛЬКО РОЛЬ)
+-- ===================================================================
+local function GetRole(player)
+	-- Если игрок есть в playerData с ролью, или имеет оружие – он в игре
+	if playerDataReady then
+		local playerName = player.Name
+		if playerData[playerName] and playerData[playerName].Role then
+			-- Определяем конкретную роль по данным
+			if playerData[playerName].Role == "Murderer" then
+				return "Murderer"
+			elseif playerData[playerName].Role == "Sheriff" then
+				return "Sheriff"
+			elseif playerData[playerName].Role == "Innocent" then
+				return "Innocent"
+			end
+		end
+	end
+
+	-- Если playerData ещё нет, используем fallback по оружию
+	if player == findMurderer() then
+		return "Murderer"
+	elseif player == findSheriff() then
+		return "Sheriff"
+	else
+		-- Если нет роли и нет оружия – считаем, что игрок не в игре
+		return "Dead"
+	end
+end
+
+local function GetColor(role)
+	if role == "Murderer" then return Color3.fromRGB(255, 0, 0) end
+	if role == "Sheriff"  then return Color3.fromRGB(0, 0, 255) end
+	if role == "Innocent" then return Color3.fromRGB(0, 255, 0) end
+	return Color3.fromRGB(128, 128, 128) -- Dead (не в игре)
+end
+
+-- ===================================================================
+--  НАСТРОЙКИ
+-- ===================================================================
+if not _G.ESP then _G.ESP = {} end
+
+local function makeSetting(initial, callback)
+	local value = initial
+	return function(newValue)
+		if newValue ~= nil then
+			value = newValue
+			if callback then callback() end
+		end
+		return value
+	end
+end
+
+-- ПОДГОТОВКА
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local CoreGui = game:GetService("CoreGui")
+local Workspace = game:GetService("Workspace")
+
+local ESPFolder = Instance.new("Folder")
+ESPFolder.Name = "MM2_ESP"
+ESPFolder.Parent = CoreGui
+
+for _, child in ipairs(ESPFolder:GetChildren()) do child:Destroy() end
+
+-- ===================================================================
+--  ПОДСВЕТКА
+-- ===================================================================
+local playerHighlights = {}
+
+local function RefreshHighlights()
+	for _, hl in pairs(playerHighlights) do hl:Destroy() end
+	playerHighlights = {}
+	if not _G.ESP.ShowHighlights() then return end
+
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr == LocalPlayer then continue end
+		local char = plr.Character
+		if not char then continue end
+		local role = GetRole(plr)
+		local color = GetColor(role)
+		local hl = Instance.new("Highlight")
+		hl.Name = "PlayerHL"
+		hl.FillTransparency = 0.5
+		hl.OutlineTransparency = 0
+		hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+		hl.FillColor = color
+		hl.OutlineColor = color
+		hl.Adornee = char
+		hl.Parent = ESPFolder
+		hl.Enabled = true
+		playerHighlights[plr] = hl
+	end
+end
+
+-- ===================================================================
+--  ИМЕНА
+-- ===================================================================
+local function RefreshNames()
+	for _, child in ipairs(ESPFolder:GetChildren()) do
+		if child:IsA("BillboardGui") and child.Name:match("_Name$") then child:Destroy() end
+	end
+	if not _G.ESP.ShowNames() then return end
+
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr == LocalPlayer then continue end
+		local role = GetRole(plr)
+		if role == "Dead" then continue end
+		local char = plr.Character
+		if not char or not char:FindFirstChild("Head") then continue end
+		local color = GetColor(role)
+		local bill = Instance.new("BillboardGui")
+		bill.Name = plr.Name .. "_Name"
+		bill.Size = UDim2.new(0, 120, 0, 24)
+		bill.StudsOffset = Vector3.new(0, 2.0, 0)
+		bill.AlwaysOnTop = true
+		bill.Adornee = char.Head
+		bill.Parent = ESPFolder
+		local label = Instance.new("TextLabel")
+		label.Size = UDim2.new(1, 0, 1, 0)
+		label.BackgroundTransparency = 1
+		label.Text = plr.Name
+		label.TextScaled = false
+		label.TextSize = 14
+		label.Font = Enum.Font.GothamMedium
+		label.TextColor3 = color
+		label.TextStrokeTransparency = 0
+		label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+		label.Parent = bill
+		bill.Enabled = true
+	end
+end
+
+-- ===================================================================
+--  ПИСТОЛЕТ
+-- ===================================================================
+local gunESP = {}
+
+local function CreateGunESP(obj)
+	if not obj or obj.Name ~= "GunDrop" then return end
+	if gunESP[obj] then return end
+	local inside = false
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr.Character and obj:IsDescendantOf(plr.Character) then inside = true break end
+		if plr:FindFirstChild("Backpack") and obj:IsDescendantOf(plr.Backpack) then inside = true break end
+	end
+	if inside then return end
+
+	local hl = Instance.new("Highlight")
+	hl.Name = "GunDropHL"
+	hl.FillColor = Color3.fromRGB(255, 255, 0)
+	hl.FillTransparency = 0.3
+	hl.OutlineTransparency = 0
+	hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	hl.Adornee = obj
+	hl.Parent = ESPFolder
+	hl.Enabled = _G.ESP.ShowGunDrop()
+
+	local bill = Instance.new("BillboardGui")
+	bill.Name = "GunDropLabel"
+	bill.Size = UDim2.new(0, 80, 0, 20)
+	bill.StudsOffset = Vector3.new(0, 1.5, 0)
+	bill.AlwaysOnTop = true
+	bill.Adornee = obj
+	bill.Parent = ESPFolder
+	bill.Enabled = _G.ESP.ShowGunDrop()
+
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.BackgroundTransparency = 1
+	label.Text = "🔫 Gun"
+	label.TextScaled = true
+	label.Font = Enum.Font.GothamBold
+	label.TextColor3 = Color3.fromRGB(255, 255, 0)
+	label.TextStrokeTransparency = 0
+	label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+	label.Parent = bill
+
+	gunESP[obj] = {Highlight = hl, Billboard = bill}
+
+	local role = GetRole(LocalPlayer)
+	if _G.ESP.AutoGrabGun() and role ~= "Dead" then
+		task.wait(1)
+		if not obj.Parent then return end
+		local char = LocalPlayer.Character
+		if not char then return end
+		local oldPos = char:GetPivot()
+		char:MoveTo(obj.Position)
+		local backpack = LocalPlayer:FindFirstChild("Backpack")
+		if backpack then backpack.ChildAdded:Wait() end
+		char:PivotTo(oldPos)
+	end
+end
+
+local function RemoveGunESP(obj)
+	if gunESP[obj] then
+		if gunESP[obj].Highlight then gunESP[obj].Highlight:Destroy() end
+		if gunESP[obj].Billboard then gunESP[obj].Billboard:Destroy() end
+		gunESP[obj] = nil
+	end
+end
+
+local function RefreshGun()
+	for obj, _ in pairs(gunESP) do RemoveGunESP(obj) end
+	gunESP = {}
+	if not _G.ESP.ShowGunDrop() then return end
+	for _, obj in ipairs(Workspace:GetDescendants()) do
+		if obj.Name == "GunDrop" then
+			CreateGunESP(obj)
+		end
+	end
+end
+
+Workspace.DescendantAdded:Connect(function(obj)
+	if obj.Name == "GunDrop" then CreateGunESP(obj) end
+end)
+Workspace.DescendantRemoving:Connect(function(obj)
+	if obj.Name == "GunDrop" then RemoveGunESP(obj) end
+end)
+
+-- ===================================================================
+--  ЛОВУШКИ
+-- ===================================================================
+local trapESP = {}
+
+local function CreateTrapESP(obj)
+	if not obj or obj.Name ~= "Trap" then return end
+	if not (obj.Parent:IsA("Folder") or obj.Parent:IsA("Model")) then return end
+	if trapESP[obj] then return end
+
+	local hl = Instance.new("Highlight")
+	hl.Name = "TrapHL"
+	hl.FillColor = Color3.fromRGB(255, 0, 0)
+	hl.FillTransparency = 0.3
+	hl.OutlineTransparency = 0
+	hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	hl.Adornee = obj
+	hl.Parent = ESPFolder
+	hl.Enabled = _G.ESP.ShowTraps()
+
+	local bill = Instance.new("BillboardGui")
+	bill.Name = "TrapLabel"
+	bill.Size = UDim2.new(0, 60, 0, 20)
+	bill.StudsOffset = Vector3.new(0, 1.5, 0)
+	bill.AlwaysOnTop = true
+	bill.Adornee = obj
+	bill.Parent = ESPFolder
+	bill.Enabled = _G.ESP.ShowTraps()
+
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.BackgroundTransparency = 1
+	label.Text = "⚠️ Trap"
+	label.TextScaled = true
+	label.Font = Enum.Font.GothamBold
+	label.TextColor3 = Color3.fromRGB(255, 0, 0)
+	label.TextStrokeTransparency = 0
+	label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+	label.Parent = bill
+
+	trapESP[obj] = {Highlight = hl, Billboard = bill}
+end
+
+local function RemoveTrapESP(obj)
+	if trapESP[obj] then
+		if trapESP[obj].Highlight then trapESP[obj].Highlight:Destroy() end
+		if trapESP[obj].Billboard then trapESP[obj].Billboard:Destroy() end
+		trapESP[obj] = nil
+	end
+end
+
+local function RefreshTraps()
+	for obj, _ in pairs(trapESP) do RemoveTrapESP(obj) end
+	trapESP = {}
+	if not _G.ESP.ShowTraps() then return end
+	for _, obj in ipairs(Workspace:GetDescendants()) do
+		if obj.Name == "Trap" and (obj.Parent:IsA("Folder") or obj.Parent:IsA("Model")) then
+			CreateTrapESP(obj)
+		end
+	end
+end
+
+Workspace.DescendantAdded:Connect(function(obj)
+	if obj.Name == "Trap" and (obj.Parent:IsA("Folder") or obj.Parent:IsA("Model")) then
+		CreateTrapESP(obj)
+	end
+end)
+Workspace.DescendantRemoving:Connect(function(obj)
+	if obj.Name == "Trap" then RemoveTrapESP(obj) end
+end)
+
+-- ===================================================================
+--  ОБНОВЛЕНИЕ ВСЕГО
+-- ===================================================================
+local function RefreshAll()
+	RefreshHighlights()
+	RefreshNames()
+	RefreshGun()
+	RefreshTraps()
+end
+
+-- ===================================================================
+--  ПРИНУДИТЕЛЬНОЕ ОБНОВЛЕНИЕ КАЖДЫЕ 0.5 СЕКУНДЫ
+-- ===================================================================
+task.spawn(function()
+	while true do
+		task.wait(0.5)
+		RefreshAll()
+	end
+end)
+
+-- ===================================================================
+--  ОТСЛЕЖИВАНИЕ СОБЫТИЙ (Character, оружие, playerData уже обновляет)
+-- ===================================================================
+local function SetupPlayerTracking(player)
+	if not player then return end
+
+	local function onChanged()
+		RefreshAll()
+	end
+
+	player.CharacterAdded:Connect(onChanged)
+	player.CharacterRemoving:Connect(onChanged)
+
+	local function onToolAdded(tool)
+		if tool:IsA("Tool") and (tool.Name == "Knife" or tool.Name == "Gun") then
+			onChanged()
+		end
+	end
+
+	if player.Character then
+		player.Character.ChildAdded:Connect(onToolAdded)
+	end
+	player.CharacterAdded:Connect(function(char)
+		char.ChildAdded:Connect(onToolAdded)
+		local backpack = player:FindFirstChild("Backpack")
+		if backpack then
+			backpack.ChildAdded:Connect(onToolAdded)
+		else
+			player.ChildAdded:Connect(function(child)
+				if child.Name == "Backpack" then
+					child.ChildAdded:Connect(onToolAdded)
+				end
+			end)
+		end
+	end)
+end
+
+for _, plr in ipairs(Players:GetPlayers()) do
+	SetupPlayerTracking(plr)
+end
+Players.PlayerAdded:Connect(SetupPlayerTracking)
+
+Players.PlayerRemoving:Connect(function(p)
+	if playerHighlights[p] then playerHighlights[p]:Destroy() end
+end)
+
+-- ===================================================================
+--  НАЗНАЧЕНИЕ СЕТТЕРОВ
+-- ===================================================================
+_G.ESP.ShowHighlights = makeSetting(true, RefreshHighlights)
+_G.ESP.ShowNames      = makeSetting(true, RefreshNames)
+_G.ESP.ShowGunDrop    = makeSetting(true, RefreshGun)
+_G.ESP.ShowTraps      = makeSetting(true, RefreshTraps)
+_G.ESP.AutoGrabGun    = makeSetting(false, nil)
+
+-- ===================================================================
+--  ЗАПУСК
+-- ===================================================================
+task.wait(1)
+RefreshAll()
+
+--[[rayfield:Notify({
+	Title = "X1nex Script",
+	Content = "Скрипт успешно загружен!\nВерсия: 3.0.0 Premium\nТема: Фиолетовая",
+	Duration = 6,
+	Image = 4483362458,
+})]]
