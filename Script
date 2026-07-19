@@ -810,15 +810,6 @@ _G.ESP.rebindShoot = function()
 		shootConnection:Disconnect()
 		shootConnection = nil
 	end
-	shootConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		if gameProcessed then return end
-		if input.KeyCode == _G.ESP.ShootKey() then
-			if _G.ESP.ShootEnabled() then
-				shootMurderer()
-			else
-			end
-		end
-	end)
 end
 
 _G.ESP.rebindShoot()
