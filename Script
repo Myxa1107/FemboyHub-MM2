@@ -660,50 +660,7 @@ _G.ESP.AutoGrabGun    = makeSetting(false, nil)
 local refreshAll = _G.ESP._refreshAll or RefreshAll
 
 -- Отслеживаем удаление GunDrop (подбор пистолета)
-local function onGunDropRemoved(obj)
-	if obj and obj.Name == "GunDrop" then
-		-- Небольшая задержка, чтобы игра успела обновить инвентарь
-		task.wait(0.1)
-		if refreshAll then
-			refreshAll()
-		else
-			-- Если RefreshAll не определена, пробуем перезагрузить через доступные функции
-			if RefreshHighlights then RefreshHighlights() end
-			if RefreshNames then RefreshNames() end
-			if RefreshGun then RefreshGun() end
-			if RefreshTraps then RefreshTraps() end
-		end
-	end
-end
 
--- Подписываемся на удаление объектов в Workspace
-local function setupGunDropTracking()
-	local connection
-	connection = workspace.DescendantRemoving:Connect(function(obj)
-		if obj.Name == "GunDrop" then
-			onGunDropRemoved(obj)
-		end
-	end)
-
-	-- Также отслеживаем изменение родителя (если пистолет перемещается)
-	workspace.DescendantAdded:Connect(function(obj)
-		if obj.Name == "GunDrop" then
-			-- Если пистолет появился, обновляем ESP (на случай, если кто-то его выбросил)
-			task.wait(0.1)
-			if refreshAll then
-				refreshAll()
-			else
-				if RefreshHighlights then RefreshHighlights() end
-				if RefreshNames then RefreshNames() end
-				if RefreshGun then RefreshGun() end
-				if RefreshTraps then RefreshTraps() end
-			end
-		end
-	end)
-end
-
--- Запускаем отслеживание
-setupGunDropTracking()
 
 task.delay(1,function()
 	RefreshAll()
@@ -917,3 +874,48 @@ end
 
 Players.PlayerAdded:Connect(trackPlayer)
 Players.PlayerRemoving:Connect(untrackPlayer)
+
+local function onGunDropRemoved(obj)
+	if obj and obj.Name == "GunDrop" then
+		-- Небольшая задержка, чтобы игра успела обновить инвентарь
+		task.wait(0.1)
+		if refreshAll then
+			refreshAll()
+		else
+			-- Если RefreshAll не определена, пробуем перезагрузить через доступные функции
+			if RefreshHighlights then RefreshHighlights() end
+			if RefreshNames then RefreshNames() end
+			if RefreshGun then RefreshGun() end
+			if RefreshTraps then RefreshTraps() end
+		end
+	end
+end
+
+-- Подписываемся на удаление объектов в Workspace
+local function setupGunDropTracking()
+	local connection
+	connection = workspace.DescendantRemoving:Connect(function(obj)
+		if obj.Name == "GunDrop" then
+			onGunDropRemoved(obj)
+		end
+	end)
+
+	-- Также отслеживаем изменение родителя (если пистолет перемещается)
+	workspace.DescendantAdded:Connect(function(obj)
+		if obj.Name == "GunDrop" then
+			-- Если пистолет появился, обновляем ESP (на случай, если кто-то его выбросил)
+			task.wait(0.1)
+			if refreshAll then
+				refreshAll()
+			else
+				if RefreshHighlights then RefreshHighlights() end
+				if RefreshNames then RefreshNames() end
+				if RefreshGun then RefreshGun() end
+				if RefreshTraps then RefreshTraps() end
+			end
+		end
+	end)
+end
+
+-- Запускаем отслеживание
+setupGunDropTracking()
