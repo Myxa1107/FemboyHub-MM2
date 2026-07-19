@@ -663,43 +663,11 @@ task.delay(1,function()
 	RefreshAll()
 end)
 
--- ===================================================================
---  🔫 СКРИПТ ВЫСТРЕЛА ЧЕРЕЗ REMOTE "Shoot" С ПРЕДИКТОМ
---  Вставьте этот код в КОНЕЦ вашего основного ESP-скрипта.
---  Использует только RemoteEvent "Shoot" с двумя CFrame.
---  Все настройки меняются в реальном времени.
--- ===================================================================
-
-if not _G.ESP then
-	warn("[Shoot] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
-	return
-end
-
--- ===================================================================
---  НАСТРОЙКИ (переменные)
--- ===================================================================
---  _G.ESP.ShootEnabled(true/false)       – включить/выключить стрельбу
---  _G.ESP.ShootKey(Enum.KeyCode.F)       – клавиша для выстрела
---  _G.ESP.ShootOffset(2.8)               – смещение предсказания (рекомендуется 2.0–5.0)
---  _G.ESP.ShootPingMult(1.0)             – множитель коррекции по пингу (0.5–2.0)
---  _G.ESP.shootMurderer()                – ручной вызов выстрела
---  _G.ESP.updatePrediction()             – показать текущие настройки и предсказание
--- ===================================================================
-
+-- Инициализация настроек (если не существуют)
 if not _G.ESP.ShootEnabled then
 	_G.ESP.ShootEnabled = function(val)
 		if val ~= nil then rawset(_G.ESP, "_shootEnabled", val) end
 		return rawget(_G.ESP, "_shootEnabled") or false
-	end
-end
-
-if not _G.ESP.ShootKey then
-	_G.ESP.ShootKey = function(val)
-		if val ~= nil then
-			rawset(_G.ESP, "_shootKey", val)
-			if _G.ESP.rebindShoot then _G.ESP.rebindShoot() end
-		end
-		return rawget(_G.ESP, "_shootKey") or Enum.KeyCode.F
 	end
 end
 
@@ -718,8 +686,31 @@ if not _G.ESP.ShootPingMult then
 end
 
 -- ===================================================================
---  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+--  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (используем глобальные, если есть)
 -- ===================================================================
+local function findMurderer()
+	if _G.findMurderer then return _G.findMurderer() end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if i.Backpack:FindFirstChild("Knife") then return i end
+	end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Knife") then return i end
+	end
+	return nil
+end
+
+local function findSheriff()
+	if _G.findSheriff then return _G.findSheriff() end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if i.Backpack:FindFirstChild("Gun") then return i end
+	end
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Gun") then return i end
+	end
+	return nil
+end
 
 local function getPredictedPosition(player, shootOffset, pingMult)
 	local char = player.Character
@@ -743,6 +734,9 @@ end
 --  ФУНКЦИЯ ВЫСТРЕЛА (ЧЕРЕЗ RemoteEvent "Shoot")
 -- ===================================================================
 local function shootMurderer()
+	if not _G.ESP.ShootEnabled() then
+		return
+	end
 
 	local localplayer = game.Players.LocalPlayer
 
@@ -755,7 +749,7 @@ local function shootMurderer()
 		return
 	end
 
-	-- Достаём пистолет
+	-- Достаём пистолет (если его нет в руках)
 	local gun = localplayer.Character:FindFirstChild("Gun")
 	if not gun then
 		local backpack = localplayer:FindFirstChild("Backpack")
@@ -765,7 +759,6 @@ local function shootMurderer()
 				local hum = localplayer.Character:FindFirstChild("Humanoid")
 				if hum then
 					hum:EquipTool(gun)
-					task.wait(0.1)
 				end
 			end
 		end
@@ -795,37 +788,20 @@ local function shootMurderer()
 	if shootEvent and shootEvent:IsA("RemoteEvent") then
 		shootEvent:FireServer(CFrame.new(rightHand.Position), CFrame.new(predictedPos))
 	else
-		print("[Shoot] RemoteEvent 'Shoot' не найден в пистолете.")
 	end
 end
 
--- ===================================================================
---  ОБРАБОТЧИК КЛАВИАТУРЫ
--- ===================================================================
-local UserInputService = game:GetService("UserInputService")
-local shootConnection = nil
-
-_G.ESP.rebindShoot = function()
-	if shootConnection then
-		shootConnection:Disconnect()
-		shootConnection = nil
-	end
-end
-
-_G.ESP.rebindShoot()
-
+-- Сохраняем функцию в глобальную таблицу для внешнего вызова
 _G.ESP.shootMurderer = shootMurderer
 
+-- Функция для отладки предикта (оставлена с принтами, т.к. вызывается вручную)
 _G.ESP.updatePrediction = function()
-	
 	local murderer = findMurderer()
 	if murderer and murderer.Character then
-		local pos = getPredictedPosition(murderer, _G.ESP.ShootOffset(), _G.ESP.ShootPingMult())
 		else
 	end
 end
 
-_G.ESP.ShootKey(Enum.KeyCode.C)
 _G.ESP.ShootOffset(0)
 
 --[[rayfield:Notify({
