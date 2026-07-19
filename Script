@@ -37,9 +37,146 @@ local w = rayfield:CreateWindow({
 })
 
 local MainTab = w:CreateTab("Info", "info")
+
+MainTab:CreateDivider()
+
+MainTab:CreateParagraph({
+	Title = "Welcome to FemboyHub\nHope you enjoy!",
+	Content = "\nCreated by undefinedfemboy and DeepSeek :/\nSpecial thanks to:\nCrystalex_0x\noxygen1337\nwunsss"
+})
+
+MainTab:CreateDivider()
+
+local antiflingtoggle = MainTab:CreateToggle({
+	Name = "Anti Fling",
+	CurrentValue = false,
+	Callback = function(Value)
+		antifling = Value
+	end,
+})
+
 local CombatTab = w:CreateTab("Combat", "swords")
+
+CombatTab:CreateDivider()
+
+CombatTab:CreateParagraph({
+	Title = "!WARNING!",
+	Content = "Script is very unstable. Because it's a public beta."
+})
+
+CombatTab:CreateDivider()
+
+
+local autograbguntoggle = CombatTab:CreateToggle({
+	Name = "Auto Grab Gun",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.AutoGrabGun(Value)
+	end,
+})
+
+CombatTab:CreateDivider()
+
+local shoottoggle = CombatTab:CreateToggle({
+	Name = "Toggle Shoot",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShootEnabled(Value)
+	end,
+})
+
+local Slider = CombatTab:CreateSlider({
+	Name = "Ping Offset",
+	Range = {0, 2},
+	Increment = 0.01,
+	Suffix = "Studs",
+	CurrentValue = 1,
+	Callback = function(Value)
+		_G.ESP.ShootPingMult(Value)
+	end,
+})
+
+local shootbind = CombatTab:CreateKeybind({
+	Name = "Bind",
+	CurrentKeybind = "C",
+	Callback = function(Keybind)
+		if _G.ESP.ShootEnabled() then
+			_G.ESP.shootMurderer()
+		else
+		end
+	end,
+})
+
 local ESPTab = w:CreateTab("ESP", "eye")
+
+ESPTab:CreateDivider()
+
+ESPTab:CreateParagraph({
+	Title = "!WARNING!",
+	Content = "Script is very unstable. Because it's a public beta."
+})
+
+ESPTab:CreateDivider()
+
+local esptoggle = ESPTab:CreateToggle({
+	Name = "Highlight",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowHighlights(Value)
+	end,
+})
+
+local namestoggle = ESPTab:CreateToggle({
+	Name = "Names",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowNames(Value)
+	end,
+})
+
+ESPTab:CreateDivider()
+
+local traptoggle = ESPTab:CreateToggle({
+	Name = "Show Traps (Unstable)",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowTraps(Value)
+	end,
+})
+
+ESPTab:CreateDivider()
+
+local guntoggle = ESPTab:CreateToggle({
+	Name = "Gun Drop (Lag)",
+	CurrentValue = false,
+	Callback = function(Value)
+		_G.ESP.ShowGunDrop(Value)
+	end,
+})
+
+--[[local gunmsgtoggle = ESPTab:CreateToggle({
+	Name = "Gun Drop Message",
+	CurrentValue = false,
+	Callback = function(Value)
+		gundropmsg = Value
+	end,
+})]]
+
+
+local FunTab = w:CreateTab("Fun", "smile")
+
+FunTab:CreateDivider()
+
+FunTab:CreateParagraph({
+	Title = "!WARNING!",
+	Content = "Script is very unstable. Because it's a public beta."
+})
+
+FunTab:CreateDivider()
+
 local AddTab = w:CreateTab("Additional", 15928895003)
+
+AddTab:CreateDivider()
 
 local infyield = AddTab:CreateButton({
 	Name = "Inf. Yield",
@@ -66,116 +203,6 @@ local invis = AddTab:CreateButton({
 	Name = "Speed Glitch",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/princejerrondulatre-beep/Speed-Glitch/refs/heads/main/Speed%20Glitch%201.2"))()
-	end,
-})
-
-
-
-MainTab:CreateParagraph({
-	Title = "Welcome to FemboyHub\nHope you enjoy!",
-	Content = "\nCreated by undefinedfemboy and DeepSeek :/\nSpecial thanks to:\nCrystalex_0x\noxygen1337\nwunsss"
-})
-
-ESPTab:CreateParagraph({
-	Title = "!WARNING!",
-	Content = "Script is very unstable. Because it's a public beta."
-})
-
-CombatTab:CreateParagraph({
-	Title = "!WARNING!",
-	Content = "Script is very unstable. Because it's a public beta."
-})
-
-CombatTab:CreateParagraph({
-	Title = "Grab Gun",
-	Content = "Have fun!"
-})
-
-local autograbguntoggle = CombatTab:CreateToggle({
-	Name = "Auto Grab Gun",
-	CurrentValue = false,
-	Callback = function(Value)
-		_G.ESP.AutoGrabGun(Value)
-	end,
-})
-
-CombatTab:CreateDivider()
-
-local shoottoggle = CombatTab:CreateToggle({
-	Name = "Toggle Shoot",
-	CurrentValue = false,
-	Callback = function(Value)
-		_G.ESP.ShootEnabled(Value)
-	end,
-})
-
-local antiflingtoggle = MainTab:CreateToggle({
-	Name = "Anti Fling",
-	CurrentValue = false,
-	Callback = function(Value)
-		antifling = Value
-	end,
-})
-
-local Slider = CombatTab:CreateSlider({
-	Name = "Ping Offset",
-	Range = {0, 2},
-	Increment = 0.01,
-	Suffix = "Studs",
-	CurrentValue = 1,
-	Callback = function(Value)
-		_G.ESP.ShootPingMult(Value)
-	end,
-})
-
-local shootbind = CombatTab:CreateKeybind({
-	Name = "Bind",
-	CurrentKeybind = "C",
-	Callback = function(Keybind)
-		if _G.ESP.ShootEnabled() then
-			makeshootMurderer()
-		else
-		end
-	end,
-})
-
-local esptoggle = ESPTab:CreateToggle({
-	Name = "Highlight",
-	CurrentValue = false,
-	Callback = function(Value)
-		_G.ESP.ShowHighlights(Value)
-	end,
-})
-
-local namestoggle = ESPTab:CreateToggle({
-	Name = "Names",
-	CurrentValue = false,
-	Callback = function(Value)
-		_G.ESP.ShowNames(Value)
-	end,
-})
-
-local traptoggle = ESPTab:CreateToggle({
-	Name = "Show Traps (Unstable)",
-	CurrentValue = false,
-	Callback = function(Value)
-		_G.ESP.ShowTraps(Value)
-	end,
-})
-
-local guntoggle = ESPTab:CreateToggle({
-	Name = "Gun Drop",
-	CurrentValue = false,
-	Callback = function(Value)
-		_G.ESP.ShowGunDrop(Value)
-	end,
-})
-
-local gunmsgtoggle = ESPTab:CreateToggle({
-	Name = "Gun Drop Message",
-	CurrentValue = false,
-	Callback = function(Value)
-		gundropmsg = Value
 	end,
 })
 
@@ -637,46 +664,64 @@ task.delay(1,function()
 end)
 
 -- ===================================================================
---  🔫 ДОПОЛНИТЕЛЬНЫЙ СКРИПТ: ВЫСТРЕЛ В УБИЙЦУ (АВТООБНОВЛЕНИЕ НАСТРОЕК)
+--  🔫 СКРИПТ ВЫСТРЕЛА ЧЕРЕЗ REMOTE "Shoot" С ПРЕДИКТОМ
 --  Вставьте этот код в КОНЕЦ вашего основного ESP-скрипта.
---  Теперь при изменении любой настройки через _G.ESP.Функция() изменения применяются сразу.
+--  Использует только RemoteEvent "Shoot" с двумя CFrame.
+--  Все настройки меняются в реальном времени.
 -- ===================================================================
 
 if not _G.ESP then
+	warn("[Shoot] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
 	return
 end
 
 -- ===================================================================
---  ИНИЦИАЛИЗАЦИЯ НАСТРОЕК (если не существуют)
+--  НАСТРОЙКИ (переменные)
 -- ===================================================================
-function initSetting(name, default)
-	if not _G.ESP[name] then
-		_G.ESP[name] = function(val)
-			if val ~= nil then
-				rawset(_G.ESP, "_" .. name, val)
-				-- Логируем изменение
-				-- Если изменили ShootKey – перезагружаем обработчик
-				if name == "ShootKey" then
-					if _G.ESP.rebindShoot then
-						_G.ESP.rebindShoot()
-					end
-				end
-				-- Если изменили ShootEnabled – выводим состояние
-				if name == "ShootEnabled" then
-				end
-			end
-			return rawget(_G.ESP, "_" .. name) or default
-		end
+--  _G.ESP.ShootEnabled(true/false)       – включить/выключить стрельбу
+--  _G.ESP.ShootKey(Enum.KeyCode.F)       – клавиша для выстрела
+--  _G.ESP.ShootOffset(2.8)               – смещение предсказания (рекомендуется 2.0–5.0)
+--  _G.ESP.ShootPingMult(1.0)             – множитель коррекции по пингу (0.5–2.0)
+--  _G.ESP.shootMurderer()                – ручной вызов выстрела
+--  _G.ESP.updatePrediction()             – показать текущие настройки и предсказание
+-- ===================================================================
+
+if not _G.ESP.ShootEnabled then
+	_G.ESP.ShootEnabled = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootEnabled", val) end
+		return rawget(_G.ESP, "_shootEnabled") or false
 	end
 end
 
-initSetting("ShootEnabled", false)
-initSetting("ShootKey", Enum.KeyCode.F)
-initSetting("ShootOffset", 0)
-initSetting("ShootPingMult", 1.0)
+if not _G.ESP.ShootKey then
+	_G.ESP.ShootKey = function(val)
+		if val ~= nil then
+			rawset(_G.ESP, "_shootKey", val)
+			if _G.ESP.rebindShoot then _G.ESP.rebindShoot() end
+		end
+		return rawget(_G.ESP, "_shootKey") or Enum.KeyCode.F
+	end
+end
+
+if not _G.ESP.ShootOffset then
+	_G.ESP.ShootOffset = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootOffset", val) end
+		return rawget(_G.ESP, "_shootOffset") or 2.8
+	end
+end
+
+if not _G.ESP.ShootPingMult then
+	_G.ESP.ShootPingMult = function(val)
+		if val ~= nil then rawset(_G.ESP, "_shootPingMult", val) end
+		return rawget(_G.ESP, "_shootPingMult") or 1.0
+	end
+end
+
+-- ===================================================================
+--  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+-- ===================================================================
 
 local function getPredictedPosition(player, shootOffset, pingMult)
-	-- Иначе своя реализация
 	local char = player.Character
 	if not char then return nil end
 	local hrp = char:FindFirstChild("HumanoidRootPart") or char:FindFirstChild("UpperTorso")
@@ -695,7 +740,7 @@ local function getPredictedPosition(player, shootOffset, pingMult)
 end
 
 -- ===================================================================
---  ФУНКЦИЯ ВЫСТРЕЛА
+--  ФУНКЦИЯ ВЫСТРЕЛА (ЧЕРЕЗ RemoteEvent "Shoot")
 -- ===================================================================
 local function shootMurderer()
 
@@ -704,11 +749,13 @@ local function shootMurderer()
 	if localplayer ~= findSheriff() then
 		return
 	end
+
 	local murderer = findMurderer()
 	if not murderer then
 		return
 	end
 
+	-- Достаём пистолет
 	local gun = localplayer.Character:FindFirstChild("Gun")
 	if not gun then
 		local backpack = localplayer:FindFirstChild("Backpack")
@@ -718,6 +765,7 @@ local function shootMurderer()
 				local hum = localplayer.Character:FindFirstChild("Humanoid")
 				if hum then
 					hum:EquipTool(gun)
+					task.wait(0.1)
 				end
 			end
 		end
@@ -731,8 +779,10 @@ local function shootMurderer()
 		return
 	end
 
+	-- Берём настройки
 	local offset = _G.ESP.ShootOffset()
 	local pingMult = _G.ESP.ShootPingMult()
+
 	local predictedPos = getPredictedPosition(murderer, offset, pingMult) or murdererHRP.Position
 
 	local rightHand = localplayer.Character:FindFirstChild("RightHand")
@@ -740,51 +790,60 @@ local function shootMurderer()
 		return
 	end
 
-	local args = {
-		CFrame.new(rightHand.Position),
-		CFrame.new(predictedPos)
-	}
-
+	-- Отправляем выстрел через RemoteEvent "Shoot"
 	local shootEvent = gun:FindFirstChild("Shoot")
-	if shootEvent then
-		shootEvent:FireServer(unpack(args))
+	if shootEvent and shootEvent:IsA("RemoteEvent") then
+		shootEvent:FireServer(CFrame.new(rightHand.Position), CFrame.new(predictedPos))
 	else
+		print("[Shoot] RemoteEvent 'Shoot' не найден в пистолете.")
 	end
 end
 
 -- ===================================================================
---  ОБРАБОТЧИК КЛАВИАТУРЫ (с возможностью перезагрузки)
+--  ОБРАБОТЧИК КЛАВИАТУРЫ
 -- ===================================================================
 local UserInputService = game:GetService("UserInputService")
 local shootConnection = nil
 
-local function setupShootHandler()
+_G.ESP.rebindShoot = function()
 	if shootConnection then
 		shootConnection:Disconnect()
 		shootConnection = nil
 	end
+	shootConnection = UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		if input.KeyCode == _G.ESP.ShootKey() then
+			if _G.ESP.ShootEnabled() then
+				shootMurderer()
+			else
+			end
+		end
+	end)
 end
 
--- Функция для перезагрузки обработчика (доступна в _G.ESP)
-_G.ESP.rebindShoot = function()
-	setupShootHandler()
-end
+_G.ESP.rebindShoot()
 
--- Запускаем обработчик
-setupShootHandler()
+_G.ESP.shootMurderer = shootMurderer
+
+_G.ESP.updatePrediction = function()
+	
+	local murderer = findMurderer()
+	if murderer and murderer.Character then
+		local pos = getPredictedPosition(murderer, _G.ESP.ShootOffset(), _G.ESP.ShootPingMult())
+		else
+	end
+end
 
 _G.ESP.ShootKey(Enum.KeyCode.C)
 _G.ESP.ShootOffset(0)
+
 --[[rayfield:Notify({
-	Title = "X1nex Script",
-	Content = "Скрипт успешно загружен!\nВерсия: 3.0.0 Premium\nТема: Фиолетовая",
-	Duration = 6,
-	Image = 4483362458,
+	Title = "FemboyHub",
+	Content = "Test Message",
+	Duration = 0,
+	Image = 0,
 })]]
 
---[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local CoreGui = game:GetService("CoreGui")
@@ -845,19 +904,3 @@ end
 
 Players.PlayerAdded:Connect(trackPlayer)
 Players.PlayerRemoving:Connect(untrackPlayer)
-
--- ===================================================================
---  ФУНКЦИЯ ОБНОВЛЕНИЯ ВСЕХ ПРЕДИКТОВ (ДЛЯ ОТЛАДКИ)
---  Вставьте этот код в конец вашего скрипта (после всех настроек).
---  Теперь вы можете вызвать _G.ESP.updatePrediction(), чтобы увидеть текущие
---  настройки и предсказанную позицию для убийцы.
--- ===================================================================
-
-if not _G.ESP then
-	warn("[Prediction] _G.ESP не найден. Убедитесь, что основной ESP-скрипт загружен.")
-	return
-end
-
-function makeshootMurderer()
-	shootMurderer()
-end
