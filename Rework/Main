@@ -1,1 +1,797 @@
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
 
+-- Services
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local CoreGui = game:GetService("CoreGui")
+local Workspace = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local Stats = game:GetService("Stats")
+
+-- ESP -- Settings
+local cachedMurderer = nil
+local cachedSheriff  = nil
+if not _G.ESP then _G.ESP = {} end
+if not _G.Combat then _G.Combat = {} end
+
+local function makeSetting(initial, callback)
+	local value = initial
+	return function(newValue)
+		if newValue ~= nil then
+			value = newValue
+			if callback then callback() end
+		end
+		return value
+	end
+end
+
+local ESPFolder = Instance.new("Folder")
+ESPFolder.Name = "MM2_ESP"
+ESPFolder.Parent = CoreGui
+
+for _, child in ipairs(ESPFolder:GetChildren()) do child:Destroy() end
+
+-- ESP System -- PlayerData
+local playerData = {}
+local playerDataReady = false
+
+local function setupPlayerData()
+	local remotes = game.ReplicatedStorage:FindFirstChild("Remotes")
+	if remotes then
+		local gameplay = remotes:FindFirstChild("Gameplay")
+		if gameplay then
+			local playerDataChanged = gameplay:FindFirstChild("PlayerDataChanged")
+			local GetCurrentPlayerData = gameplay:FindFirstChild("GetCurrentPlayerData")
+			if playerDataChanged and GetCurrentPlayerData then
+				local data = GetCurrentPlayerData:InvokeServer()
+					playerData = data
+					playerDataReady = true
+				playerDataChanged.OnClientEvent:Connect(function(data)
+					playerData = data
+					playerDataReady = true
+				end)
+				return true
+			end
+		end
+	end
+	return false
+end
+
+setupPlayerData()
+
+-- Optional Fallback if Playerdata not ready
+local function findMurderer()
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		local bp = i:FindFirstChild("Backpack")  -- ✅ проверка nil
+		if bp and bp:FindFirstChild("Knife") then
+			return i
+		end
+	end
+
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Knife") then
+			return i
+		end
+	end
+
+	if playerDataReady then
+		for playerName, data in playerData do
+			if data.Role == "Murderer" then
+				local player = game.Players:FindFirstChild(playerName)
+				if player then return player end
+			end
+		end
+	end
+	return nil
+end
+
+local function findSheriff()
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		local bp = i:FindFirstChild("Backpack")  -- ✅ проверка nil
+		if bp and bp:FindFirstChild("Gun") then
+			return i
+		end
+	end
+
+	for _, i in ipairs(game.Players:GetPlayers()) do
+		if not i.Character then continue end
+		if i.Character:FindFirstChild("Gun") then
+			return i
+		end
+	end
+
+	if playerDataReady then
+		for playerName, data in playerData do
+			if data.Role == "Sheriff" or data.Role == "Hero" then
+				local player = game.Players:FindFirstChild(playerName)
+				if player then return player end
+			end
+		end
+	end
+	return nil
+end
+
+-- Get Role
+local function GetRole(player)
+	if playerDataReady then
+		local playerName = player.Name
+		if playerData[playerName] then
+			if playerData[playerName].Killed then
+				return "Dead"
+			elseif playerData[playerName] and playerData[playerName].Role then
+				if playerData[playerName].Role == "Murderer" then
+					return "Murderer"
+				elseif playerData[playerName].Role == "Sheriff" then
+					return "Sheriff"
+				elseif playerData[playerName].Role == "Innocent" then
+					return "Innocent"
+				end
+			end
+		end
+		elseif player == findSheriff() then
+			return "Sheriff"
+	end
+	return "Dead"
+end
+
+-- Draw ESP -- Highlights
+local function GetColor(role)
+	if role == "Murderer" then return Color3.fromRGB(255, 50, 50) end
+	if role == "Sheriff"  then return Color3.fromRGB(50, 50, 255) end
+	if role == "Innocent" then return Color3.fromRGB(50, 255, 50) end
+	return Color3.fromRGB(199, 199, 199)
+end
+
+local playerHighlights = {}
+
+function RefreshHighlights()
+	for _, hl in pairs(playerHighlights) do hl:Destroy() end
+	playerHighlights = {}
+	if not _G.ESP.EnabledPlayers() then return end
+
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr == LocalPlayer then continue end
+		local char = plr.Character
+		if not char then continue end
+		local role = GetRole(plr)
+		-- ✅ убрал "if role == Dead then continue end" — мёртвые снова видны (серым)
+		local color = GetColor(role)
+		local hl = Instance.new("Highlight")
+		hl.Name = "PlayerHL"
+		hl.FillTransparency = 0.5
+		hl.OutlineTransparency = 0
+		hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+		hl.FillColor = color
+		hl.OutlineColor = color
+		hl.Adornee = char
+		hl.Parent = ESPFolder
+		hl.Enabled = true
+		playerHighlights[plr] = hl
+	end
+end
+
+-- Names
+function RefreshNames()
+	for _, child in ipairs(ESPFolder:GetChildren()) do
+		if child:IsA("BillboardGui") and child.Name:match("_Name$") then child:Destroy() end
+	end
+	if not _G.ESP.EnabledPlayers() then return end
+
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr == LocalPlayer then continue end
+		local char = plr.Character
+		if not char or not char:FindFirstChild("Head") then continue end
+		-- ✅ убрал "if role == Dead then continue end" — имена мёртвых тоже видны (серым)
+		local role = GetRole(plr)
+		local color = GetColor(role)
+		local bill = Instance.new("BillboardGui")
+		bill.Name = plr.Name .. "_Name"
+		bill.Size = UDim2.new(0, 120, 0, 24)
+		bill.StudsOffset = Vector3.new(0, 2.0, 0)
+		bill.AlwaysOnTop = true
+		bill.Adornee = char.Head
+		bill.Parent = ESPFolder
+		local label = Instance.new("TextLabel")
+		label.Size = UDim2.new(1, 0, 1, 0)
+		label.BackgroundTransparency = 1
+		label.Text = plr.Name
+		label.TextScaled = false
+		label.TextSize = 14
+		label.Font = Enum.Font.GothamMedium
+		label.TextColor3 = color
+		label.TextStrokeTransparency = 0
+		label.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+		label.Parent = bill
+		bill.Enabled = true
+	end
+end
+
+-- Refresh All
+function RefreshAll()
+	-- ✅ Обновляем кэш murderer/sheriff ОДИН раз за вызов
+	cachedMurderer = findMurderer()
+	cachedSheriff  = findSheriff()
+	RefreshHighlights()
+	RefreshNames()
+end
+-- Tracks and _Gs
+function SetupPlayerTracking(player)
+	if not player then return end
+
+	local function onChanged()
+		RefreshAll()
+	end
+
+	player.CharacterAdded:Connect(onChanged)
+	player.CharacterRemoving:Connect(onChanged)
+
+	local function onToolAdded(tool)
+		if tool:IsA("Tool") and (tool.Name == "Knife" or tool.Name == "Gun") then
+			onChanged()
+		end
+	end
+
+	if player.Character then
+		player.Character.ChildAdded:Connect(onToolAdded)
+	end
+	player.CharacterAdded:Connect(function(char)
+		char.ChildAdded:Connect(onToolAdded)
+		local backpack = player:FindFirstChild("Backpack")
+		if backpack then
+			backpack.ChildAdded:Connect(onToolAdded)
+		else
+			player.ChildAdded:Connect(function(child)
+				if child.Name == "Backpack" then
+					child.ChildAdded:Connect(onToolAdded)
+				end
+			end)
+		end
+	end)
+end
+
+for _, plr in ipairs(Players:GetPlayers()) do
+	SetupPlayerTracking(plr)
+end
+Players.PlayerAdded:Connect(SetupPlayerTracking)
+
+Players.PlayerRemoving:Connect(function(p)
+	if playerHighlights[p] then playerHighlights[p]:Destroy() end
+end)
+
+_G.ESP.EnabledPlayers = makeSetting(false, RefreshAll)
+
+-- Сохраняем ссылку на RefreshAll, если она существует
+local refreshAll = _G.ESP._refreshAll or RefreshAll
+
+refreshAll()
+
+task.spawn(function()
+	while true do
+		task.wait(0.5)
+		RefreshAll()
+	end
+end)
+
+-- Predict, Backtrack
+
+local MAX_PREDICT = 0.6          -- максимум предсказания вперёд, сек
+local SMOOTHING = 999            -- сглаживание маркера (больше = жёстче)
+local SIM_STEP = 1 / 60          -- шаг симуляции физики, сек
+local TOGGLE_MARKER = false       -- красный маркер предсказания
+local TOGGLE_BACKTRACK = false   -- синий маркер бэктрека
+local BACKTRACK_TIME = 0.25       -- на сколько секунд назад смотреть по умолчанию
+local HISTORY_LIFETIME = 0.5     -- сколько секунд хранить историю позиций
+
+local markers = {}          -- [Player] = Part (предсказание)
+local backtrackMarkers = {} -- [Player] = Part (бэктрек)
+local lastDir = {}          -- [Player] = Vector3, последнее направление движения
+local torsoOffset = {}      -- [Player] = число, высота торса над полом при стоянии
+local history = {}          -- [Player] = { {t = number, cf = CFrame}, ... }
+
+local markerFolder = Instance.new("Folder")
+markerFolder.Name = "PredictMarkers"
+markerFolder.Parent = workspace
+
+-- Пинг в секундах
+local function getPing()
+	local item = Stats.Network.ServerStatsItem:FindFirstChild("Data Ping")
+	return item and item:GetValue() / 1000 or 0
+end
+
+-- Фильтр для лучей: все персонажи и папка маркеров
+local function buildRayParams()
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Exclude
+	local ignore = { markerFolder }
+	for _, p in ipairs(Players:GetPlayers()) do
+		if p.Character then
+			table.insert(ignore, p.Character)
+		end
+	end
+	params.FilterDescendantsInstances = ignore
+	return params
+end
+
+-- Запись позиции торса в историю
+local function recordHistory(player, upper)
+	local h = history[player]
+	if not h then
+		h = {}
+		history[player] = h
+	end
+	local now = os.clock()
+	table.insert(h, { t = now, cf = upper.CFrame })
+	while h[1] and now - h[1].t > HISTORY_LIFETIME do
+		table.remove(h, 1)
+	end
+end
+
+-- Внутренняя функция: CFrame торса на момент (сейчас - seconds)
+local function getBacktrackCFrame(player, seconds)
+	local h = history[player]
+	if not h or #h == 0 then return nil end
+
+	local targetT = os.clock() - (seconds or BACKTRACK_TIME)
+	if targetT <= h[1].t then
+		return h[1].cf -- самой старой записи уже не хватает, берём её
+	end
+
+	for i = #h, 2, -1 do
+		local a, b = h[i - 1], h[i]
+		if a.t <= targetT and b.t > a.t then
+			local alpha = (targetT - a.t) / (b.t - a.t)
+			return a.cf:Lerp(b.cf, alpha)
+		end
+	end
+	return h[#h].cf
+end
+
+function GetBacktrackPosition(player, seconds)
+	local cf = getBacktrackCFrame(player, seconds)
+	return cf and cf.Position or nil
+end
+
+local function getPredictedPosition(player)
+	local char = player.Character
+	if not char then return nil, nil end
+
+	local upper = char:FindFirstChild("UpperTorso")
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if not upper or not hum or hum.Health <= 0 then return nil, nil end
+
+	local t = math.clamp(getPing(), 0, MAX_PREDICT)
+	local pos = upper.Position
+	local vel = upper.AssemblyLinearVelocity
+	local flatVel = Vector3.new(vel.X, 0, vel.Z)
+	local params = buildRayParams()
+
+	-- На земле: запоминаем высоту торса над полом и двигаем только по горизонтали
+	if hum.FloorMaterial ~= Enum.Material.Air then
+		local groundHit = workspace:Raycast(pos, Vector3.new(0, -20, 0), params)
+		if groundHit then
+			torsoOffset[player] = pos.Y - groundHit.Position.Y
+		end
+		return pos + flatVel * t, flatVel
+	end
+
+	-- В воздухе: симулируем гравитацию и приземление
+	local gravity = Vector3.new(0, -workspace.Gravity, 0)
+	local offset = torsoOffset[player] or (hum.HipHeight + 1)
+
+	local remaining = t
+	while remaining > 0 do
+		local dt = math.min(SIM_STEP, remaining)
+		remaining -= dt
+
+		vel += gravity * dt
+		pos += vel * dt
+
+		if vel.Y <= 0 then
+			local hit = workspace:Raycast(pos, Vector3.new(0, -(offset + 1), 0), params)
+			if hit and pos.Y - offset <= hit.Position.Y + 0.1 then
+				pos = Vector3.new(pos.X, hit.Position.Y + offset, pos.Z)
+				vel = Vector3.new(vel.X, 0, vel.Z)
+			end
+		end
+	end
+
+	return pos, flatVel
+end
+
+local function createMarker(name, color, transparency)
+	local p = Instance.new("Part")
+	p.Name = name
+	p.Size = Vector3.new(2, 5, 1)
+	p.Anchored = true
+	p.CanCollide = false
+	p.CanQuery = false
+	p.CanTouch = false
+	p.CastShadow = false
+	p.Transparency = transparency
+	p.Color = color
+	p.Material = Enum.Material.Neon
+	p.Parent = markerFolder
+	return p
+end
+
+local function removeOne(tbl, player)
+	local m = tbl[player]
+	if m then
+		m:Destroy()
+		tbl[player] = nil
+	end
+end
+
+local function removeAll(player)
+	removeOne(markers, player)
+	removeOne(backtrackMarkers, player)
+	lastDir[player] = nil
+	torsoOffset[player] = nil
+	history[player] = nil
+end
+
+RunService.RenderStepped:Connect(function(dt)
+	local alpha = 1 - math.exp(-SMOOTHING * dt)
+
+	for _, player in ipairs(Players:GetPlayers()) do
+		local char = player.Character
+		local upper = char and char:FindFirstChild("UpperTorso")
+
+		-- История: пишем каждый кадр, пока есть торс
+		if upper then
+			recordHistory(player, upper)
+		else
+			history[player] = nil
+		end
+
+		-- Красный маркер: предсказание
+		local target, dir = getPredictedPosition(player)
+		if target and TOGGLE_MARKER then
+			if dir and dir.Magnitude > 0.1 then
+				lastDir[player] = dir.Unit
+			end
+			local facing = lastDir[player] or Vector3.new(0, 0, -1)
+
+			local marker = markers[player]
+			if not marker then
+				marker = createMarker("PredictMarker_" .. player.Name, Color3.fromRGB(255, 80, 80), 0.6)
+				markers[player] = marker
+			end
+
+			local goal = CFrame.lookAt(target, target + facing)
+			if (marker.Position - target).Magnitude > 50 then
+				marker.CFrame = goal -- телепорт или респавн
+			else
+				marker.CFrame = marker.CFrame:Lerp(goal, alpha)
+			end
+		else
+			removeOne(markers, player)
+		end
+
+		-- Синий маркер: бэктрек (без сглаживания, позиция из истории)
+		local backCF = getBacktrackCFrame(player)
+		if backCF and TOGGLE_BACKTRACK then
+			local bm = backtrackMarkers[player]
+			if not bm then
+				bm = createMarker("BacktrackMarker_" .. player.Name, Color3.fromRGB(80, 160, 255), 0.5)
+				backtrackMarkers[player] = bm
+			end
+			bm.CFrame = backCF
+		else
+			removeOne(backtrackMarkers, player)
+		end
+	end
+end)
+
+Players.PlayerRemoving:Connect(removeAll)
+
+-- Avaible Space
+local DIRECTION_COUNT = 128   -- сколько направлений проверять по сфере (больше = точнее, но тяжелее)
+local MIN_RADIUS = 1          -- минимальный радиус при откате, studs
+local RADIUS_STEP = 0.1         -- на сколько уменьшать радиус, studs
+local STAND_HEIGHT = 3        -- высота HumanoidRootPart над полом, studs
+local WALL_OFFSET = 1.5       -- отступ от стены, studs
+local GROUND_PROBE = 6        -- с какой высоты пускать луч вниз, studs
+
+-- Направления равномерно распределены по сфере (Fibonacci sphere)
+local DIRECTIONS = {}
+local function buildDirections(count)
+	local dirs = {}
+	local golden = math.pi * (3 - math.sqrt(5))
+	for i = 0, count - 1 do
+		local y = 1 - (i / math.max(count - 1, 1)) * 2
+		local r = math.sqrt(1 - y * y)
+		local theta = golden * i
+		table.insert(dirs, Vector3.new(math.cos(theta) * r, y, math.sin(theta) * r))
+	end
+	return dirs
+end
+DIRECTIONS = buildDirections(DIRECTION_COUNT)
+
+local function getAllCharacters()
+	local list = {}
+	for _, p in ipairs(Players:GetPlayers()) do
+		if p.Character then
+			table.insert(list, p.Character)
+		end
+	end
+	return list
+end
+
+local function buildParams(ignore)
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Exclude
+	params.FilterDescendantsInstances = ignore
+	return params
+end
+
+local function hasLineOfSight(from, to, params)
+	return Workspace:Raycast(from, to - from, params) == nil
+end
+
+local function findGround(point, params)
+	local start = point + Vector3.new(0, GROUND_PROBE, 0)
+	local hit = Workspace:Raycast(start, Vector3.new(0, -(GROUND_PROBE + 20), 0), params)
+	if not hit then return nil end
+	return hit.Position + Vector3.new(0, STAND_HEIGHT, 0)
+end
+
+-- Кандидат в направлении dir на расстоянии r. Если по пути стена, ставим перед ней.
+local function getCandidate(origin, dir, r, params)
+	local result = Workspace:Raycast(origin, dir * r, params)
+	if not result then
+		return origin + dir * r
+	end
+	local dist = (result.Position - origin).Magnitude - WALL_OFFSET
+	if dist < MIN_RADIUS then
+		return nil
+	end
+	return origin + dir * dist
+end
+
+function getAvailableSpace(origin: Vector3, radius: number, ignore: {Instance}?): Vector3
+	local params = buildParams(ignore or getAllCharacters())
+
+	local r = radius
+	while r >= MIN_RADIUS do
+		for _, dir in ipairs(DIRECTIONS) do
+			local candidate = getCandidate(origin, dir, r, params)
+			if candidate then
+				local ground = findGround(candidate, params)
+				if ground
+					and (ground - origin).Magnitude >= MIN_RADIUS
+					and hasLineOfSight(origin, ground, params) then
+					return ground
+				end
+			end
+		end
+		r -= RADIUS_STEP
+	end
+
+	-- Ни одно направление не подошло на всех радиусах: остаёмся на месте
+	return origin
+end
+
+-- Удобная обёртка: место вокруг игрока по его HumanoidRootPart
+function getAvailableSpaceFor(player: Player, radius: number): Vector3?
+	local char = player.Character
+	local hrp = char and char:FindFirstChild("HumanoidRootPart")
+	if not hrp then return nil end
+	return getAvailableSpace(hrp.Position, radius, { char })
+end
+
+-- (Cum)Shot
+
+local function shootMurderer()
+	local localplayer = game.Players.LocalPlayer
+
+	if localplayer ~= findSheriff() then
+		return
+	end
+
+	local murderer = findMurderer()
+	if not murderer then
+		return
+	end
+
+	local murdererTorso = murderer.Character.UpperTorso
+	-- Достаём пистолет (если его нет в руках)
+	local gun = localplayer.Character:FindFirstChild("Gun")
+	if not gun then
+		local backpack = localplayer:FindFirstChild("Backpack")
+		if backpack then
+			gun = backpack:FindFirstChild("Gun")
+			if gun then
+				local hum = localplayer.Character:FindFirstChild("Humanoid")
+				if hum then
+					hum:EquipTool(gun)
+				end
+			end
+		end
+		if not gun then
+			return
+		end
+	end
+
+	local rightHand = localplayer.Character:FindFirstChild("RightHand")
+	if not rightHand then	
+		return
+	end
+
+	-- Отправляем выстрел через RemoteEvent "Shoot"
+	local shootEvent = gun:FindFirstChild("Shoot")	
+	if shootEvent and shootEvent:IsA("RemoteEvent") then
+		if _G.Combat.WallbangSheriff() then
+			shootEvent:FireServer(CFrame.new(getAvailableSpace(murdererTorso.Position, 15)), CFrame.new(getPredictedPosition(murderer)))
+			else
+			shootEvent:FireServer(CFrame.new(rightHand.Position), CFrame.new(getPredictedPosition(murderer)))
+		end
+	else
+	end
+end
+
+_G.Combat.WallbangSheriff = makeSetting(false, RefreshAll)
+
+-- UI
+local Loading = Library:CreateLoading({
+    Title = "femboy.gg",
+    Icon = "paw-print",
+    TotalSteps = 1
+})
+
+-- Loading...
+Loading:SetMessage("Initializing...")
+Loading:SetDescription("Waiting for game to load...")
+repeat
+task.wait()
+until game:IsLoaded()
+
+Loading:SetCurrentStep(1)
+Loading:SetDescription("femboy.gg loaded!")
+task.wait(1)
+Loading:Continue()
+
+ThemeManager:SetLibrary(Library)
+ThemeManager:SetFolder("femboy.gg/themes")
+
+ThemeManager.BuiltInThemes["Default"] = {
+    1,
+    {
+        FontColor = "cdd6f4",
+        MainColor = "1e1e2e",
+        AccentColor = "ff80e1",
+        BackgroundColor = "181825",
+        OutlineColor = "313244",
+    }
+}
+ThemeManager:ApplyTheme("Default")
+
+SaveManager:SetLibrary(Library)
+SaveManager:SetFolder("femboy.gg/cfgs")
+
+local Window = Library:CreateWindow({
+    Title = "femboy.gg",
+    Footer = "Ver. 0.0.1 Indev",
+    Icon = "paw-print",
+    NotifySide = "Right",
+    Animations = {
+        ToggleWindow = true,
+        TabSwitch = true,
+        Groupbox = true,
+        Dropdown = true,
+        KeyPicker = true
+    },
+    
+    TabTransitionTime = 0.22,
+    TabSwipeOffset = 26,
+    TabSwipeFrom = "bottom",
+    CornerRadius = 15,
+    ToggleKeybind = Enum.KeyCode.LeftAlt,
+    Resizable = false,
+})
+
+local Tabs = {
+    Main = Window:AddTab("Main", "house"),
+    Combat = Window:AddTab("Combat", "sword"),
+	Visuals = Window:AddTab("Visuals", "eye"),
+    Configs = Window:AddTab("Configs", "settings"),
+}
+
+ThemeManager:ApplyToTab(Tabs.Configs)
+ThemeManager:LoadDefault()
+SaveManager:BuildConfigSection(Tabs.Configs)
+
+local function getFPS()
+	local frameTime = Stats.FrameRateManager.RenderAverage:GetValue()
+	if frameTime > 0 then
+		return math.floor(1000 / frameTime)
+	end
+	return 0
+end
+
+local function getPing()
+	-- Получаем значение Data Ping в миллисекундах
+	local ping = Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
+	return math.floor(ping) -- Округляем до целого числа
+end
+
+local Watermark = Library:AddDraggableLabel("femboy.gg | "..getFPS().."FPS | "..getPing().."ms", "paw-print", "Left")
+
+task.spawn(function()
+while task.wait(1) do
+    Watermark:SetText("femboy.gg | "..getFPS().."FPS | "..getPing().."ms")
+end
+end)
+
+Library:Notify("Welcome, " .. game.Players.LocalPlayer.Name, 4)
+
+local SheriffGroupBox = Tabs.Combat:AddGroupbox({
+    Side = "Left", -- case-insensitive
+    Name = "Sheriff",
+    Description = "Silent aim and etc.",
+    IconName = "bow-arrow",
+})
+
+local ShotButton = SheriffGroupBox:AddButton({
+    Text = "Shot Murderer",
+    Icon = "bow-arrow",
+    Func = function()
+        shootMurderer()
+    end
+})
+
+local ShotKeybind = ShotButton:AddKeyPicker("Shot Keybind", {
+    Text = "Shot Keybind",
+    Default = "C",
+    Mode = "Press",
+})
+
+local WallbangToggle = SheriffGroupBox:AddToggle("Wallbang", {
+	Text = "Wallbang",
+	Default = false,
+})
+
+WallbangToggle:OnChanged(function(state)
+	_G.Combat.WallbangSheriff(state)
+end)
+
+local MurdererGroupBox = Tabs.Combat:AddGroupbox({
+    Side = "Right", -- case-insensitive
+    Name = "Murderer",
+    Description = "Kill aura and etc.",
+    IconName = "sword",
+})
+
+local KillAllButton = MurdererGroupBox:AddButton({
+    Text = "Kill All",
+    Icon = "swords",
+    Func = function()
+		for _,v in Players:GetChildren() do
+			game.ReplicatedStorage.Remotes.Gameplay.EliminatePlayer:InvokeServer(v)
+		end
+    end
+})
+
+local ESPGroupBox = Tabs.Visuals:AddGroupbox({
+    Side = "Left", -- case-insensitive
+    Name = "ESP",
+    Description = "Names, chams and etc.",
+    IconName = "scan-eye",
+})
+
+local ESPToggle = ESPGroupBox:AddToggle("Esp Enabled", {
+	Text = "ESP Enabled",
+	Default = false,
+})
+
+ESPToggle:OnChanged(function(state)
+	_G.ESP.EnabledPlayers(state)
+end)
+
+task.delay(0.1, function()
+	SaveManager:LoadAutoloadConfig()
+end)
