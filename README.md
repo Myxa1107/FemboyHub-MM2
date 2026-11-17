@@ -1,12 +1,14 @@
-# FemboyHub MM2
+# femboy.gg
 
-My first MM2 script
+Rework of my old (FemboyHub) project
 
-Made by undefinedfemboy (me) and DeepSeek uhh... nvm
+Made by undefinedfemboy (me), sponsored by @headshotees, ig
 
 Open-sourced cuz... why not?
 
+https://t.me/femboy_ggs
+
 Loadstring:
-```txt
+```luau
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Script"))()
 
