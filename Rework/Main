@@ -2858,7 +2858,7 @@ end
 end
 -- Back to UI
 
-local Tabs = {
+Tabs = {
     Main = Window:AddTab("Main", "house"),
     Combat = Window:AddTab("Combat", "sword"),
 	Visuals = Window:AddTab("Visuals", "eye"),
@@ -2871,7 +2871,7 @@ ThemeManager:ApplyToTab(Tabs.Configs)
 ThemeManager:LoadDefault()
 SaveManager:BuildConfigSection(Tabs.Configs)
 
-local InfoGroupBox = Tabs.Main:AddGroupbox({
+InfoGroupBox = Tabs.Main:AddGroupbox({
     Side = "Left", -- case-insensitive
     Name = "Info",
     Description = "Credits and info.",
@@ -2881,20 +2881,20 @@ local InfoGroupBox = Tabs.Main:AddGroupbox({
 })
 
 -- Переменные пользователя (строго CurrentUser...)
-local CurrentUser = Players.LocalPlayer
-local CurrentUserName = CurrentUser.Name
-local CurrentUserDisplayName = CurrentUser.DisplayName
-local CurrentUserId = tostring(CurrentUser.UserId)
-local CurrentUserAccountAge = tostring(CurrentUser.AccountAge) .. " days"
-local CurrentUserExecutor = (identifyexecutor and identifyexecutor()) or (getexecutorname and getexecutorname()) or "Неизвестно"
-local CurrentUserJobId = game.JobId ~= "" and game.JobId or "Studio / Local"
+CurrentUser = Players.LocalPlayer
+CurrentUserName = CurrentUser.Name
+CurrentUserDisplayName = CurrentUser.DisplayName
+CurrentUserId = tostring(CurrentUser.UserId)
+CurrentUserAccountAge = tostring(CurrentUser.AccountAge) .. " days"
+CurrentUserExecutor = (identifyexecutor and identifyexecutor()) or (getexecutorname and getexecutorname()) or "Неизвестно"
+CurrentUserJobId = game.JobId ~= "" and game.JobId or "Studio / Local"
 
 -- Динамические переменные
-local CurrentUserSessionStart = os.time()
-local CurrentUserTime = os.date("%H:%M:%S")
-local CurrentUserUptime = "00:00:00"
-local CurrentUserPing = 0
-local CurrentUserFps = 0
+CurrentUserSessionStart = os.time()
+CurrentUserTime = os.date("%H:%M:%S")
+CurrentUserUptime = "00:00:00"
+CurrentUserPing = 0
+CurrentUserFps = 0
 
 -- Наполнение твоего InfoGroupBox
 InfoGroupBox:AddLabel("Username: " .. CurrentUserName)
@@ -2905,10 +2905,10 @@ InfoGroupBox:AddDivider()
 InfoGroupBox:AddLabel("Executor: " .. CurrentUserExecutor)
 InfoGroupBox:AddDivider()
 
-local CurrentUserTimeLabel = InfoGroupBox:AddLabel("Time: " .. CurrentUserTime)
-local CurrentUserUptimeLabel = InfoGroupBox:AddLabel("In game: " .. CurrentUserUptime)
-local CurrentUserPingLabel = InfoGroupBox:AddLabel("Ping: 0 мс")
-local CurrentUserFpsLabel = InfoGroupBox:AddLabel("FPS: 0")
+CurrentUserTimeLabel = InfoGroupBox:AddLabel("Time: " .. CurrentUserTime)
+CurrentUserUptimeLabel = InfoGroupBox:AddLabel("In game: " .. CurrentUserUptime)
+CurrentUserPingLabel = InfoGroupBox:AddLabel("Ping: 0 мс")
+CurrentUserFpsLabel = InfoGroupBox:AddLabel("FPS: 0")
 
 InfoGroupBox:AddButton({
 	Text = "Copy User ID",
@@ -2931,8 +2931,8 @@ InfoGroupBox:AddButton({
 })
 
 -- Подсчет FPS
-local CurrentUserFrameCount = 0
-local CurrentUserLastFpsCheck = tick()
+CurrentUserFrameCount = 0
+CurrentUserLastFpsCheck = tick()
 
 RunService.RenderStepped:Connect(function()
 	CurrentUserFrameCount += 1
@@ -2965,8 +2965,8 @@ task.spawn(function()
 	end
 end)
 -- Настройка авто-реинжекта при перезаходе
-local EnableRejoinExecute = true
-local CurrentUserScriptUrl = "https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Main"
+EnableRejoinExecute = true
+CurrentUserScriptUrl = "https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Main"
 
 -- Переключатель в интерфейсе (синхронизирован с переменной EnableRejoinExecute)
 --[[InfoGroupBox:AddToggle("RejoinExecuteToggle", {
@@ -3034,7 +3034,7 @@ UnloadGroupBox:AddButton({
 	Risky = true,
 })]]
 
-local LinksGroupBox = Tabs.Main:AddGroupbox({
+LinksGroupBox = Tabs.Main:AddGroupbox({
     Side = "Right", -- case-insensitive
     Name = "Links",
     Description = "Links, telegram channel.",
@@ -3079,7 +3079,7 @@ LinksGroupBox:AddButton({
     end
 })
 
-local AntiGroupBox = Tabs.Main:AddGroupbox({
+AntiGroupBox = Tabs.Main:AddGroupbox({
     Side = "Right", -- case-insensitive
     Name = "Anti",
     Description = "Anti-fling, anti-void, etc.",
@@ -3126,7 +3126,7 @@ local function getPing()
 	return math.floor(ping) -- Округляем до целого числа
 end
 
-local Watermark = Library:AddDraggableLabel("femboy.gg | "..getFPS().."FPS | "..getPing().."ms", "paw-print", "Left")
+Watermark = Library:AddDraggableLabel("femboy.gg | "..getFPS().."FPS | "..getPing().."ms", "paw-print", "Left")
 
 task.spawn(function()
 while task.wait(1) do
@@ -3136,14 +3136,14 @@ end)
 
 Library:Notify("Welcome, " .. game.Players.LocalPlayer.Name, 4)
 
-local SheriffGroupBox = Tabs.Combat:AddGroupbox({
+SheriffGroupBox = Tabs.Combat:AddGroupbox({
     Side = "Left", -- case-insensitive
     Name = "Sheriff",
     Description = "Silent aim and etc.",
     IconName = "bow-arrow",
 })
 
-local ShotButton = SheriffGroupBox:AddButton({
+ShotButton = SheriffGroupBox:AddButton({
     Text = "Shot Murderer",
     Icon = "bow-arrow",
     Func = function()
@@ -3151,7 +3151,7 @@ local ShotButton = SheriffGroupBox:AddButton({
 	end
 })
 
-local ShotKeybind = ShotButton:AddKeyPicker("Shot Keybind", {
+ShotKeybind = ShotButton:AddKeyPicker("Shot Keybind", {
     Text = "Shot Keybind",
     Default = "C",
     Mode = "Press",
@@ -3173,7 +3173,7 @@ SheriffGroupBox:AddToggle("Auto Grab Gun", {
 	end	
 })
 
-local MurdererGroupBox = Tabs.Combat:AddGroupbox({
+MurdererGroupBox = Tabs.Combat:AddGroupbox({
     Side = "Right", -- case-insensitive
     Name = "Murderer",
     Description = "Kill aura and etc.",
@@ -3195,22 +3195,22 @@ MurdererGroupBox:AddButton({
     end
 })
 
-local ESPGroupBox = Tabs.Visuals:AddGroupbox({
+ESPGroupBox = Tabs.Visuals:AddGroupbox({
     Side = "Left", -- case-insensitive
     Name = "ESP",
     Description = "Names, chams and etc.",
     IconName = "scan-eye",
 })
 
-local ExtraVisualsTabBox = Tabs.Visuals:AddTabbox({
+ExtraVisualsTabBox = Tabs.Visuals:AddTabbox({
     Side = "Right", -- case-insensitive
     Name = "Extra",
 })
 
-local ExtraVisualsTab = ExtraVisualsTabBox:AddTab("Main", "home")
-local ShadersTab = ExtraVisualsTabBox:AddTab("Shaders", "lens", 450)
+ExtraVisualsTab = ExtraVisualsTabBox:AddTab("Main", "home")
+ShadersTab = ExtraVisualsTabBox:AddTab("Shaders", "lens", 450)
 
-local TracerToggleT = ExtraVisualsTab:AddToggle("Tracers Enabled", {
+TracerToggleT = ExtraVisualsTab:AddToggle("Tracers Enabled", {
 	Text = "Tracers Enabled",
 	Default = false,
 	Callback = function(state)
@@ -3218,7 +3218,7 @@ local TracerToggleT = ExtraVisualsTab:AddToggle("Tracers Enabled", {
 	end
 })
 
-local TracerColorPicker = TracerToggleT:AddColorPicker("TracerColorPicker", {
+TracerColorPicker = TracerToggleT:AddColorPicker("TracerColorPicker", {
     Default = Color3.fromHex("ff80e1"),
     Title = "Tracer Color",
     Resizable = false,
@@ -3227,7 +3227,7 @@ local TracerColorPicker = TracerToggleT:AddColorPicker("TracerColorPicker", {
     end
 })
 
-local TracerToggleSettings = TracerToggleT:AddSettings({
+TracerToggleSettings = TracerToggleT:AddSettings({
     Width = 220,
 })
 
@@ -3293,7 +3293,7 @@ local SpeedGlitchSettings = SpeedGlitchToggle:AddSettings({
     Width = 220,
 })
 
-local SpeedGlitchSpeedSlider = SpeedGlitchSettings:AddSlider("SpeedGlitchSpeedSlider", {
+SpeedGlitchSpeedSlider = SpeedGlitchSettings:AddSlider("SpeedGlitchSpeedSlider", {
     Text = "Speed",
     Default = 5,
     Min = 1,
@@ -3312,7 +3312,7 @@ local InvisToggle = MovementGroupBox:AddToggle("Invisibility Toggle", {
 	end
 })
 
-local InvisKeybind = InvisToggle:AddKeyPicker("InvisKeybind", {
+InvisToggle:AddKeyPicker("InvisKeybind", {
     Default = "G",
     Text = "Invisibility",
     Mode = "Toggle",
