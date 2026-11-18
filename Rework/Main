@@ -1,2 +1,4602 @@
--- This script was generated using MoonVeil 2.1.1 [https://moonveil.cc]
-do local WBa=loadstring(game:HttpGet"https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua")()local yha=loadstring(game:HttpGet"https://raw.githubusercontent.com/deividcomsono/Obsidian/main/addons/SaveManager.lua")()local Kda=loadstring(game:HttpGet"https://raw.githubusercontent.com/deividcomsono/Obsidian/main/addons/ThemeManager.lua")()print"\n.   .                  .   .              ..  .   .     .   .            .  . \n        .                        ..     ....  ...          .             .    \n                             ....++...:---=+--==-.. -.                .       \n         .                   .-+=*#+==---==---==+=:-#=         .      . .     \n                             .=*###*--------:-=====-**:=:                     \n        .  .    .    .      ..+###=:::::-=:::-=++==-::=-.                 .   \n.          .    .  .    .  .-*##%=.::::==---:-=+++==-:.....                   \n            .            ..:=++*=-:---==--=---++===-=-:::.                 .  \n                       ..:==-*+=---=----::=---=-==+-:=-:--..                  \n..      .                 .:**+--:=-++==*=::---:--==-=-+=::..   .          .  \n         .   .           .::---:--==-::::....:-+++=++==-=:.                   \n    .                  ..:--:=--+-=-:..........:::++*++-:..                   \n                      . . .-=--===+**:...:---...:=+***+==:.                   \n   .  .             .     :::::=-+++**-..::::..-+**++++=::..      .    .      \n .            . .         .....::=+:+++=::..:=**+++++=:::.    ..     .:...    \n                  .        ...::::----=::-==+***=+=+*-....  .     ...-:....   \n                          ......:--:---:.:--=+***++++=-:..       .:-=---... ..\n      ..             .   ........::::::--=----=++==++++=::..     .--::--::.   \n   .        .          ..:::-:...:...:::::-==-+++=---:-+==-.   ..:-+**=-:...  \n                      ..:::-:---:--...:--==-=++==-=-.-::=+=..   .:+#+=-::.:.  \n                     .:=+=-----===-.....:::::-===--::::.:=+=:..  .+#%*=-:.:.  \n         ..   .....  .:==:...:=+++-.......:::--=----::-=--:==-.  .::----:.:.  \n .     . .:...:.....   .:.....-+*+:::......::--=-:.:--=+--=++=-....::::-::.. .\n  ..    ..:::-:..:.... .......-===--.......::::-=-:::--==-=**++-:--..:::::.   \n .       .:---:..............:...-:::......:..:---:::::-=-:+***+=-:..:-...    \n        ..:--::-=.........:.::. .::::....:::.:=+=--:::::::.:+**+:...:--:..    \n         .:::-:.--........:--......---:::..:.---=======---:.:-:....:=+=:.     \n         ::-::: .=...:....:-:..:---:::......:---=====:::--:......:=*+=-:.     \n        .::::-:..--...::::-:. .:::::::.......:------::..::.....:-+***+=-.     \n       .:..:.::..---=-...:.    .....:........:------..  ......-=+***++-:.     \n .    .:..::.:-====-===--=+=.   .............:------.    ......-==+*++--:.    \n     .:...:-.-++++=-:-==+**+=.  ..::::::-========---:.        ..:-=*+==-:.    \n    .:.. .:======++=:-==++*++..:---::-=---=+++++====-.          .:-+==--.    .\n   .::.  .--=-===----==+***++-:----.:-=-:--==++++++*+=:    .*+ ..-====-.      \n  .:-..-++=-=====-=++====*+++=-:--::-=-::--===+++=++++=:. .+##:--=++=--.      \n  .=+++=-==-======++=====+*=-=-==------:-=====+++++++=+-=**###-+*+=---:.     .\n.-+=====+*=----====+=++=+=---::-=-::-=-::-+=++=+++++*+++++**###*++==:...      \n==++*+++++=-++++=-==--::::----==:::-=+=----===+++*+++++++++==---=+#*=:        \n=*+==+==--====++++=-:-=+*+::-=::::---==-::::-=++====++++++=-:=*+++***:     .  \n=+*=-----=====+**+=======+=----:::.:=-.:-=**-=----===-=====-+++++**-. .       \n+=*=---==-=+=-=++**++====-==--==--=-=--===+++=======+=++++==*+=*##=.          \n***++=++--::-==+*+*******===:...::.:-------=+++==--------==++-.-***-. .       \n+*===+*+++--=+==+*******-. .:........::-----=-------------:+=:.:+===..:       \n=-==-=+++++*+++==+***+-.   ..........::----:.:-:----------.-==::--:..::   .   \n:-+*++=+++**++*+=+**+:  ..   ..........:---:. .:::-------::::-:.....::...     \n :++++*+++++++**+=*+.   .     ..:......:----.....:--------.:::::::--::..        \n\nfemboy.gg \226\128\162 have a nice day!\n"if not isfolder"femboy.gg"then makefolder"femboy.gg"end if not isfolder"femboy.gg/assets"then makefolder"femboy.gg/assets"end if not isfile"femboy.gg/assets/AstolfoMascot.png"then local f,h=pcall(function()return game:HttpGet"https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Assets/AstolfoMascot.png"end)if f and h then writefile("femboy.gg/assets/AstolfoMascot.png",h)end end local o=WBa:CreateLoading{Title="femboy.gg",Icon="paw-print",TotalSteps=1}o:SetMessage"Initializing..."o:SetDescription"Waiting for game to load..."repeat task.wait()until game:IsLoaded()o:SetCurrentStep(1)o:SetDescription"femboy.gg loaded!"o:Continue()local gBa=game:GetService"Players"local yya,I_a=gBa.LocalPlayer,gBa.LocalPlayer local wba=game:GetService"CoreGui"local kB=game:GetService"Workspace"local DBa=game:GetService"RunService"local bga=game:GetService"Stats"local eG=workspace.CurrentCamera local vda=game:GetService"TweenService"local nJ=game:GetService"ReplicatedStorage"local B=game:GetService"Lighting"local G=I_a.Character or I_a.CharacterAdded:Wait()local F=G:WaitForChild"HumanoidRootPart"local kwa={enabled=false,loc=CFrame.new(),old=false,fling=false}local I=game:GetService"UserInputService"local Mc=nil local Nc=nil if not _G.ESP then _G.ESP={}end if not _G.Combat then _G.Combat={}end if not _G.Movement then _G.Movement={}end if not _G.Visuals then _G.Visuals={}end if not _G.Main then _G.Main={}end local function qJ(P,V)local W=P return function(T)if T~=nil then W=T if V then V()end end return W end end local de=Instance.new"Folder"de.Name="MM2_ESP"de.Parent=wba for _,ca in ipairs(de:GetChildren())do ca:Destroy()end local Jc={}local Lc=false local function Vb(sa)if not sa or not sa.Parent then return false end if Lc and Jc[sa.Name]then local qa=Jc[sa.Name]if qa.Dead or qa.Killed then return false end end local va=sa.Character local xa=va and va:FindFirstChildOfClass"Humanoid"return xa~=nil and xa.Health>0 end local function nc(Ha,Ka)local Ea=Ha:FindFirstChild"Backpack"if Ea and Ea:FindFirstChild(Ka)then return true end local Ja=Ha.Character if Ja and Ja:FindFirstChild(Ka)then return true end return false end local function YC()if Lc then for Ta,Qa in pairs(Jc)do if not Qa.Dead and not Qa.Killed and Qa.Role=="Murderer"then local Xa=gBa:FindFirstChild(Ta)if Xa and Vb(Xa)then return Xa end end end end for _,db in ipairs(gBa:GetPlayers())do if Vb(db)and nc(db,"Knife")then return db end end return nil end local function AC()if Lc then for nb,kb in pairs(Jc)do if not kb.Dead and not kb.Killed and(kb.Role=="Sheriff"or kb.Role=="Hero")then local rb=gBa:FindFirstChild(nb)if rb and Vb(rb)then return rb end end end end for _,xb in ipairs(gBa:GetPlayers())do if Vb(xb)and nc(xb,"Gun")then return xb end end return nil end local function Oc()if not Vb(Mc)then Mc=YC()end if not Vb(Nc)then Nc=AC()elseif Lc and Jc[Nc.Name]then local Ob=Jc[Nc.Name].Role if Ob~="Sheriff"and Ob~="Hero"and not nc(Nc,"Gun")then Nc=AC()end end end local function NAa(oc)if not Vb(oc)then return"Dead"end if Lc and Jc[oc.Name]then local ic=Jc[oc.Name]if ic.Dead or ic.Killed then return"Dead"end if ic.Role=="Murderer"then return"Murderer"elseif ic.Role=="Sheriff"then return"Sheriff"elseif ic.Role=="Hero"then return"Hero"elseif ic.Role=="Innocent"then if nc(oc,"Gun")then return"Hero"end return"Innocent"end end if nc(oc,"Knife")then return"Murderer"end if nc(oc,"Gun")then return"Sheriff"end return"Dead"end local function Pc()local tc=game.ReplicatedStorage:FindFirstChild"Remotes"if tc then local yc=tc:FindFirstChild"Gameplay"if yc then local Hc=yc:FindFirstChild"PlayerDataChanged"local Cc=yc:FindFirstChild"GetCurrentPlayerData"if Hc and Cc then local Ec=Cc:InvokeServer()Jc=Ec Lc=true Oc()Hc.OnClientEvent:Connect(function(Kc)Jc=Kc Lc=true Mc=nil Nc=nil Oc()if UpdatePlayerCheckboxes then UpdatePlayerCheckboxes()end if RefreshTargetInfo then RefreshTargetInfo()end end)return true end end end return false end Pc()local function QAa(Vc)if Vc=="Murderer"then return Color3.fromRGB(255,50,50)end if Vc=="Sheriff"then return Color3.fromRGB(50,50,255)end if Vc=="Innocent"then return Color3.fromRGB(50,255,50)end if Vc=="Hero"then return Color3.fromRGB(255,255,50)end return Color3.fromRGB(199,199,199)end local ef={}function RefreshHighlights()for _,Yc in pairs(ef)do Yc:Destroy()end ef={}if not _G.ESP.EnabledPlayers()then return end for _,Bd in ipairs(gBa:GetPlayers())do if Bd==yya then continue end local wd=Bd.Character if not wd then continue end local ld=NAa(Bd)local ud=QAa(ld)local Cd=Instance.new"Highlight"Cd.Name="PlayerHL"Cd.FillTransparency=0.5 Cd.OutlineTransparency=0 Cd.DepthMode=Enum.HighlightDepthMode.AlwaysOnTop Cd.FillColor=ud Cd.OutlineColor=ud Cd.Adornee=wd Cd.Parent=de Cd.Enabled=true ef[Bd]=Cd end end function RefreshNames()for _,Gd in ipairs(de:GetChildren())do if Gd:IsA"BillboardGui"and Gd.Name:match"_Name$"then Gd:Destroy()end end if not _G.ESP.EnabledPlayers()then return end for _,ie in ipairs(gBa:GetPlayers())do if ie==yya then continue end local be=ie.Character if not be or not be:FindFirstChild"Head"then continue end local Td=NAa(ie)local ne=QAa(Td)local se=Instance.new"BillboardGui"se.Name=ie.Name.."_Name"se.Size=UDim2.new(0,120,0,24)se.StudsOffset=Vector3.new(0,2,0)se.AlwaysOnTop=true se.Adornee=be.Head se.Parent=de local qe=Instance.new"TextLabel"qe.Size=UDim2.new(1,0,1,0)qe.BackgroundTransparency=1 qe.Text=ie.DisplayName qe.TextScaled=false qe.TextSize=14 qe.Font=Enum.Font.GothamMedium qe.TextColor3=ne qe.TextStrokeTransparency=0 qe.TextStrokeColor3=Color3.fromRGB(0,0,0)qe.Parent=se se.Enabled=true end end function RefreshAll()RefreshHighlights()RefreshNames()if UpdatePlayerCheckboxes then UpdatePlayerCheckboxes()end if RefreshTargetInfo then RefreshTargetInfo()end end function SetupPlayerTracking(Se)if not Se then return end local function Fe()RefreshAll()end Se.CharacterAdded:Connect(Fe)Se.CharacterRemoving:Connect(Fe)local function We(Ee)if Ee:IsA"Tool"and(Ee.Name=="Knife"or Ee.Name=="Gun")then Fe()end end if Se.Character then Se.Character.ChildAdded:Connect(We)end Se.CharacterAdded:Connect(function(Le)Le.ChildAdded:Connect(We)local Qe=Se:FindFirstChild"Backpack"if Qe then Qe.ChildAdded:Connect(We)else Se.ChildAdded:Connect(function(Ve)if Ve.Name=="Backpack"then Ve.ChildAdded:Connect(We)end end)end end)end for _,Ye in ipairs(gBa:GetPlayers())do SetupPlayerTracking(Ye)end gBa.PlayerAdded:Connect(SetupPlayerTracking)gBa.PlayerRemoving:Connect(function(ff)if ef[ff]then ef[ff]:Destroy()end end)_G.ESP.EnabledPlayers=qJ(false,RefreshAll)local rJ=_G.ESP._refreshAll or RefreshAll rJ()task.spawn(function()while true do task.wait(0.5)RefreshAll()end end)local If={window=0.18,accW=0.5,turnW=0.4}local Xp={0.12,0.18,0.25}local wf={0,0.5,1}local xf={0,0.4,0.8}local lh=math.max(table.unpack(Xp))+0.05 local Xw={}local Hz={}local rw=Instance.new"Folder"rw.Name="PredictMarkers"rw.Parent=workspace local zs={}for zf,Af in ipairs(Xp)do for _,Bf in ipairs(wf)do for _,Cf in ipairs(xf)do table.insert(zs,{wi=zf,window=Af,accW=Bf,turnW=Cf})end end end local Sw={}local Js=0 local ht={window=If.window,accW=If.accW,turnW=If.turnW}local Tw=nil local as=0 local function bg()local Rf={n=0,wf={},ws={}}for Qf=1,7 do Rf.wf[Qf]=0 Rf.ws[Qf]=0 end return Rf end local nx=bg()local function Sx(dg)local fg=Xw[dg]if not fg then fg={hist={},queue={},epoch=0,model=bg(),revCount=0,stopCount=0,meanRev=1,wasMoving=false}Xw[dg]=fg end return fg end local function ux()local kg=bga.Network.ServerStatsItem:FindFirstChild"Data Ping"return kg and kg:GetValue()/1000 or 0 end local function xl(ng)return(ng+math.pi)%(2*math.pi)-math.pi end local function bl(rg)return math.atan2(rg.X,rg.Z)end local function Jx()local Dg=RaycastParams.new()Dg.FilterType=Enum.RaycastFilterType.Exclude local Cg={rw}for _,Ag in ipairs(gBa:GetPlayers())do if Ag.Character then table.insert(Cg,Ag.Character)end end Dg.FilterDescendantsInstances=Cg return Dg end local function ey(Qg)table.clear(Qg.hist)table.clear(Qg.queue)Qg.epoch+=1 Qg.vel,Qg.acc,Qg.turn=nil,nil,nil Qg.stableHead,Qg.lastRev,Qg.wasMoving=nil,nil,false Qg.predPos,Qg.predDir=nil,nil end local function iy(eh,jh,hh)local mh=eh.hist local ch=mh[#mh]if ch and(hh-ch.pos).Magnitude>20 then ey(eh)end table.insert(mh,{t=jh,pos=hh})while#mh>2 and jh-mh[1].t>lh do table.remove(mh,1)end end local function Mp(ai,Oh)local Vh=#ai if Vh<4 then return nil end local pi=ai[Vh]local Uh=Vh for Eh=1,Vh do if pi.t-ai[Eh].t<=Oh then Uh=Eh break end end if Vh-Uh+1<4 then return nil end local mi=ai[Uh]local Rh=pi.t-mi.t if Rh<Oh*0.6 then return nil end local Yh=mi.t+Rh/2 local qi=mi for bi=Uh+1,Vh do if ai[bi].t>=Yh then qi=ai[bi]break end end local ti,Fi=qi.t-mi.t,pi.t-qi.t if ti<0.03 or Fi<0.03 then return nil end local Ii=(qi.pos-mi.pos)/ti local Li=(pi.pos-qi.pos)/Fi local Vi=(ti+Fi)/2 local Xi=(Li-Ii)/Vi if Xi.Magnitude>250 then Xi=Xi.Unit*250 end local Wi=Li+Xi*(Fi/2)local Ui=Vector3.new(Ii.X,0,Ii.Z)local Si=Vector3.new(Li.X,0,Li.Z)local Yi=0 if Ui.Magnitude>1 and Si.Magnitude>1 then Yi=math.clamp(xl(bl(Si)-bl(Ui))/Vi,-6,6)end return Wi,Xi,Yi end local function wy(kj)local lj,mj,nj=Mp(kj.hist,ht.window)if lj then kj.vel,kj.acc,kj.turn=lj,mj,nj end end local function Dq(yj,Bj,Ej,Cj,Fj,Oj,Hj)local uk=Vector3.new(yj.X,0,yj.Z)local Uj=Vector3.new(Bj.X,0,Bj.Z)*Cj local _k=Ej*Fj local sk=math.max(Hj,uk.Magnitude)local wk=Vector3.zero local Sj=0 while Sj<Oj do local vk=math.min(0.03333333333333333,Oj-Sj)Sj+=vk if Sj<=0.1 then uk+=Uj*vk end if _k~=0 and uk.Magnitude>1 then local ek=_k*vk local nk,lk=math.cos(ek),math.sin(ek)uk=Vector3.new(uk.X*nk+uk.Z*lk,0,-uk.X*lk+uk.Z*nk)end if uk.Magnitude>sk then uk=uk.Unit*sk end wk+=uk*vk end return wk end local function mr(Ck)if Ck.Sit or Ck.FloorMaterial==Enum.Material.Air then return false end local Ek=Ck:GetState()return Ek~=Enum.HumanoidStateType.Climbing and Ek~=Enum.HumanoidStateType.Swimming end local function yy(El,sl,Al)local Ok=El.vel if not Ok then return end local cl=Vector3.new(Ok.X,0,Ok.Z)local Bl=cl.Magnitude if Bl>=3 then El.wasMoving=true El.avgSpeed=El.avgSpeed and(El.avgSpeed+(Bl-El.avgSpeed)*(1-math.exp(-0.5*Al)))or Bl local yl=bl(cl)if not El.stableHead then El.stableHead=yl elseif math.abs(xl(yl-El.stableHead))>2 then if El.lastRev then local pl=sl-El.lastRev if pl<3 then El.meanRev+=(math.clamp(pl,0.1,2)-El.meanRev)*0.2 end end El.lastRev=sl El.revCount+=1 El.stableHead=yl else El.stableHead+=xl(yl-El.stableHead)*(1-math.exp(-6*Al))end elseif Bl<1 and El.wasMoving then El.wasMoving=false El.stopCount+=1 end end local function dp(Kl,Ml)local Ol=0 for Nl=1,7 do Ol+=Kl[Nl]*Ml[Nl]end return Ol end local function xq(Am,mm,rm)local Yl=Am.vel if not Yl then return nil end local dm=Vector3.new(Yl.X,0,Yl.Z)local lm=dm.Magnitude if lm<1 then return nil end local Fm=dm/lm local Gm=Vector3.new(Fm.Z,0,-Fm.X)local ym=Am.acc or Vector3.zero local Dm=lm/math.max(mm,1)local Cm=0 if Am.revCount>=3 and Am.lastRev then Cm=math.clamp((rm-Am.lastRev)/Am.meanRev,0,2)-1 end local Em={1,Dm,ym:Dot(Fm)/250,ym:Dot(Gm)/250,(Am.turn or 0)/6,Cm,Cm*Dm}return Em,Fm,Gm end local function Rr(ho,On,Fn)local Pn=On.T if Pn<0.02 then return end local ko=On.x local Ln,Qn=dp(ho.wf,ko),dp(ho.ws,ko)local kn=On.base+(On.fwd*Ln+On.side*Qn)*Pn local wn=math.min((Fn-On.base).Magnitude,10)local Bn=math.min((Fn-kn).Magnitude,10)ho.n+=1 local Dn=math.max(0.01,1/ho.n)local xn,Cn=ho.eBase or wn,ho.eCorr or Bn ho.eBase=xn+(wn-xn)*Dn ho.eCorr=Cn+(Bn-Cn)*Dn local Nn=Fn-On.base local bo=Nn:Dot(On.fwd)/Pn-Ln local jo=Nn:Dot(On.side)/Pn-Qn local mo=0.001 for Wn=1,7 do mo+=ko[Wn]*ko[Wn]end for lo=1,7 do ho.wf[lo]=math.clamp(ho.wf[lo]+0.08*bo*ko[lo]/mo,-40,40)ho.ws[lo]=math.clamp(ho.ws[lo]+0.08*jo*ko[lo]/mo,-40,40)end end local function mx(to)return to.n>=150 and to.eBase~=nil and to.eCorr~=nil and to.eCorr<to.eBase*0.97 end local function Ry(jp,Ho,Io,mp)if false or not jp.vel or not mr(Ho)then return nil end local fp,Yo,cp=xq(jp,Ho.WalkSpeed,Io)if not fp then return nil end local ep=nil if mx(jp.model)then ep=jp.model end if mx(nx)and(not ep or nx.eCorr<ep.eCorr)then ep=nx end if not ep then return nil end local tp=(Yo*dp(ep.wf,fp)+cp*dp(ep.ws,fp))*mp local lp=Vector3.new(jp.vel.X,0,jp.vel.Z).Magnitude local sp=0.5*lp*mp if tp.Magnitude>sp and tp.Magnitude>0 then tp=tp.Unit*sp end return tp end local function Cy(Xq,bq,Uq,Sq,Tq)if Xq.nextSample and Sq<Xq.nextSample then return end Xq.nextSample=Sq+0.05 if not mr(bq)then return end local gq={}for Rp,Op in ipairs(Xp)do local Sp,Tp,Up=Mp(Xq.hist,Op)if not Sp then return end gq[Rp]={v=Sp,a=Tp,tr=Up}end local _q=gq[math.ceil(#Xp/2)].v if Vector3.new(_q.X,0,_q.Z).Magnitude<1 then return end local Kq=bq.WalkSpeed local Vq=table.create(#zs)for jq,pq in ipairs(zs)do local nq=gq[pq.wi]Vq[jq]=Dq(nq.v,nq.a,nq.tr,pq.accW,pq.turnW,Tq,Kq)end local Wq=nil if true and Xq.vel then local Mq,Nq,Oq=xq(Xq,Kq,Sq)if Mq then local Pq=Dq(Xq.vel,Xq.acc or Vector3.zero,Xq.turn or 0,ht.accW,ht.turnW,Tq,Kq)Wq={x=Mq,fwd=Nq,side=Oq,base=Pq,T=Tq}end end table.insert(Xq.queue,{due=Sq+Tq,start=Uq.Position,preds=Vq,learn=Wq,epoch=Xq.epoch})end local function ry(Or,nr,pr,gr)local jr=Or.queue while jr[1]and gr>=jr[1].due do local Tr=table.remove(jr,1)if Tr.epoch==Or.epoch and mr(nr)then local tr=pr.Position local Ur=Vector3.new(tr.X-Tr.start.X,0,tr.Z-Tr.start.Z)Js+=1 local Lr=math.max(0.005,1/Js)for Hr,Br in ipairs(Tr.preds)do local Jr=math.min((Ur-Br).Magnitude,10)local Kr=Sw[Hr]or Jr Sw[Hr]=Kr+(Jr-Kr)*Lr end if Tr.learn then Rr(Or.model,Tr.learn,Ur)Rr(nx,Tr.learn,Ur)end end end end local function Kx(bs)if bs-as<1 or Js<300 then return end as=bs local As,ts=nil,math.huge for ns=1,#zs do local os_=Sw[ns]if os_ and os_<ts then As,ts=ns,os_ end end if not As then return end if Tw and Sw[Tw]and ts>=Sw[Tw]*0.95 then return end Tw=As local Es=zs[As]ht={window=Es.window,accW=Es.accW,turnW=Es.turnW}end _G.GetPredictStats=function()return ht,Tw and Sw[Tw]or nil,Js end local function Ky(Dt,Lt,Rs,Rt,Vv)local aw=Rs.Position local rt=Dt.vel or Vector3.zero local bw=Vector3.new(rt.X,0,rt.Z)local Xv=rt.Y local dt=Dt.acc or Vector3.zero local Yt=Vector3.new(dt.X,0,dt.Z)*ht.accW local du=(Dt.turn or 0)*ht.turnW local xv=workspace.Gravity local Pv=Lt.FloorMaterial~=Enum.Material.Air local pt=Lt:GetState()if Lt.Sit or pt==Enum.HumanoidStateType.Climbing or pt==Enum.HumanoidStateType.Swimming then return aw+rt*Rt,bw end if Pv then local Bt=workspace:Raycast(aw,Vector3.new(0,-20,0),Vv)if Bt then Dt.offset=aw.Y-Bt.Position.Y end end local Mv=Dt.offset or(Lt.HipHeight+1)if Pv and Xv>20 then Pv=false elseif Pv then Xv=0 end local wu=math.max(Lt.WalkSpeed,bw.Magnitude)local Wt=0 while Wt<Rt do local Bv=math.min(0.03333333333333333,Rt-Wt)Wt+=Bv if Pv then if Wt<=0.1 then bw+=Yt*Bv end if du~=0 and bw.Magnitude>1 then local iu=du*Bv local ru,pu=math.cos(iu),math.sin(iu)bw=Vector3.new(bw.X*ru+bw.Z*pu,0,-bw.X*pu+bw.Z*ru)end if bw.Magnitude>wu then bw=bw.Unit*wu end end local hv=bw*Bv local Ru=hv.Magnitude if Ru>0.0001 then local Qu=hv/Ru local Vu=workspace:Raycast(aw,Qu*(Ru+1.2),Vv)if Vu and math.abs(Vu.Normal.Y)<0.7 then local Su=math.max(0,Vu.Distance-1.2)aw+=Qu*math.min(Ru,Su)local ev=Vector3.new(Vu.Normal.X,0,Vu.Normal.Z)if ev.Magnitude>0.001 then ev=ev.Unit local fv=bw:Dot(ev)if fv<0 then bw-=ev*fv end end else aw+=hv end end if Pv then local qv=workspace:Raycast(aw,Vector3.new(0,-(Mv+3),0),Vv)if qv then aw=Vector3.new(aw.X,qv.Position.Y+Mv,aw.Z)Xv=0 else Pv=false Xv=0 end else Xv-=xv*Bv local _w=Xv*Bv if Xv<=0 then local Lv=workspace:Raycast(aw,Vector3.new(0,-(-_w+Mv+0.1),0),Vv)if Lv then aw=Vector3.new(aw.X,Lv.Position.Y+Mv,aw.Z)Xv=0 Pv=true else aw+=Vector3.new(0,_w,0)end else local Wv=workspace:Raycast(aw,Vector3.new(0,_w+1.5,0),Vv)if Wv then Xv=0 else aw+=Vector3.new(0,_w,0)end end end end return aw,bw end local function Fz(gw)local sw=Instance.new"Part"sw.Name="PredictMarker_"..gw.Name sw.Size=Vector3.new(2,5,1)sw.Anchored=true sw.CanCollide=false sw.CanQuery=false sw.CanTouch=false sw.CastShadow=false sw.Transparency=0.6 sw.Color=Color3.fromRGB(255,80,80)sw.Material=Enum.Material.Neon sw.Parent=rw return sw end local function yz(Bw)local zw=Hz[Bw]if zw then zw:Destroy()Hz[Bw]=nil end end local function Xz(Hw)yz(Hw)Xw[Hw]=nil end local function Uw(Mw)local Qw=Xw[Mw]if not Qw or not Qw.predPos then return nil,nil,nil end return Qw.predPos,Qw.predDir,Tw and Sw[Tw]or nil end _G.GetPredictedPosition=Uw _G.GetMovementProfile=function(Yw)local gx=Xw[Yw]if not gx then return nil end local lx=gx.model return{avgSpeed=gx.avgSpeed,reversals=gx.revCount,reversalInterval=gx.revCount>=3 and gx.meanRev or nil,stops=gx.stopCount,samples=lx.n,errBase=lx.eBase,errCorr=lx.eCorr,correctionActive=true and(mx(lx)or mx(nx))}end local Dx=nil local px=0 DBa.RenderStepped:Connect(function(By)local Uy=os.clock()local Bx=ux()Dx=Dx and(Dx+(Bx-Dx)*(1-math.exp(-8*By)))or Bx local Vy=math.clamp(Dx*1+0.08,0,0.725)local Vz=1-math.exp(-150*By)local qz=1-math.exp(-60*By)local Py=Jx()Kx(Uy)for _,Iz in ipairs(gBa:GetPlayers())do if Iz==gBa.LocalPlayer and false then yz(Iz)continue end local vz=Sx(Iz)local by=Iz.Character local ez=by and by:FindFirstChild"UpperTorso"local Ty=by and by:FindFirstChildOfClass"Humanoid"if not(ez and Ty)then ey(vz)yz(Iz)continue end iy(vz,Uy,ez.Position)if Ty.Health<=0 then vz.predPos,vz.predDir=nil,nil yz(Iz)continue end ry(vz,Ty,ez,Uy)wy(vz)yy(vz,Uy,By)Cy(vz,Ty,ez,Uy,Vy)local Pz,cz=Ky(vz,Ty,ez,Vy,Py)local Yy=Ry(vz,Ty,Uy,Vy)if Yy then Pz+=Yy end local rz if cz.Magnitude>1 then rz=cz.Unit else local hz=ez.CFrame.LookVector local kz=Vector3.new(hz.X,0,hz.Z)if kz.Magnitude>0.01 then rz=kz.Unit end end if rz then vz.dir=vz.dir and vz.dir:Lerp(rz,qz).Unit or rz end local Nz=vz.dir or Vector3.new(0,0,-1)vz.predPos,vz.predDir=Pz,Nz do yz(Iz)continue end local Tz=Hz[Iz]if not Tz then Tz=Fz(Iz)Hz[Iz]=Tz end local Uz=CFrame.lookAt(Pz,Pz+Nz)if(Tz.Position-Pz).Magnitude>50 then Tz.CFrame=Uz else Tz.CFrame=Tz.CFrame:Lerp(Uz,Vz)end end end)gBa.PlayerRemoving:Connect(Xz)local LB={}local function vA(gA)local tA={}local lA=math.pi*(3-math.sqrt(5))for mA=0,gA-1 do local qA=1-(mA/math.max(gA-1,1))*2 local sA=math.sqrt(1-qA*qA)local rA=lA*mA table.insert(tA,Vector3.new(math.cos(rA)*sA,qA,math.sin(rA)*sA))end return tA end LB=vA(128)local function GB()local CA={}for _,BA in ipairs(gBa:GetPlayers())do if BA.Character then table.insert(CA,BA.Character)end end return CA end local function EB(IA)local JA=RaycastParams.new()JA.FilterType=Enum.RaycastFilterType.Exclude JA.FilterDescendantsInstances=IA return JA end local function bC(RA,QA,SA)return kB:Raycast(RA,QA-RA,SA)==nil end local function UB(XA,bB)local aB=XA+Vector3.new(0,6,0)local dB=kB:Raycast(aB,Vector3.new(0,-26,0),bB)if not dB then return nil end return dB.Position+Vector3.new(0,3,0)end local function NB(xB,yB,sB,oB)local uB=kB:Raycast(xB,yB*sB,oB)if not uB then return xB+yB*sB end local zB=(uB.Position-xB).Magnitude-1.5 if zB<1 then return nil end return xB+yB*zB end function getAvailableSpace(iC,IB,FB)local eC=EB(FB or GB())local gC=IB while gC>=aC do for _,PB in ipairs(LB)do local VB=NB(iC,PB,gC,eC)if VB then local fC=UB(VB,eC)if fC and(fC-iC).Magnitude>=aC and bC(iC,fC,eC)then return fC end end end gC-=hC end return iC end function getAvailableSpaceFor(mC,sC)local tC=mC.Character local rC=tC and tC:FindFirstChild"HumanoidRootPart"if not rC then return nil end return getAvailableSpace(rC.Position,sC,{tC})end local function TBa(hD)if hD==nil then hD=YC()end if yya~=AC()then return end if not hD.Character or not hD then return end local WC=yya.Character:FindFirstChild"Gun"if not WC then local KC=yya:FindFirstChild"Backpack"if KC then WC=KC:FindFirstChild"Gun"if WC then local PC=yya.Character:FindFirstChild"Humanoid"if PC then PC:EquipTool(WC)end end end if not WC then return end end local dD=yya.Character:FindFirstChild"RightHand"if not dD then return end local fD=WC:FindFirstChild"Shoot"if hD==YC()then if _G.Combat.WallbangSheriff()then fD:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(hD),15)),CFrame.new((_G.GetPredictedPosition(hD))))else fD:FireServer(CFrame.new(dD.Position),CFrame.new((_G.GetPredictedPosition(hD))))end else fD:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(hD),15)),CFrame.new((_G.GetPredictedPosition(hD))))end end _G.Combat.WallbangSheriff=qJ(false,RefreshAll)_G.Combat.AutoGrabGun=qJ(false,RefreshAll)_G.Movement.SpeedGlitchEnabled=qJ(false,RefreshAll)_G.Movement.SpeedGlitchSpeed=5 local DD=nil local function OD(xD,yD)if DD or not _G.Movement.SpeedGlitchEnabled()then return end DD=DBa.Heartbeat:Connect(function(zD)if not(xD and yD and yD.Parent)then return end if yD.MoveDirection.Magnitude>0 then xD:TranslateBy(yD.MoveDirection*_G.Movement.SpeedGlitchSpeed*zD*10)end end)end local function Gha()if DD then DD:Disconnect()DD=nil end end local function aE(PD)Gha()local UD=PD:WaitForChild"Humanoid"UD.StateChanged:Connect(function(KD,SD)if SD==Enum.HumanoidStateType.Freefall or SD==Enum.HumanoidStateType.Jumping then OD(PD,UD)elseif SD==Enum.HumanoidStateType.Landed or SD==Enum.HumanoidStateType.Running then Gha()end end)UD.Died:Connect(Gha)end if I_a.Character then aE(I_a.Character)end I_a.CharacterAdded:Connect(aE)local cG=workspace.FallenPartsDestroyHeight pcall(function()workspace.FallenPartsDestroyHeight=-50000 end)local AF=false local uF=nil local function UI(oE,mE,nE,uE)local rE=Vector3.new(mE.X*nE,0,mE.Z*nE)for _,sE in ipairs(oE:GetDescendants())do if sE:IsA"BasePart"then sE.AssemblyLinearVelocity=rE sE.AssemblyAngularVelocity=uE>0 and Vector3.new(0,uE,0)or Vector3.zero end end end local function _J()AF=false local aF=I_a.Character local RE=aF and aF:FindFirstChild"HumanoidRootPart"local WE=aF and aF:FindFirstChildOfClass"Humanoid"if eG and WE then eG.CameraSubject=WE end if RE and RE.Parent and uF then UI(aF,Vector3.zero,0,0)task.delay(0.05,function()if RE and RE.Parent and uF then RE.CFrame=uF uF=nil end if WE and WE.Parent then WE:ChangeState(Enum.HumanoidStateType.GettingUp)end if aF and aF.Parent then UI(aF,Vector3.zero,0,0)kwa.enabled=kwa.fling end end)end end local function QBa(IF)if AF then _J()return end if not IF then return end AF=true kwa.fling=kwa.enabled kwa.enabled=false DBa.RenderStepped:Wait()DBa.RenderStepped:Wait()DBa.RenderStepped:Wait()pcall(function()workspace.FallenPartsDestroyHeight=-50000 end)local tF=I_a.Character local wF=tF and tF:FindFirstChild"HumanoidRootPart"uF=wF and wF.CFrame local YI=0.1 local _G_=0 local TG=nil while AF do local SG=DBa.Heartbeat:Wait()if SG<=0 then SG=0.016 end kwa.enabled=false local OF=IF and IF.Character local sI=OF and OF:FindFirstChild"HumanoidRootPart"local fG=OF and OF:FindFirstChildOfClass"Humanoid"if not(sI and fG)or fG.Health<=0 then break end local IH=sI.AssemblyLinearVelocity local PH=IH.Magnitude if PH>850 or(PH-_G_)>610 then break end _G_=PH if sI.Position.Y<=(cG+15)then break end if eG then eG.CameraSubject=fG end local VI=I_a.Character local SI=VI and VI:FindFirstChild"HumanoidRootPart"if not(VI and VI.Parent and SI and SI.Parent)then continue end local pG,xI,rG=SI.CFrame:ToEulerAnglesYXZ()local WH=Vector3.new(sI.CFrame.LookVector.X,0,sI.CFrame.LookVector.Z)if WH.Magnitude>0 then WH=WH.Unit end local uH=Vector3.new(sI.CFrame.RightVector.X,0,sI.CFrame.RightVector.Z)if uH.Magnitude>0 then uH=uH.Unit end local gH=0 local lH=0 local bH=0 if TG and WH.Magnitude>0 then lH=(WH-TG).Magnitude gH=TG:Cross(WH).Y bH=math.asin(math.clamp(gH,-1,1))/SG end TG=WH local aH=sI.AssemblyAngularVelocity.Y local NH=math.abs(aH)>math.abs(bH)and aH or bH local nH=(gH<-0.012)or(NH<-0.4)local qH=(gH>0.012)or(NH>0.4)local LH=nH or qH or(lH>0.015)local uI if nH then uI=uH elseif qH then uI=-uH else uI=-uH end local MI=-uI local tI if PH>1 or LH then local EH=0.03 pcall(function()EH=I_a:GetNetworkPing()end)local aI=(EH*1.5)+0.015 local SH=PH>100 and(IH.Unit*100)or IH local _I=SH if LH then local VH=math.clamp(NH*aI*1,-1,1)if PH>2 then _I=(CFrame.Angles(0,VH,0)*SH)+(uI*3)else _I=(CFrame.Angles(0,VH,0)*WH*10)+(uI*3)end end local gI=(_I*2.8)*aI local lI=sI.Position-(gI*0.01)local mI=sI.Position+(gI*2.5)local jI=os.clock()local nI=(math.sin(jI*6*math.pi*2)+1)*0.5 tI=lI:Lerp(mI,nI)else tI=sI.Position end local wI=Vector3.new(tI.X,sI.Position.Y,tI.Z)+(uI*1.1)local TI=CFrame.new(wI)*CFrame.Angles(0,xI,0)SI.CFrame=TI UI(VI,MI,90000,9999)DBa.RenderStepped:Wait()if VI and VI.Parent and SI and SI.Parent then SI.CFrame=TI UI(VI,MI,90000,9999)end DBa.Stepped:Wait()if VI and VI.Parent and SI and SI.Parent then SI.CFrame=TI UI(VI,Vector3.new(1,0,0),YI,0)YI=-YI end end _J()end workspace.DescendantAdded:Connect(function(kJ)if kJ.Name=="GunDrop"then local fJ=NAa(yya)if _G.Combat.AutoGrabGun()and fJ=="Innocent"then if not kJ.Parent then return end local lJ=yya.Character if not lJ then return end kJ:PivotTo(lJ.PrimaryPart.CFrame)end end end)local sJ=nJ:WaitForChild"ClientServices".WeaponService:WaitForChild"GunFired"_G.Visuals.TRClifeTime=2 _G.Visuals.TRCFADE_STUDS=0.25 _G.Visuals.TRCENABLED=qJ(false,rJ())_G.Visuals.TRCLOCALONLY=qJ(false,rJ())_G.Visuals.TRCCOLOR=ColorSequence.new(Color3.fromHex"ff80e1")sJ.OnClientEvent:Connect(function(NJ,uJ,GJ)if not NJ or not GJ or not _G.Visuals.TRCENABLED()then return end local YJ if yya.Character:FindFirstChild(NJ.Parent.Name)then YJ=NJ.Position else YJ=yya.Character.RightHand.Position end local cK=GJ local OJ if yya.Character:FindFirstChild(NJ.Parent.Name)then OJ=NJ.Parent.Parent else OJ=NJ.Parent.Parent.Parent end if _G.Visuals.TRCLOCALONLY()and OJ.Name~=yya.Name then return end local VJ=(cK-YJ).Magnitude if VJ<0.1 then return end local DK=math.clamp(_G.Visuals.TRCFADE_STUDS/VJ,0.001,0.49)local PK=Instance.new"Attachment"PK.WorldPosition=YJ PK.Parent=workspace.Terrain local QK=Instance.new"Attachment"QK.WorldPosition=cK QK.Parent=workspace.Terrain local OK=Instance.new"Beam"OK.Attachment0=PK OK.Attachment1=QK OK.Width0=0.5 OK.Width1=0.5 OK.Texture="rbxassetid://13797539713"OK.TextureMode=Enum.TextureMode.Stretch OK.LightEmission=1 OK.LightInfluence=0 OK.FaceCamera=true OK.Color=_G.Visuals.TRCCOLOR OK.Transparency=NumberSequence.new{NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(DK,0),NumberSequenceKeypoint.new(1-DK,0),NumberSequenceKeypoint.new(1,1)}OK.Parent=workspace.Terrain local NK=Instance.new"NumberValue"NK.Value=0 local MK=NK.Changed:Connect(function(EK)OK.Transparency=NumberSequence.new{NumberSequenceKeypoint.new(0,1),NumberSequenceKeypoint.new(DK,EK),NumberSequenceKeypoint.new(1-DK,EK),NumberSequenceKeypoint.new(1,1)}end)local JK=TweenInfo.new(_G.Visuals.TRClifeTime/2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out)local LK=vda:Create(NK,JK,{Value=1})task.delay(_G.Visuals.TRClifeTime/2,function()LK:Play()LK.Completed:Once(function()MK:Disconnect()NK:Destroy()OK:Destroy()PK:Destroy()QK:Destroy()end)end)end)local jL=game:GetService"AssetService"local _U=game:GetService"PathfindingService"local yN=game:GetService"AnimationClipProvider"local uP=true local hM=Color3.fromRGB(255,255,255)local wM={12333387301,129243679434579,13735114082}local IL={Idle=742637544,Walk=742640026,Run=742638842,Jump=742637942,Fall=742637151,Climb=742636889,Swim=742638445,SwimIdle=742639220}local aS={Idle=507766666,Walk=507777826,Run=507767714,Jump=507765000,Fall=507767968,Climb=507765644,Swim=507784897,SwimIdle=507785072}local yL={}local function kM(zL)if yL[zL]~=nil then return yL[zL]or nil end local BL=false local lL,oL=pcall(function()return jL:GetBundleDetailsAsync(zL)end)if lL and oL and oL.Items then for _,tL in ipairs(oL.Items)do if tL.Type=="UserOutfit"then local uL,xL=pcall(function()return gBa:GetHumanoidDescriptionFromOutfitId(tL.Id)end)if uL and xL then BL=xL break end end end else end yL[zL]=BL return BL or nil end local nM={"Head","Torso","LeftArm","RightArm","LeftLeg","RightLeg"}local ML local function QO()if ML then return ML end local OL={}for KL,LL in pairs(IL)do OL[KL]=LL end ML=OL return OL end local function TO()local BM=Instance.new"HumanoidDescription"BM.Shirt=139118942165678 BM.Pants=16369992173 BM.GraphicTShirt=0 BM.Face=0 if hM then BM.HeadColor=hM BM.TorsoColor=hM BM.LeftArmColor=hM BM.RightArmColor=hM BM.LeftLegColor=hM BM.RightLegColor=hM end local tM=false do local qM=kM(282)if qM then tM=true for _,rM in ipairs(nM)do BM[rM]=qM[rM]end do BM.Head=0 end end end if not tM then end if#wM>0 then local AM={}for _,yM in ipairs(wM)do table.insert(AM,tostring(yM))end BM.HatAccessory=table.concat(AM,",")end return BM end local function FN(JM,KM,UM,WM)local LM,XM=pcall(function()return JM:LoadAnimation(KM)end)if not LM or not XM then return nil end local QM=0 while XM.Length==0 and QM<2 do QM+=task.wait(0.1)end if XM.Length==0 then XM:Destroy()return nil end XM.Looped=UM XM.Priority=WM return XM end local function SN(hN,fN,jN,kN)local iN=Instance.new"Animation"iN.AnimationId="rbxassetid://"..tostring(fN)return FN(hN,iN,jN,kN)end local function aO(GN,tN,IN,JN)local uN,zN=pcall(function()return yN:GetAnimationClipAsync("rbxassetid://"..tostring(tN))end)if not uN or not zN then return nil end local AN,EN=pcall(function()return yN:RegisterAnimationClip(zN)end)if not AN or not EN then return nil end local HN=Instance.new"Animation"HN.AnimationId=EN return FN(GN,HN,IN,JN)end local function YR(bO,cO,dO,eO)if not cO or cO==0 then return nil end local gO=SN(bO,cO,dO,eO)if gO then return gO end gO=aO(bO,cO,dO,eO)if gO then return gO end return nil end local hP local PS={}local JT=0 local function nP()if not hP then return end local sO=uP and 0 or 1 for _,rO in ipairs(hP:GetDescendants())do if rO:IsA"BasePart"or rO:IsA"Decal"then rO.LocalTransparencyModifier=sO end end end local function sha(wO)uP=wO and true or false nP()end local function jY()JT+=1 for _,BO in ipairs(PS)do BO:Disconnect()end table.clear(PS)if hP then hP:Destroy()end hP=nil end local function lY(hU)jY()local KT=JT local xX=hU:WaitForChild"HumanoidRootPart"local TW=hU:WaitForChild"Humanoid"local VR=QO()local wX=gBa:CreateHumanoidModelFromDescription(TO(),Enum.HumanoidRigType.R15)wX.Name="Follower_"..I_a.Name local cY=wX:WaitForChild"Humanoid"local eY=wX:WaitForChild"HumanoidRootPart"cY.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None if JT~=KT then wX:Destroy()return end wX:PivotTo(xX.CFrame*CFrame.new(3,0,3))wX.Parent=workspace hP=wX local LX=hU:GetScale()*0.75 wX:ScaleTo(LX)nP()table.insert(PS,wX.DescendantAdded:Connect(function(tP)if tP:IsA"BasePart"or tP:IsA"Decal"then tP.LocalTransparencyModifier=uP and 0 or 1 end end))local function bQ(EP,CP)local DP=Instance.new"NoCollisionConstraint"DP.Part0=EP DP.Part1=CP DP.Parent=EP end for _,KP in ipairs(wX:GetDescendants())do if KP:IsA"BasePart"then for _,LP in ipairs(hU:GetDescendants())do if LP:IsA"BasePart"then bQ(KP,LP)end end end end table.insert(PS,hU.DescendantAdded:Connect(function(UP)if UP:IsA"BasePart"then for _,TP in ipairs(wX:GetDescendants())do if TP:IsA"BasePart"then bQ(TP,UP)end end end end))table.insert(PS,wX.DescendantAdded:Connect(function(cQ)if cQ:IsA"BasePart"then for _,dQ in ipairs(hU:GetDescendants())do if dQ:IsA"BasePart"then bQ(cQ,dQ)end end end end))local _S=cY:FindFirstChildOfClass"Animator"if not _S then _S=Instance.new"Animator"_S.Parent=cY end local YQ,cR,gR,eT,qT,uT,zT,yT local dT local function xT(CQ)if dT==CQ then return end if dT then dT:Stop(0.15)end dT=CQ if CQ then CQ:Play(0.15)end end local function GT(LQ)local JQ=cY:GetState()if JQ==Enum.HumanoidStateType.Freefall or JQ==Enum.HumanoidStateType.Climbing or JQ==Enum.HumanoidStateType.Swimming then return end if LQ>0.5 then if LQ>18 and gR then xT(gR)else xT(cR or gR)end else xT(YQ)end end local yR=Enum.AnimationPriority local CR={{"Idle",true,yR.Idle,function(_R)YQ=_R end},{"Walk",true,yR.Core,function(dR)cR=dR end},{"Run",true,yR.Core,function(hR)gR=hR end},{"Jump",false,yR.Action,function(lR)eT=lR end},{"Fall",true,yR.Action,function(pR)qT=pR end},{"Climb",true,yR.Action,function(tR)uT=tR end},{"Swim",true,yR.Action,function(xR)zT=xR end},{"SwimIdle",true,yR.Action,function(BR)yT=BR end}}for _,KR in ipairs(CR)do task.spawn(function()local bS,cS,dS,gS=KR[1],KR[2],KR[3],KR[4]local hS=YR(_S,VR[bS],cS,dS)if not hS then if VR[bS]and VR[bS]>0 then end hS=YR(_S,aS[bS],cS,dS)end if JT~=KT then return end gS(hS)local mS=eY.AssemblyLinearVelocity GT(Vector3.new(mS.X,0,mS.Z).Magnitude)end)end table.insert(PS,cY.Running:Connect(GT))table.insert(PS,cY.Climbing:Connect(function(xS)if uT then xT(uT)uT:AdjustSpeed(xS/5)end end))table.insert(PS,cY.Swimming:Connect(function(BS)if BS>1 and zT then xT(zT)else xT(yT or zT)end end))local FT=Enum.HumanoidStateType local gT=0 local function HT()local OS=eY.AssemblyLinearVelocity return Vector3.new(OS.X,0,OS.Z).Magnitude end table.insert(PS,cY.StateChanged:Connect(function(RS,ET)if ET==FT.Jumping then gT=os.clock()xT(eT or qT)elseif ET==FT.Freefall then local iT=0 if eT and dT==eT then iT=math.max(0,0.3-(os.clock()-gT))end if iT>0 then task.delay(iT,function()if JT==KT and cY:GetState()==FT.Freefall then xT(qT)end end)else xT(qT)end elseif ET==FT.Climbing then xT(uT)elseif ET==FT.Swimming then xT(yT or zT)elseif ET==FT.Landed or ET==FT.Running or ET==FT.RunningNoPhysics then GT(HT())end end))task.spawn(function()local function KW()return JT==KT and wX.Parent~=nil end local aU={AgentRadius=2*LX,AgentHeight=5*LX,AgentCanJump=true,AgentCanClimb=true,WaypointSpacing=math.max(2,4*LX),Costs={Water=20}}local aY local VT=pcall(function()aY=_U:CreatePath(aU)end)if not VT or not aY then aU.AgentCanClimb=nil aY=_U:CreatePath(aU)end local function CX()return cY:GetState()==Enum.HumanoidStateType.Swimming end local pU=RaycastParams.new()pU.FilterType=Enum.RaycastFilterType.Exclude pU.FilterDescendantsInstances={wX,hU}pU.RespectCanCollide=true local function jV(nU,oU)local vU=workspace:Raycast(nU,oU,pU)if vU then local uU=vU.Instance:FindFirstAncestorOfClass"Model"if not(uU and uU:FindFirstChildOfClass"Humanoid")then return vU end end return nil end local function hV()if cY.UseJumpPower then return cY.JumpPower^2/(2*workspace.Gravity)end return cY.JumpHeight end local function qX(HU)local mV=eY.Position local LU=Vector3.new(HU.X-mV.X,0,HU.Z-mV.Z)if LU.Magnitude<0.1 then return false,false,0 end local nV=LU.Unit*(3.5*LX)local pV for _,SU in ipairs{0,-2.2*LX}do local _V=jV(mV+Vector3.new(0,SU,0),nV)if _V and(not pV or _V.Distance<pV.Distance)then pV=_V end end if not pV then return false,false,0 end local gV=mV.Y-(cY.HipHeight+eY.Size.Y/2)local lV=gV+hV()*0.85 local oV=jV(Vector3.new(mV.X,lV,mV.Z),nV)return true,oV==nil,pV.Distance end local FX=0 local SX=0 local function gX()local wV=cY:GetState()return wV==Enum.HumanoidStateType.Freefall or wV==Enum.HumanoidStateType.Jumping end local function fY()if not gX()and not CX()then cY:ChangeState(Enum.HumanoidStateType.Jumping)end end local function DW()local GV=0 while KW()and gX()and GV<3 do task.wait(0.05)GV+=0.05 end end local function _Y(yW,GW)for zW=2,#yW do if not KW()then return end local hW=yW[zW]local sW=hW.Action==Enum.PathWaypointAction.Jump cY:MoveTo(hW.Position)local IW=false local rW=cY.MoveToFinished:Connect(function()IW=true end)local cW=0 local JW=false while KW()and not IW and cW<2 do task.wait(0.05)cW+=0.05 if sW and not JW then local jW=eY.Position-hW.Position if Vector3.new(jW.X,0,jW.Z).Magnitude<3*LX then JW=true fY()end end if(xX.Position-GW).Magnitude>6 and not gX()then break end if CX()then break end end rW:Disconnect()if sW and not JW then JW=true fY()end if JW then local CW=yW[zW+1]if CW then cY:MoveTo(CW.Position)end task.wait(0.05)DW()end if not KW()then return end if(xX.Position-GW).Magnitude>6 then return end if CX()or(not IW and not JW)then return end end end while KW()do cY.WalkSpeed=TW.WalkSpeed cY.UseJumpPower=TW.UseJumpPower if TW.UseJumpPower then cY.JumpPower=TW.JumpPower else cY.JumpHeight=TW.JumpHeight end if not(xX.Parent and eY.Parent)then task.wait(0.2)continue end local VX=eY.Position local dY=xX.Position local zX=dY-VX local yX=Vector3.new(zX.X,0,zX.Z).Magnitude if gX()and zX.Magnitude<=80 then task.wait(0.05)continue end local IX,JX,KX=false,false,0 if yX>6 and not CX()then IX,JX,KX=qX(dY)if IX and not JX then FX=os.clock()+2 end end if zX.Magnitude>80 then wX:PivotTo(xX.CFrame*CFrame.new(3,0,3))task.wait(0.2)elseif yX<=6 and math.abs(zX.Y)<6 then cY:MoveTo(VX)task.wait(0.2)elseif CX()then cY:MoveTo(dY)task.wait(0.15)elseif os.clock()>=FX then cY:MoveTo(dY)if IX and JX and KX<3.3*LX then fY()end task.wait(0.1)if eY.AssemblyLinearVelocity.Magnitude<1 then SX+=0.1 if SX>0.5 then fY()SX=0 end else SX=0 end else local XX=pcall(function()aY:ComputeAsync(VX,dY)end)if XX and aY.Status==Enum.PathStatus.Success then _Y(aY:GetWaypoints(),dY)else cY:MoveTo(dY)task.wait(0.4)if eY.AssemblyLinearVelocity.Magnitude<1 then fY()end end end end end)end I_a.CharacterAdded:Connect(lY)I_a.CharacterRemoving:Connect(jY)if I_a.Character then task.spawn(lY,I_a.Character)end local uwa=gBa.LocalPlayer local f_a={}_G.Main.Antifling=false local function UY(JY)local function BY(vY)if _G.Main.Antifling and vY:IsA"BasePart"then vY.CanCollide=false end end for _,yY in ipairs(JY:GetChildren())do BY(yY)end local KY=JY.ChildAdded:Connect(BY)local LY=DBa.Stepped:Connect(function()if _G.Main.Antifling and JY:IsDescendantOf(workspace)then for _,IY in ipairs(JY:GetChildren())do if IY:IsA"BasePart"and IY.CanCollide then IY.CanCollide=false end end end end)JY.Destroying:Connect(function()KY:Disconnect()LY:Disconnect()end)end local function l_a(XY)if XY==uwa then return end local YY=XY.CharacterAdded:Connect(UY)if XY.Character then UY(XY.Character)end f_a[XY]=YY end local function n_a(g_a)if f_a[g_a]then f_a[g_a]:Disconnect()f_a[g_a]=nil end end for _,j_a in ipairs(gBa:GetPlayers())do l_a(j_a)end gBa.PlayerAdded:Connect(l_a)gBa.PlayerRemoving:Connect(n_a)local naa=nil local function fxa()function getRoot(t_a)if t_a and t_a:FindFirstChildOfClass"Humanoid"then return t_a:FindFirstChildOfClass"Humanoid".RootPart else return nil end end if naa then return end naa=task.spawn(function()local faa=0.1 while true do DBa.Heartbeat:Wait()local Y_a=I_a.Character local baa=getRoot(Y_a)while not(Y_a and Y_a.Parent and baa and baa.Parent)do DBa.Heartbeat:Wait()Y_a=I_a.Character baa=getRoot(Y_a)end local caa=baa.Velocity baa.Velocity=caa*10000+Vector3.new(0,-10000,0)DBa.RenderStepped:Wait()if Y_a and Y_a.Parent and baa and baa.Parent then baa.Velocity=caa end DBa.Stepped:Wait()if Y_a and Y_a.Parent and baa and baa.Parent then baa.Velocity=caa+Vector3.new(0,faa,0)faa=faa*-1 end end end)end local function gxa()if naa then task.cancel(naa)for _,maa in ipairs(uwa.Character:GetDescendants())do if maa:IsA"BasePart"then maa.AssemblyLinearVelocity=Vector3.zero maa.AssemblyAngularVelocity=Vector3.zero end end naa=nil end end DBa.Heartbeat:Connect(function()if kwa.enabled and uwa.Character then local uaa=uwa.Character local Laa=uaa:WaitForChild"HumanoidRootPart"if Laa then kwa.old=true for _,Baa in pairs(uwa.Character:GetChildren())do if Baa:IsA"BasePart"and Baa.Name~="HumanoidRootPart"then Baa.LocalTransparencyModifier=0.5 Baa.Reflectance=0 end end kwa.loc=Laa.CFrame if Laa.AssemblyLinearVelocity.Magnitude<0.01 then Laa.AssemblyLinearVelocity=Vector3.new(0,0.01,0)end local Jaa=kwa.loc*CFrame.new(math.random(-1000,1000),math.random(10000,11000),math.random(-1000,1000))Laa.CFrame=Jaa DBa.RenderStepped:Wait()Laa.CFrame=kwa.loc end end if not kwa.enabled and kwa.old then for _,Saa in pairs(uwa.Character:GetChildren())do if Saa:IsA"BasePart"and Saa.Name~="HumanoidRootPart"then Saa.LocalTransparencyModifier=0 end end kwa.old=false end end)local eba=nil eba=hookmetamethod(game,"__index",newcclosure(function(self,gba)if kwa.enabled and not checkcaller()and gba=="CFrame"and uwa.Character and self==uwa.Character.HumanoidRootPart then return kwa.loc end return eba(self,gba)end))Kda:SetLibrary(WBa)Kda:SetFolder"femboy.gg/themes"Kda.BuiltInThemes.Default={1,{FontColor="cdd6f4",MainColor="1e1e2e",AccentColor="ff80e1",BackgroundColor="181825",OutlineColor="313244"}}Kda:ApplyTheme"Default"yha:SetLibrary(WBa)yha:SetFolder"femboy.gg/cfgs"local Hda=WBa:CreateWindow{Title="femboy.gg",Footer="Ver. 0.2.2 Public beta \226\128\162 t.me/femboy_ggs",Icon="paw-print",NotifySide="Right",Animations={ToggleWindow=true,TabSwitch=true,Groupbox=true,Dropdown=true,KeyPicker=true},TabTransitionTime=0.22,TabSwipeOffset=26,TabSwipeFrom="bottom",CornerRadius=15,ToggleKeybind=Enum.KeyCode.LeftAlt,Resizable=false,ShowMobileButtons=false}local Xba=""if isfile"femboy.gg/assets/AstolfoMascot.png"then local uba=getcustomasset or loadcustomasset Xba=uba"femboy.gg/assets/AstolfoMascot.png"end local Fba=(gethui and gethui())or wba local hca=nil for _,Cba in ipairs(Fba:GetDescendants())do if Cba:IsA"TextLabel"and Cba.Text:find"femboy.gg"then local Nba=Cba.Parent while Nba and Nba~=Fba do if(Nba:IsA"Frame"or Nba:IsA"CanvasGroup")and Nba.AbsoluteSize.X>=450 and Nba.AbsoluteSize.X<=950 then hca=Nba end Nba=Nba.Parent end if hca then break end end end if hca and Xba~=""then hca.ClipsDescendants=false local Ada=Instance.new"ImageButton"Ada.Name="CustomEdgeAsset"Ada.BackgroundTransparency=1 Ada.AutoButtonColor=false Ada.Image=Xba Ada.ScaleType=Enum.ScaleType.Stretch local Kca=UDim2.fromOffset(230,380)local Cca=UDim2.fromOffset(250,320)Ada.Size=Kca Ada.Position=UDim2.new(0,10,0,-30)Ada.AnchorPoint=Vector2.new(0.5,0.5)Ada.ZIndex=100 Ada.Parent=hca local vca=game:GetService"SoundService"local wca=Instance.new"Sound"wca.Name="MascotClickSound"wca.SoundId="rbxassetid://5852470908"wca.Volume=1 wca.Parent=vca task.spawn(function()pcall(function()game:GetService"ContentProvider":PreloadAsync{wca}end)end)local Lca=nil Ada.InputBegan:Connect(function(uca)if uca.UserInputType==Enum.UserInputType.MouseButton1 or uca.UserInputType==Enum.UserInputType.Touch then vca:PlayLocalSound(wca)if Lca then Lca:Cancel()end Lca=vda:Create(Ada,TweenInfo.new(0.08,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size=Cca})Lca:Play()end end)local function Sca()if Lca then Lca:Cancel()end Lca=vda:Create(Ada,TweenInfo.new(0.35,Enum.EasingStyle.Elastic,Enum.EasingDirection.Out),{Size=Kca})Lca:Play()end Ada.InputEnded:Connect(function(Pca)if Pca.UserInputType==Enum.UserInputType.MouseButton1 or Pca.UserInputType==Enum.UserInputType.Touch then Sca()end end)Ada.MouseLeave:Connect(Sca)local zda=WBa.Toggled local yda=nil Ada.Visible=zda Ada.ImageTransparency=zda and 0 or 1 local fda fda=DBa.RenderStepped:Connect(function()if not Ada or not Ada.Parent then fda:Disconnect()return end local oda=WBa.Toggled if oda~=zda then zda=oda if yda then yda:Cancel()end if oda then Ada.Visible=true yda=vda:Create(Ada,TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency=0})yda:Play()else yda=vda:Create(Ada,TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{ImageTransparency=1})yda:Play()yda.Completed:Connect(function()if not zda then Ada.Visible=false end end)end end end)end local hAa={Main=Hda:AddTab("Main","house"),Combat=Hda:AddTab("Combat","sword"),Visuals=Hda:AddTab("Visuals","eye"),Misc=Hda:AddTab("Misc","circle-question-mark"),Troll=Hda:AddTab("Troll","face-grinning"),Configs=Hda:AddTab("Configs","settings")}Kda:ApplyToTab(hAa.Configs)Kda:LoadDefault()yha:BuildConfigSection(hAa.Configs)local Bfa=hAa.Main:AddGroupbox{Side="Left",Name="Info",Description="Credits and info.",IconName="heart",DisableCollapsing=true}local zfa=gBa.LocalPlayer local hea=zfa.Name local jea=zfa.DisplayName local Dea=tostring(zfa.UserId)local nea=tostring(zfa.AccountAge).." days"local qea=(identifyexecutor and identifyexecutor())or(getexecutorname and getexecutorname())or"\208\157\208\181\208\184\208\183\208\178\208\181\209\129\209\130\208\189\208\190"local Gea=game.JobId~=""and game.JobId or"Studio / Local"local Tea=os.time()local hfa=os.date"%H:%M:%S"local jfa="00:00:00"local lfa=0 local nfa=0 Bfa:AddLabel("Username: "..hea)Bfa:AddLabel("Display Name: "..jea)Bfa:AddLabel("User ID: "..Dea)Bfa:AddLabel("Account Age: "..nea)Bfa:AddDivider()Bfa:AddLabel("Executor: "..qea)Bfa:AddDivider()local gfa=Bfa:AddLabel("Time: "..hfa)local ifa=Bfa:AddLabel("In game: "..jfa)local kfa=Bfa:AddLabel"Ping: 0 \208\188\209\129"local mfa=Bfa:AddLabel"FPS: 0"Bfa:AddButton{Text="Copy User ID",Func=function()if setclipboard then setclipboard(Dea)WBa:Notify{Title="Copied",Description="CurrentUserId copied.",Time=3}end end}Bfa:AddButton{Text="Copy Job ID",Func=function()if setclipboard then setclipboard(Gea)WBa:Notify{Title="Copied",Description="CurrentUserJobId copied.",Time=3}end end}local Pea=0 local Qea=tick()DBa.RenderStepped:Connect(function()Pea+=1 if tick()-Qea>=1 then nfa=Pea Pea=0 Qea=tick()end end)task.spawn(function()while task.wait(0.5)do hfa=os.date"%H:%M:%S"local _fa=os.time()-Tea local bfa=math.floor(_fa/3600)local cfa=math.floor((_fa%3600)/60)local dfa=_fa%60 jfa=string.format("%02d:%02d:%02d",bfa,cfa,dfa)pcall(function()lfa=math.round(bga.Network.ServerStatsItem["Data Ping"]:GetValue())end)gfa:SetText("Time: "..hfa)ifa:SetText("In game: "..jfa)kfa:SetText("Ping: "..tostring(lfa).." ms")mfa:SetText("FPS: "..tostring(nfa))end end)Bfa:AddButton{Text="Rejoin",Func=function()local yfa=game:GetService"TeleportService"do local sfa=queue_on_teleport or(syn and syn.queue_on_teleport)or(fluxus and fluxus.queue_on_teleport)if sfa then sfa"loadstring(game:HttpGet(\"https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Main\"))()"else WBa:Notify{Title="Error",Description="Your executor does not support Auto-Execute.",Time=4}end end WBa:Notify{Title="Rejoin",Description="Rejoining...",Time=3}if#gBa:GetPlayers()<=1 then yfa:Teleport(game.PlaceId,zfa)else yfa:TeleportToPlaceInstance(game.PlaceId,game.JobId,zfa)end end}Bfa:AddDivider()Bfa:AddLabel("<font color=\"#ff00ff\">femboy.gg</font> is a <b>free</b>, <b>open-source</b> script created by <font color=\"#ff00ff\">undefinedfemboy</font>, inspired by <b>headshotees</b>. Credits: <b>lucide.dev</b> for the icons, <b>randomstring0</b> for PShade, and <b>mspaint</b> for the Obsidian Library.",true)local Kfa=hAa.Main:AddGroupbox{Side="Right",Name="Links",Description="Links, telegram channel.",IconName="link",DisableCollapsing=true}Kfa:AddButton{Text="femboy.gg Telegram",Icon="send",Func=function()setclipboard"https://t.me/femboy_ggs"WBa:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4}end}Kfa:AddButton{Text="headshotees Telegram",Icon="send",Func=function()setclipboard"https://t.me/headshotees"WBa:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4}end}Kfa:AddButton{Text="mspaint.cc",Icon="palette",Func=function()setclipboard"https://www.mspaint.cc/"WBa:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4}end}Kfa:AddButton{Text="Lucide Icons",Icon="house",Func=function()setclipboard"https://lucide.dev/icons"WBa:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4}end}local Rfa=hAa.Main:AddGroupbox{Side="Right",Name="Anti",Description="Anti-fling, anti-void, etc.",IconName="shield",DisableCollapsing=true}Rfa:AddToggle("AntiFlingToggle",{Text="Anti-Fling",Default=false,Callback=function(Qfa)_G.Main.Antifling=Qfa end})_G.Main.Antivoid=false workspace:GetPropertyChangedSignal"FallenPartsDestroyHeight":Connect(function()if _G.Main.Antivoid then workspace.FallenPartsDestroyHeight=-50000 end end)Rfa:AddToggle("AntiVoidToggle",{Text="Anti-Void",Default=false,Callback=function(Tfa)_G.Main.Antivoid=Tfa end})local function iga()local Yfa=bga.FrameRateManager.RenderAverage:GetValue()if Yfa>0 then return math.floor(1000/Yfa)end return 0 end local function jga()local cga=bga.Network.ServerStatsItem["Data Ping"]:GetValue()return math.floor(cga)end local hga=WBa:AddDraggableLabel("femboy.gg | "..iga().."FPS | "..jga().."ms","paw-print","Left")task.spawn(function()while task.wait(1)do hga:SetText("femboy.gg | "..iga().."FPS | "..jga().."ms")end end)WBa:Notify("Welcome, "..game.Players.LocalPlayer.Name,4)local vga=hAa.Combat:AddGroupbox{Side="Left",Name="Sheriff",Description="Silent aim and etc.",IconName="bow-arrow"}local rga=vga:AddButton{Text="Shot Murderer",Icon="bow-arrow",Func=function()TBa()end}local qga=rga:AddKeyPicker("Shot Keybind",{Text="Shot Keybind",Default="C",Mode="Press"})vga:AddToggle("Wallbang",{Text="Wallbang",Default=false,Callback=function(uga)_G.Combat.WallbangSheriff(uga)end})vga:AddToggle("Auto Grab Gun",{Text="Auto Grab Gun",Default=false,Callback=function(xga)_G.Combat.AutoGrabGun(xga)end})local Aga=hAa.Combat:AddGroupbox{Side="Right",Name="Murderer",Description="Kill aura and etc.",IconName="sword"}Aga:AddButton{Text="Kill All",Icon="swords",Func=function()if not uwa.Backpack:FindFirstChild"Knife"and not uwa.Character:FindFirstChild"Knife"then return end if uwa.Backpack:FindFirstChild"Knife"then uwa.Character:FindFirstChild"Humanoid":EquipTool(uwa.Backpack:FindFirstChild"Knife")end uwa.Character.Knife.Events.KnifeStabbed:FireServer()for _,Kga in gBa:GetChildren()do if Kga.Character then uwa.Character.Knife.Events.HandleTouched:FireServer(Kga.Character.PrimaryPart)end end end}local vha=hAa.Visuals:AddGroupbox{Side="Left",Name="ESP",Description="Names, chams and etc.",IconName="scan-eye"}local Sga=hAa.Visuals:AddTabbox{Side="Right",Name="Extra"}local Jra=Sga:AddTab("Main","home")local Vva=Sga:AddTab("Shaders","lens",450)local cha=Jra:AddToggle("Tracers Enabled",{Text="Tracers Enabled",Default=false,Callback=function(Wga)_G.Visuals.TRCENABLED(Wga)end})local Xga=cha:AddColorPicker("TracerColorPicker",{Default=Color3.fromHex"ff80e1",Title="Tracer Color",Resizable=false,Callback=function(aha)_G.Visuals.TRCCOLOR=ColorSequence.new(aha)end})local mha=cha:AddSettings{Width=220}if WBa.IsMobile then WBa:AddDraggableButton("GG",function(self)WBa:Toggle()end,false)end local hha=mha:AddSlider("Tracer Lifetime",{Text="Tracer Lifetime",Default=2,Min=0.1,Max=10,Rounding=1,Suffix=" Seconds",Callback=function(kha)_G.Visuals.TRClifeTime=kha end})local lha=mha:AddToggle("Tracer Local Only",{Text="Tracer Local Only",Default=false,Callback=function(oha)_G.Visuals.TRCLOCALONLY(oha)end})local pha=Jra:AddToggle("Boykisser Enabled",{Text="Boykisser Enabled",Default=false,Callback=function(tha)sha(tha)end})local uha=vha:AddToggle("Esp Enabled",{Text="ESP Enabled",Default=false,Callback=function(xha)_G.ESP.EnabledPlayers(xha)end})task.delay(0.1,function()yha:LoadAutoloadConfig()end)local Oha=hAa.Misc:AddGroupbox{Side="Left",Name="Movement",IconName="footprints"}local Iha=Oha:AddToggle("Speed Glitch Toggle",{Text="Enable Speed Glitch",Default=false,Callback=function(Fha)_G.Movement.SpeedGlitchEnabled(Fha)if not Fha then Gha()end end})local Kha=Iha:AddSettings{Width=220}local Jha=Kha:AddSlider("SpeedGlitchSpeedSlider",{Text="Speed",Default=5,Min=1,Max=15,Rounding=0,Callback=function(Mha)_G.Movement.SpeedGlitchSpeed=Mha end})local jwa=Oha:AddToggle("Invisibility Toggle",{Text="Invisibility",Default=false,Callback=function(Rha)kwa.enabled=Rha end})local Sha=jwa:AddKeyPicker("InvisKeybind",{Default="G",Text="Invisibility",Mode="Toggle",Modes={"Toggle","Hold"},SyncToggleState=true,Callback=function(Uha)end})local jya=hAa.Troll:AddTabbox{Side="Left",Name="Trolls"}local yia=game local usa=yia:GetService"Workspace"local Wna=usa.CurrentCamera local hta=yia:GetService"Lighting"local Jsa=usa:FindFirstChildOfClass"Terrain"local lna=yia:GetService"RunService"local lia=yia:GetService"Players"local Pna=lia.LocalPlayer local Rla=Pna:WaitForChild"PlayerGui"local via=getfenv()local fsa=via.sethiddenproperty or via.sethiddenprop or via.set_hidden_property or function()end local Bia=via.gethiddenproperty or via.gethiddenprop or function()return"ShadowMap"end local Ila=function(zia)return loadstring(yia:HttpGet(zia))()end local Pqa=Bia(hta,"Technology")or"ShadowMap"local Cra={}local zja={}local function Yja(xja,uja)local ija=uja:FindFirstChildOfClass(xja)if ija then local gja={}if xja~="Sky"and xja~="Atmosphere"and xja~="Clouds"then gja.Enabled=ija.Enabled if xja=="BlurEffect"then gja.Size=ija.Size elseif xja=="DepthOfFieldEffect"then gja.FarIntensity=ija.FarIntensity gja.NearIntensity=ija.NearIntensity gja.FocusDistance=ija.FocusDistance gja.InFocusRadius=ija.InFocusRadius end end table.insert(Cra,{instance=ija,props=gja})local rja=ija:Clone()rja.Parent=uja if xja~="Sky"and xja~="Atmosphere"and xja~="Clouds"then rja.Enabled=false end table.insert(zja,rja)return rja else local Bja=Instance.new(xja,uja)if xja~="Sky"and xja~="Atmosphere"and xja~="Clouds"then Bja.Enabled=false end table.insert(zja,Bja)return Bja end end local xua=Yja("BloomEffect",hta)local Yqa=Yja("Sky",hta)local ura=Yja("Atmosphere",hta)local rva=Yja("BlurEffect",hta)local _ua=Yja("DepthOfFieldEffect",hta)local Pua=Yja("ColorCorrectionEffect",hta)local Mva=Yja("SunRaysEffect",hta)local Ara=Yja("Clouds",Jsa)local gra={lighting={ClockTime=hta.ClockTime,Ambient=hta.Ambient,Brightness=hta.Brightness,ColorShift_Bottom=hta.ColorShift_Bottom,ColorShift_Top=hta.ColorShift_Top,EnvironmentDiffuseScale=hta.EnvironmentDiffuseScale,EnvironmentSpecularScale=hta.EnvironmentSpecularScale,GlobalShadows=hta.GlobalShadows,OutdoorAmbient=hta.OutdoorAmbient,GeographicLatitude=hta.GeographicLatitude,ExposureCompensation=hta.ExposureCompensation,FogEnd=hta.FogEnd,FogColor=hta.FogColor,FogStart=hta.FogStart},terrain={WaterReflectance=Jsa.WaterReflectance,WaterTransparency=Jsa.WaterTransparency,WaterWaveSize=Jsa.WaterWaveSize,WaterWaveSpeed=Jsa.WaterWaveSpeed}}local Sra={yfbghj=hta.Ambient,tgvbyd=hta.ClockTime,ghuybhuyhj=hta.GeographicLatitude,khnbfth=hta.Brightness,hgyghkg=hta.ColorShift_Bottom,yfbhjku=hta.ColorShift_Top,ygyyfgvhbjytrt=hta.EnvironmentDiffuseScale,sdfcddc=hta.EnvironmentSpecularScale,hgnujuu7thgr=hta.GlobalShadows,hyhnngtf=hta.OutdoorAmbient,hdfr7thgr=hta.ExposureCompensation,fhnchvhfjsd=Pua.Brightness,ugtbbjhygt=Pua.Contrast,tfbghuugbnjhg=Pua.Saturation,fvrtccvghghj=Pua.TintColor,jnfdhbnfcvh=xua.Intensity,fvtyghj=xua.Size,ygbhnj=xua.Threshold,njnfg=rva.Size,jdfkd=_ua.FarIntensity,fvgsdfg=_ua.FocusDistance,sdkvkflv=_ua.InFocusRadius,hbjhd=_ua.NearIntensity,gyhgtg=Ara.Cover,ygbhggv=Ara.Density,jghbjhgyfd=Ara.Color,shdbsnjfc=ura.Density,skdjfkdm=ura.Offset,sjdjncdjf=ura.Color,efjdjfk=ura.Decay,sejfd=ura.Glare,jddfjsd=ura.Haze,sr_int=Mva.Intensity,sr_spr=Mva.Spread}local Tva=table.clone(Sra)local tsa=false local Lsa={reflect=0,waterSpeed=Jsa.WaterWaveSpeed,waterSize=Jsa.WaterWaveSize,waterTrans=Jsa.WaterTransparency}local Xva={dof=false,cor=true,bl=true,blr=false,rays=false,sflare=false,mblur=false,tech="ShadowMap",customAtmosColor=false,atmosColor=Color3.fromRGB(199,210,255),customTintColor=false,tintColor=Color3.fromRGB(255,255,255),mblurMax=26}local bra={bk=Yqa.SkyboxBk,dn=Yqa.SkyboxDn,ft=Yqa.SkyboxFt,lt=Yqa.SkyboxLf,rt=Yqa.SkyboxRt,up=Yqa.SkyboxUp}local msa={bk="rbxassetid://9544505500",dn="rbxassetid://9544547905",ft="rbxassetid://9544504852",lt="rbxassetid://9544547694",rt="rbxassetid://9544547542",up="rbxassetid://9544547398"}local Wra={}local nsa={default=msa,game=bra}task.spawn(function()local xla={"morning","midday","afternoon","night","midnight","morning1","midday1","afternoon1","evening1","night1","midnight1","black","green","red","yellow","pink","gray","white","purple","black1","green1","red1","yellow1","pink1","gray1","white1","purple1","rain","snow","fog","sunny","cloudy","storm","autumn","spring","summer","winter"}for _,Bla in ipairs(xla)do pcall(function()Wra[Bla]=Ila("https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/".."shr/"..Bla..".json")end)end pcall(function()Wra.evening=Ila"https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/shr/evening%2Cjson"end)local Fla={morning="m",midday="n",afternoon="a",evening="e",rain="r",cloudy="c"}for Hla,Jla in pairs(Fla)do pcall(function()nsa[Hla]=Ila("https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/sky/"..Jla..".json")end)end end)local loa,ima,doa={1.7,0.3,-0.3,-0.9},{0.7,0.2,1.2,0.45},{0.8,0.7,0.9,0.6}local aoa,awa,Boa,foa={},Instance.new("ScreenGui",Rla),Instance.new"ImageLabel",1 awa.Name="PShadeFlare"awa.Enabled=false awa.ResetOnSpawn=false Boa.Parent=awa Boa.SizeConstraint="RelativeYY"Boa.BackgroundTransparency=1 Boa.Image="rbxassetid://277033149"Boa.ImageColor3=Color3.new(1,1,0.95)Boa.Size=UDim2.new(3,0,3,0)for oma=1,#loa do local uma=Instance.new("ImageLabel",awa)uma.Size=UDim2.new(ima[oma]*0.2,0,ima[oma]*0.2,0)uma.SizeConstraint="RelativeYY"uma.BackgroundTransparency=1 uma.ImageTransparency=doa[oma]uma.Rotation=-25 uma.Image="rbxassetid://15164863822"uma.ImageColor3=Color3.new(1,1,0.8)aoa[#aoa+1]=uma end local Cva=Instance.new("BlurEffect",Wna)Cva.Size=0 Cva.Enabled=false local vna=Wna.CFrame.LookVector local function Mqa()Cva.Size=0 Cva.Enabled=false awa.Enabled=false _ua.Enabled=false _ua.FarIntensity=0 _ua.NearIntensity=0 rva.Enabled=false rva.Size=0 xua.Enabled=false Pua.Enabled=false Mva.Enabled=false end local Lqa local function Lra(Rma)tsa=Rma for _,Uma in pairs(usa:GetDescendants())do if Uma:IsA"BasePart"then Uma.Reflectance=tsa and Lsa.reflect or 0 end end if tsa then for _,ena in ipairs(Cra)do if ena.instance and ena.instance.Parent then if not ena.instance:IsA"Atmosphere"and not ena.instance:IsA"Sky"and not ena.instance:IsA"Clouds"then ena.instance.Enabled=false end end end fsa(hta,"Technology",Xva.tech)if Lqa then Lqa:Disconnect()end Lqa=lna.PreRender:Connect(function()if not tsa then return end if Xva.mblur then Cva.Enabled=true local tna=(Wna.CFrame.LookVector-vna).Magnitude Cva.Size=math.clamp(math.abs(tna)*11*5/2,0,Xva.mblurMax)vna=Wna.CFrame.LookVector else Cva.Size=0 Cva.Enabled=false end awa.Enabled=Xva.sflare if Xva.sflare then local Kna=Wna:WorldToScreenPoint(Wna.CFrame.Position+hta:GetSunDirection())local zoa,Coa=Vector2.new(Kna.X,Kna.Y),Kna.Z>0 local Rna=usa:FindPartOnRay(Ray.new(Wna.CFrame.Position,hta:GetSunDirection()*900),Pna.Character)local Una=(Rna==nil)and 1 or 0 foa=foa*0.5+Una*0.5 local joa=Wna.ViewportSize/2 local koa=zoa-joa for moa,soa in ipairs(aoa)do soa.ImageTransparency=1-foa+doa[moa]*foa local roa,qoa=soa.AbsoluteSize,joa+koa*loa[moa]soa.Position=UDim2.new(0.004,qoa.X-roa.X/2,0.004,qoa.Y-roa.Y/2)soa.Visible=Coa end local Aoa=Boa.AbsoluteSize Boa.Position=UDim2.new(0.004,zoa.X-Aoa.X/2,0.004,zoa.Y-Aoa.Y/2)Boa.Visible=Coa end if Tva then Yqa.SkyboxBk,Yqa.SkyboxDn,Yqa.SkyboxFt=msa.bk,msa.dn,msa.ft Yqa.SkyboxLf,Yqa.SkyboxRt,Yqa.SkyboxUp=msa.lt,msa.rt,msa.up Pua.Enabled=Xva.cor if Xva.cor then Pua.Brightness=Tva.fhnchvhfjsd Pua.Contrast=Tva.ugtbbjhygt Pua.Saturation=Tva.tfbghuugbnjhg Pua.TintColor=Xva.customTintColor and Xva.tintColor or Tva.fvrtccvghghj end rva.Enabled=Xva.blr rva.Size=Xva.blr and Tva.njnfg or 0 xua.Enabled=Xva.bl if Xva.bl then xua.Intensity=Tva.jnfdhbnfcvh xua.Size=Tva.fvtyghj xua.Threshold=Tva.ygbhnj end _ua.Enabled=Xva.dof if Xva.dof then _ua.FarIntensity=Tva.jdfkd _ua.FocusDistance=Tva.fvgsdfg _ua.InFocusRadius=Tva.sdkvkflv _ua.NearIntensity=Tva.hbjhd else _ua.FarIntensity=0 _ua.NearIntensity=0 end Mva.Enabled=Xva.rays if Xva.rays then Mva.Intensity=Tva.sr_int or 0.15 Mva.Spread=Tva.sr_spr or 0.5 end hta.Ambient=Tva.yfbghj hta.ClockTime=Tva.tgvbyd hta.GeographicLatitude=Tva.ghuybhuyhj hta.Brightness=Tva.khnbfth hta.ColorShift_Bottom=Tva.hgyghkg hta.ColorShift_Top=Tva.yfbhjku hta.EnvironmentDiffuseScale=Tva.ygyyfgvhbjytrt hta.EnvironmentSpecularScale=Tva.sdfcddc hta.GlobalShadows=Tva.hgnujuu7thgr hta.OutdoorAmbient=Tva.hyhnngtf hta.ExposureCompensation=Tva.hdfr7thgr hta.FogEnd=math.huge hta.FogStart=math.huge Jsa.WaterWaveSpeed=Lsa.waterSpeed Jsa.WaterWaveSize=Lsa.waterSize Jsa.WaterTransparency=Lsa.waterTrans Ara.Cover=Tva.gyhgtg Ara.Density=Tva.ygbhggv Ara.Color=Tva.jghbjhgyfd ura.Density=Tva.shdbsnjfc ura.Offset=Tva.skdjfkdm ura.Color=Xva.customAtmosColor and Xva.atmosColor or Tva.sjdjncdjf ura.Decay=Tva.efjdjfk ura.Glare=Tva.sejfd ura.Haze=Tva.jddfjsd end end)else if Lqa then Lqa:Disconnect()Lqa=nil end Mqa()fsa(hta,"Technology",Pqa)Yqa.SkyboxBk,Yqa.SkyboxDn,Yqa.SkyboxFt=bra.bk,bra.dn,bra.ft Yqa.SkyboxLf,Yqa.SkyboxRt,Yqa.SkyboxUp=bra.lt,bra.rt,bra.up for era,fra in pairs(gra.lighting)do hta[era]=fra end for ira,jra in pairs(gra.terrain)do Jsa[ira]=jra end ura.Density=Sra.shdbsnjfc ura.Offset=Sra.skdjfkdm ura.Color=Sra.sjdjncdjf ura.Decay=Sra.efjdjfk ura.Glare=Sra.sejfd ura.Haze=Sra.jddfjsd Ara.Cover=Sra.gyhgtg Ara.Density=Sra.ygbhggv Ara.Color=Sra.jghbjhgyfd for _,Gra in ipairs(Cra)do if Gra.instance and Gra.instance.Parent then for Hra,Ira in pairs(Gra.props)do Gra.instance[Hra]=Ira end end end end end Jra:AddToggle("ShadersEnabled",{Text="Shaders Enabled",Default=false,Tooltip="Toggle PShade Ultimate shaders on or off",Callback=function(Mra)Lra(Mra)end})Vva:AddLabel"Presets & World"Vva:AddDropdown("ShaderPreset",{Values={"default","morning","midday","afternoon","evening","night","midnight","morning1","midday1","afternoon1","evening1","night1","midnight1","rain","snow","fog","sunny","cloudy","storm","autumn","spring","summer","winter","black","green","red","yellow","pink","gray","white","purple","black1","green1","red1","yellow1","pink1","gray1","white1","purple1"},Default=1,Text="Shader Preset",Callback=function(Xra)if Xra=="default"then Tva=table.clone(Sra)elseif Wra[Xra]then Tva=table.clone(Wra[Xra])else if WBa and WBa.Notify then end end end})Vva:AddDropdown("ShaderTech",{Values={"ShadowMap","Future","Compatibility","Voxel","Legacy"},Default=1,Text="Lighting Technology",Callback=function(hsa)Xva.tech=hsa if tsa then fsa(hta,"Technology",hsa)end end})Vva:AddDropdown("SkyboxPreset",{Values={"default","game","morning","midday","afternoon","evening","rain","cloudy"},Default=1,Text="Skybox",Callback=function(osa)if nsa[osa]then msa=nsa[osa]end end})Vva:AddSlider("Reflectance",{Text="Reflectance",Default=0,Min=0,Max=1,Rounding=2,Callback=function(xsa)Lsa.reflect=xsa if tsa then for _,wsa in pairs(usa:GetDescendants())do if wsa:IsA"BasePart"then wsa.Reflectance=xsa end end end end})Vva:AddSlider("WaterWaveSpeed",{Text="Water Wave Speed",Default=math.floor(Jsa.WaterWaveSpeed),Min=0,Max=100,Rounding=0,Callback=function(Csa)Lsa.waterSpeed=Csa end})Vva:AddSlider("WaterWaveSize",{Text="Water Wave Size",Default=math.floor(Jsa.WaterWaveSize),Min=0,Max=40,Rounding=0,Callback=function(Hsa)Lsa.waterSize=Hsa end})Vva:AddSlider("WaterTransparency",{Text="Water Transparency",Default=Jsa.WaterTransparency,Min=0,Max=1,Rounding=2,Callback=function(Msa)Lsa.waterTrans=Msa end})Vva:AddDivider()Vva:AddLabel"Lighting, Atmosphere & Clouds"Vva:AddSlider("ClockTime",{Text="Clock Time",Default=14,Min=0,Max=24,Rounding=1,Callback=function(Ssa)Tva.tgvbyd=Ssa end})Vva:AddSlider("GeoLatitude",{Text="Geographic Latitude",Default=math.floor(hta.GeographicLatitude),Min=0,Max=180,Rounding=0,Callback=function(Xsa)Tva.ghuybhuyhj=Xsa end})Vva:AddSlider("LightingBrightness",{Text="Brightness",Default=2,Min=0,Max=10,Rounding=2,Callback=function(bta)Tva.khnbfth=bta end})Vva:AddSlider("ExposureComp",{Text="Exposure Compensation",Default=0,Min=-3,Max=3,Rounding=2,Callback=function(fta)Tva.hdfr7thgr=fta end})Vva:AddToggle("GlobalShadowsToggle",{Text="Global Shadows",Default=hta.GlobalShadows,Callback=function(kta)Tva.hgnujuu7thgr=kta end})Vva:AddToggle("CustomAtmosToggle",{Text="Custom Atmosphere Color",Default=false,Callback=function(ota)Xva.customAtmosColor=ota end}):AddColorPicker("AtmosphereColorPicker",{Default=Color3.fromRGB(199,210,255),Title="Atmosphere Color",Callback=function(rta)Xva.atmosColor=rta end})Vva:AddSlider("AtmosphereDensity",{Text="Atmosphere Density",Default=0.3,Min=0,Max=1,Rounding=2,Callback=function(vta)Tva.shdbsnjfc=vta end})Vva:AddSlider("AtmosphereOffset",{Text="Atmosphere Offset",Default=0.25,Min=0,Max=1,Rounding=2,Callback=function(zta)Tva.skdjfkdm=zta end})Vva:AddSlider("AtmosphereGlare",{Text="Atmosphere Glare",Default=0,Min=0,Max=10,Rounding=2,Callback=function(Dta)Tva.sejfd=Dta end})Vva:AddSlider("AtmosphereHaze",{Text="Atmosphere Haze",Default=0,Min=0,Max=10,Rounding=2,Callback=function(Hta)Tva.jddfjsd=Hta end})Vva:AddSlider("CloudsCover",{Text="Clouds Cover",Default=0,Min=0,Max=1,Rounding=2,Callback=function(Lta)Tva.gyhgtg=Lta end})Vva:AddSlider("CloudsDensity",{Text="Clouds Density",Default=0,Min=0,Max=1,Rounding=2,Callback=function(Pta)Tva.ygbhggv=Pta end})Vva:AddDivider()Vva:AddLabel"Depth of Field (DOF)"Vva:AddToggle("DOFToggle",{Text="Enable Depth of Field",Default=false,Callback=function(Wta)Xva.dof=Wta if not Wta then _ua.Enabled=false _ua.FarIntensity=0 _ua.NearIntensity=0 end end})Vva:AddSlider("DOFFarIntensity",{Text="DOF Far Intensity",Default=0.1,Min=0,Max=1,Rounding=2,Callback=function(dua)Tva.jdfkd=dua end})Vva:AddSlider("DOFNearIntensity",{Text="DOF Near Intensity",Default=0,Min=0,Max=1,Rounding=2,Callback=function(hua)Tva.hbjhd=hua end})Vva:AddSlider("DOFFocusDistance",{Text="DOF Focus Distance",Default=10,Min=0,Max=200,Rounding=1,Callback=function(lua)Tva.fvgsdfg=lua end})Vva:AddSlider("DOFInFocusRadius",{Text="DOF In-Focus Radius",Default=30,Min=0,Max=50,Rounding=1,Callback=function(pua)Tva.sdkvkflv=pua end})Vva:AddDivider()Vva:AddLabel"Bloom & Color Correction"Vva:AddToggle("BloomToggle",{Text="Enable Bloom",Default=true,Callback=function(wua)Xva.bl=wua if not wua then xua.Enabled=false end end})Vva:AddSlider("BloomIntensity",{Text="Bloom Intensity",Default=0.4,Min=0,Max=2,Rounding=2,Callback=function(Bua)Tva.jnfdhbnfcvh=Bua end})Vva:AddSlider("BloomSize",{Text="Bloom Size",Default=24,Min=0,Max=56,Rounding=0,Callback=function(Fua)Tva.fvtyghj=Fua end})Vva:AddSlider("BloomThreshold",{Text="Bloom Threshold",Default=0.8,Min=0,Max=4,Rounding=2,Callback=function(Jua)Tva.ygbhnj=Jua end})Vva:AddToggle("ColorCorToggle",{Text="Enable Color Correction",Default=true,Callback=function(Oua)Xva.cor=Oua if not Oua then Pua.Enabled=false end end})Vva:AddToggle("CustomTintToggle",{Text="Custom Tint Color",Default=false,Callback=function(Tua)Xva.customTintColor=Tua end}):AddColorPicker("TintColorPicker",{Default=Color3.fromRGB(255,255,255),Title="Tint Color",Callback=function(Wua)Xva.tintColor=Wua end})Vva:AddSlider("ColorBrightness",{Text="Color Brightness",Default=0,Min=-1,Max=1,Rounding=2,Callback=function(ava)Tva.fhnchvhfjsd=ava end})Vva:AddSlider("ColorContrast",{Text="Color Contrast",Default=0,Min=-1,Max=1,Rounding=2,Callback=function(eva)Tva.ugtbbjhygt=eva end})Vva:AddSlider("ColorSaturation",{Text="Color Saturation",Default=0,Min=-1,Max=1,Rounding=2,Callback=function(iva)Tva.tfbghuugbnjhg=iva end})Vva:AddDivider()Vva:AddLabel"Blur & Sun Effects"Vva:AddToggle("StaticBlurToggle",{Text="Enable Static Blur",Default=false,Callback=function(pva)Xva.blr=pva if not pva then rva.Enabled=false rva.Size=0 end end})Vva:AddSlider("StaticBlurSize",{Text="Static Blur Size",Default=0,Min=0,Max=56,Rounding=0,Callback=function(vva)Tva.njnfg=vva end})Vva:AddToggle("MotionBlurToggle",{Text="Enable Motion Blur",Default=false,Callback=function(Ava)Xva.mblur=Ava if not Ava then Cva.Size=0 Cva.Enabled=false end end})Vva:AddSlider("MotionBlurMax",{Text="Motion Blur Max Size",Default=26,Min=0,Max=100,Rounding=0,Callback=function(Gva)Xva.mblurMax=Gva end})Vva:AddToggle("SunRaysToggle",{Text="Enable Sun Rays",Default=false,Callback=function(Lva)Xva.rays=Lva if not Lva then Mva.Enabled=false end end})Vva:AddSlider("SunRaysIntensity",{Text="Sun Rays Intensity",Default=0.15,Min=0,Max=1,Rounding=2,Callback=function(Qva)Tva.sr_int=Qva end})Vva:AddSlider("SunRaysSpread",{Text="Sun Rays Spread",Default=0.5,Min=0,Max=1,Rounding=2,Callback=function(Uva)Tva.sr_spr=Uva end})Vva:AddToggle("SunFlareToggle",{Text="Enable Sun Flare",Default=false,Callback=function(_wa)Xva.sflare=_wa if not _wa then awa.Enabled=false end end})local Pwa=hAa.Main:AddGroupbox{Side="Right",Name="Mobile",IconName="smartphone"}local Uwa={Shoot={"Shoot",function(self)TBa()end},Invisibility={"Invis",function(self)kwa.enabled=not kwa.enabled jwa:SetValue(kwa.enabled)end},KillAll={"Kill All",function(self)if not uwa.Backpack:FindFirstChild"Knife"and not uwa.Character:FindFirstChild"Knife"then return end if uwa.Backpack:FindFirstChild"Knife"then uwa.Character:FindFirstChild"Humanoid":EquipTool(uwa.Backpack:FindFirstChild"Knife")end uwa.Character.Knife.Events.KnifeStabbed:FireServer()for _,vwa in gBa:GetChildren()do if vwa.Character then uwa.Character.Knife.Events.HandleTouched:FireServer(vwa.Character.PrimaryPart)end end end}}local Xwa={Shoot=nil,Invisibility=nil,KillAll=nil}Pwa:AddToggle("ShootMobileButton",{Text="Shoot Button",Default=false,Callback=function(zwa)if zwa then Xwa.Shoot=WBa:AddDraggableButton(table.unpack(Uwa.Shoot))else if Xwa.Shoot then Xwa.Shoot:Destroy()Xwa.Shoot=nil end end end})Pwa:AddToggle("InvisMobileButton",{Text="Invisibility Button",Default=false,Callback=function(Iwa)if Iwa then Xwa.Invisibility=WBa:AddDraggableButton(table.unpack(Uwa.Invisibility))else if Xwa.Invisibility then Xwa.Invisibility:Destroy()Xwa.Invisibility=nil end end end})Pwa:AddToggle("KillAllMobileButton",{Text="Kill All Button",Default=false,Callback=function(Rwa)if Rwa then Xwa.KillAll=WBa:AddDraggableButton(table.unpack(Uwa.KillAll))else if Xwa.KillAll then Xwa.KillAll:Destroy()Xwa.KillAll=nil end end end})local Eya=jya:AddTab("Target","crosshair")local cxa=jya:AddTab("Misc","circle-question-mark")cxa:AddToggle("WalkFlingToggle",{Text="Walk-Fling",Default=false,Callback=function(exa)if exa then fxa()else gxa()end end})local UBa=nil local Sza={}local sza=false local function Gya(Bxa)local Dxa=NAa(Bxa)local Axa=QAa(Dxa)local Cxa="#FFFFFF"if typeof(Axa)=="Color3"then Cxa="#"..Axa:ToHex()elseif type(Axa)=="string"then Cxa=Axa:sub(1,1)=="#"and Axa or("#"..Axa)end return string.format("%s [<font color=\"%s\">%s</font>]",Bxa.DisplayName,Cxa,tostring(Dxa))end local function iza(Mxa)if Mxa.TextLabel then Mxa.TextLabel.RichText=true elseif Mxa.Label then Mxa.Label.RichText=true elseif Mxa.Holder then local Oxa=Mxa.Holder:FindFirstChildWhichIsA("TextLabel",true)if Oxa then Oxa.RichText=true end end end function UpdatePlayerCheckboxes()for Yxa,dya in pairs(Sza)do if Yxa and Yxa.Parent==gBa and dya then iza(dya)local eya=Gya(Yxa)if dya.SetText then dya:SetText(eya)elseif dya.TextLabel then dya.TextLabel.Text=eya end end end end local function Wza()task.wait()if Eya.Resize then Eya:Resize()end if jya.Resize then jya:Resize()end end local function bAa()for qya,sya in pairs(Sza)do if qya and qya.Parent==gBa then UBa=qya sza=true sya:SetValue(true)sza=false return end end UBa=nil end local function dAa(pza)if pza==yya or Sza[pza]then return end local Fya="TrollTarget_"..pza.Name local rza=Eya:AddCheckbox(Fya,{Text=Gya(pza),Default=false,Callback=function(Kya)if sza then return end if Kya then UBa=pza sza=true for Pya,Sya in pairs(Sza)do if Pya~=pza and Sya.Value then Sya:SetValue(false)end end sza=false else if UBa==pza and pza.Parent==gBa then task.spawn(function()task.wait()local gza=Sza[pza]if UBa==pza and gza and not gza.Value then sza=true gza:SetValue(true)sza=false end end)end end end})iza(rza)Sza[pza]=rza if not UBa then UBa=pza sza=true rza:SetValue(true)sza=false end Wza()end local function fAa(Tza)local Jza=Sza[Tza]if not Jza then return end local Uza=(UBa==Tza)if Uza then UBa=nil end if Jza.Holder then Jza.Holder:Destroy()elseif Jza.Container then Jza.Container:Destroy()else Jza:SetVisible(false)end local Rza="TrollTarget_"..Tza.Name if WBa.Toggles then WBa.Toggles[Rza]=nil end if WBa.Options then WBa.Options[Rza]=nil end Sza[Tza]=nil if Uza then bAa()end Wza()end for _,_Aa in ipairs(gBa:GetPlayers())do dAa(_Aa)end if not UBa then bAa()end gBa.PlayerAdded:Connect(dAa)gBa.PlayerRemoving:Connect(fAa)local PBa=hAa.Troll:AddGroupbox{Side="Right",Name="Target",DisableCollapsing=true}local zBa=PBa:AddImage("TargetAvatar",{Image="rbxassetid://0",Height=100})local sBa=PBa:AddLabel"Display Name: None"local tBa=PBa:AddLabel"Username: None"local uBa=PBa:AddLabel"User ID: None"local vBa=PBa:AddLabel"Role: None"if vBa.TextLabel then vBa.TextLabel.RichText=true elseif vBa.Label then vBa.Label.RichText=true elseif vBa.Holder then local AAa=vBa.Holder:FindFirstChildWhichIsA("TextLabel",true)if AAa then AAa.RichText=true end end local function IBa(lBa)if lBa and lBa.Parent==gBa then sBa:SetText("Display Name: "..lBa.DisplayName)tBa:SetText("Username: @"..lBa.Name)uBa:SetText("User ID: "..tostring(lBa.UserId))local dBa=NAa(lBa)local aBa=QAa(dBa)local cBa="#FFFFFF"if typeof(aBa)=="Color3"then cBa="#"..aBa:ToHex()elseif type(aBa)=="string"then cBa=aBa:sub(1,1)=="#"and aBa or("#"..aBa)end vBa:SetText(string.format("Role: <font color=\"%s\">%s</font>",cBa,tostring(dBa)))task.spawn(function()local iBa,rBa=pcall(function()return gBa:GetUserThumbnailAsync(lBa.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size150x150)end)if iBa and rBa and UBa==lBa then if zBa.SetImage then zBa:SetImage(rBa)elseif zBa.ImageLabel then zBa.ImageLabel.Image=rBa end end end)else sBa:SetText"Display Name: -"tBa:SetText"Username: -"uBa:SetText"User ID: -"vBa:SetText"Role: -"if zBa.SetImage then zBa:SetImage"rbxassetid://0"elseif zBa.ImageLabel then zBa.ImageLabel.Image="rbxassetid://0"end end end function RefreshTargetInfo()IBa(UBa)end local GBa=false DBa.Heartbeat:Connect(function()if UBa~=GBa then GBa=UBa IBa(UBa)end end)local VBa="Shoot"PBa:AddDropdown("TrollSelectDropdown",{Values={"Shoot","Bang"},Default="Shoot",Multi=false,Text="Troll Mode",Callback=function(OBa)VBa=OBa end})PBa:AddButton{Text="Fling",Icon="skull",Func=function()QBa(UBa)end}:AddButton{Text="Troll",Icon="face-grinning",Func=function()if VBa=="Shoot"then TBa(UBa)elseif VBa=="Bang"then WBa:Notify("Under Development!",2)end end}end
+
+
+
+
+
+
+do
+local a="https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local b=loadstring(game:HttpGet(a.."Library.lua"))()
+local c=loadstring(game:HttpGet(a.."addons/SaveManager.lua"))()
+local d=loadstring(game:HttpGet(a.."addons/ThemeManager.lua"))()
+
+print[[
+
+.   .                  .   .              ..  .   .     .   .            .  . 
+        .                        ..     ....  ...          .             .    
+                             ....++...:---=+--==-.. -.                .       
+         .                   .-+=*#+==---==---==+=:-#=         .      . .     
+                             .=*###*--------:-=====-**:=:                     
+        .  .    .    .      ..+###=:::::-=:::-=++==-::=-.                 .   
+.          .    .  .    .  .-*##%=.::::==---:-=+++==-:.....                   
+            .            ..:=++*=-:---==--=---++===-=-:::.                 .  
+                       ..:==-*+=---=----::=---=-==+-:=-:--..                  
+..      .                 .:**+--:=-++==*=::---:--==-=-+=::..   .          .  
+         .   .           .::---:--==-::::....:-+++=++==-=:.                   
+    .                  ..:--:=--+-=-:..........:::++*++-:..                   
+                      . . .-=--===+**:...:---...:=+***+==:.                   
+   .  .             .     :::::=-+++**-..::::..-+**++++=::..      .    .      
+ .            . .         .....::=+:+++=::..:=**+++++=:::.    ..     .:...    
+                  .        ...::::----=::-==+***=+=+*-....  .     ...-:....   
+                          ......:--:---:.:--=+***++++=-:..       .:-=---... ..
+      ..             .   ........::::::--=----=++==++++=::..     .--::--::.   
+   .        .          ..:::-:...:...:::::-==-+++=---:-+==-.   ..:-+**=-:...  
+                      ..:::-:---:--...:--==-=++==-=-.-::=+=..   .:+#+=-::.:.  
+                     .:=+=-----===-.....:::::-===--::::.:=+=:..  .+#%*=-:.:.  
+         ..   .....  .:==:...:=+++-.......:::--=----::-=--:==-.  .::----:.:.  
+ .     . .:...:.....   .:.....-+*+:::......::--=-:.:--=+--=++=-....::::-::.. .
+  ..    ..:::-:..:.... .......-===--.......::::-=-:::--==-=**++-:--..:::::.   
+ .       .:---:..............:...-:::......:..:---:::::-=-:+***+=-:..:-...    
+        ..:--::-=.........:.::. .::::....:::.:=+=--:::::::.:+**+:...:--:..    
+         .:::-:.--........:--......---:::..:.---=======---:.:-:....:=+=:.     
+         ::-::: .=...:....:-:..:---:::......:---=====:::--:......:=*+=-:.     
+        .::::-:..--...::::-:. .:::::::.......:------::..::.....:-+***+=-.     
+       .:..:.::..---=-...:.    .....:........:------..  ......-=+***++-:.     
+ .    .:..::.:-====-===--=+=.   .............:------.    ......-==+*++--:.    
+     .:...:-.-++++=-:-==+**+=.  ..::::::-========---:.        ..:-=*+==-:.    
+    .:.. .:======++=:-==++*++..:---::-=---=+++++====-.          .:-+==--.    .
+   .::.  .--=-===----==+***++-:----.:-=-:--==++++++*+=:    .*+ ..-====-.      
+  .:-..-++=-=====-=++====*+++=-:--::-=-::--===+++=++++=:. .+##:--=++=--.      
+  .=+++=-==-======++=====+*=-=-==------:-=====+++++++=+-=**###-+*+=---:.     .
+.-+=====+*=----====+=++=+=---::-=-::-=-::-+=++=+++++*+++++**###*++==:...      
+==++*+++++=-++++=-==--::::----==:::-=+=----===+++*+++++++++==---=+#*=:        
+=*+==+==--====++++=-:-=+*+::-=::::---==-::::-=++====++++++=-:=*+++***:     .  
+=+*=-----=====+**+=======+=----:::.:=-.:-=**-=----===-=====-+++++**-. .       
++=*=---==-=+=-=++**++====-==--==--=-=--===+++=======+=++++==*+=*##=.          
+***++=++--::-==+*+*******===:...::.:-------=+++==--------==++-.-***-. .       
++*===+*+++--=+==+*******-. .:........::-----=-------------:+=:.:+===..:       
+=-==-=+++++*+++==+***+-.   ..........::----:.:-:----------.-==::--:..::   .   
+:-+*++=+++**++*+=+**+:  ..   ..........:---:. .:::-------::::-:.....::...     
+ :++++*+++++++**+=*+.   .     ..:......:----.....:--------.:::::::--::..        
+
+femboy.gg • have a nice day!
+]]
+
+
+
+
+
+local e="femboy.gg"
+local f="femboy.gg/assets"
+local g="femboy.gg/assets/AstolfoMascot.png"
+local h="https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Assets/AstolfoMascot.png"
+
+if not isfolder(e)then makefolder(e)end
+if not isfolder(f)then makefolder(f)end
+
+if not isfile(g)then
+local i,j=pcall(function()
+return game:HttpGet(h)
+end)
+if i and j then
+writefile(g,j)
+end
+end
+
+
+
+local i=b:CreateLoading{
+Title="femboy.gg",
+Icon="paw-print",
+TotalSteps=1
+}
+
+i:SetMessage"Initializing..."
+i:SetDescription"Waiting for game to load..."
+repeat
+task.wait()
+until game:IsLoaded()
+
+i:SetCurrentStep(1)
+i:SetDescription"femboy.gg loaded!"
+i:Continue()
+
+
+local j=game:GetService"Players"
+local k,l=j.LocalPlayer,j.LocalPlayer
+local m=game:GetService"CoreGui"
+local n=game:GetService"Workspace"
+local o=game:GetService"RunService"
+local p=game:GetService"Stats"
+local q=workspace.CurrentCamera
+local r=game:GetService"TweenService"
+local s=game:GetService"ReplicatedStorage"
+game:GetService"Lighting"
+local t=l.Character or l.CharacterAdded:Wait()
+t:WaitForChild"HumanoidRootPart"
+local u={enabled=false,loc=CFrame.new(),old=false,fling=false}
+game:GetService"UserInputService"
+
+
+local v
+local w
+if not _G.ESP then _G.ESP={}end
+if not _G.Combat then _G.Combat={}end
+if not _G.Movement then _G.Movement={}end
+if not _G.Visuals then _G.Visuals={}end
+if not _G.Main then _G.Main={}end
+
+local function makeSetting(x,y)
+local z=x
+return function(A)
+if A~=nil then
+z=A
+if y then y()end
+end
+return z
+end
+end
+
+local x=Instance.new"Folder"
+x.Name="MM2_ESP"
+x.Parent=m
+
+for y,z in ipairs(x:GetChildren())do z:Destroy()end
+
+
+local y={}
+local z=false
+
+
+local function isAlive(A)
+if not A or not A.Parent then return false end
+
+if z and y[A.Name]then
+local B=y[A.Name]
+if B.Dead or B.Killed then
+return false
+end
+end
+
+local B=A.Character
+local C=B and B:FindFirstChildOfClass"Humanoid"
+return C~=nil and C.Health>0
+end
+
+
+local function hasTool(A,B)
+local C=A:FindFirstChild"Backpack"
+if C and C:FindFirstChild(B)then return true end
+local D=A.Character
+if D and D:FindFirstChild(B)then return true end
+return false
+end
+
+
+local function findMurderer()
+if z then
+for A,B in pairs(y)do
+if not B.Dead and not B.Killed and B.Role=="Murderer"then
+local C=j:FindFirstChild(A)
+if C and isAlive(C)then return C end
+end
+end
+end
+
+for A,B in ipairs(j:GetPlayers())do
+if isAlive(B)and hasTool(B,"Knife")then
+return B
+end
+end
+return nil
+end
+
+
+local function findSheriff()
+if z then
+for A,B in pairs(y)do
+if not B.Dead and not B.Killed and(B.Role=="Sheriff"or B.Role=="Hero")then
+local C=j:FindFirstChild(A)
+if C and isAlive(C)then return C end
+end
+end
+end
+
+for A,B in ipairs(j:GetPlayers())do
+if isAlive(B)and hasTool(B,"Gun")then
+return B
+end
+end
+return nil
+end
+
+
+local function updateRoleCache()
+if not isAlive(v)then
+v=findMurderer()
+end
+
+
+if not isAlive(w)then
+w=findSheriff()
+elseif z and y[w.Name]then
+local A=y[w.Name].Role
+if A~="Sheriff"and A~="Hero"and not hasTool(w,"Gun")then
+w=findSheriff()
+end
+end
+end
+
+
+local function GetRole(A)
+if not isAlive(A)then
+return"Dead"
+end
+
+if z and y[A.Name]then
+local B=y[A.Name]
+if B.Dead or B.Killed then
+return"Dead"
+end
+
+if B.Role=="Murderer"then
+return"Murderer"
+elseif B.Role=="Sheriff"then
+return"Sheriff"
+elseif B.Role=="Hero"then
+return"Hero"
+elseif B.Role=="Innocent"then
+
+if hasTool(A,"Gun")then
+return"Hero"
+end
+return"Innocent"
+end
+end
+
+
+if hasTool(A,"Knife")then return"Murderer"end
+if hasTool(A,"Gun")then return"Sheriff"end
+
+return"Dead"
+end
+
+local function setupPlayerData()
+local A=game.ReplicatedStorage:FindFirstChild"Remotes"
+if A then
+local B=A:FindFirstChild"Gameplay"
+if B then
+local C=B:FindFirstChild"PlayerDataChanged"
+local D=B:FindFirstChild"GetCurrentPlayerData"
+if C and D then
+local E=D:InvokeServer()
+y=E
+z=true
+updateRoleCache()
+
+C.OnClientEvent:Connect(function(F)
+y=F
+z=true
+
+v=nil
+w=nil
+updateRoleCache()
+if UpdatePlayerCheckboxes then UpdatePlayerCheckboxes()end
+if RefreshTargetInfo then RefreshTargetInfo()end
+end)
+return true
+end
+end
+end
+return false
+end
+
+setupPlayerData()
+
+
+local function GetColor(A)
+if A=="Murderer"then return Color3.fromRGB(255,50,50)end
+if A=="Sheriff"then return Color3.fromRGB(50,50,255)end
+if A=="Innocent"then return Color3.fromRGB(50,255,50)end
+if A=="Hero"then return Color3.fromRGB(255,255,50)end
+return Color3.fromRGB(199,199,199)
+end
+
+local A={}
+
+function RefreshHighlights()
+for B,C in pairs(A)do C:Destroy()end
+A={}
+if not _G.ESP.EnabledPlayers()then return end
+
+for B,C in ipairs(j:GetPlayers())do
+if C==k then continue end
+local D=C.Character
+if not D then continue end
+local E=GetRole(C)
+
+local F=GetColor(E)
+local G=Instance.new"Highlight"
+G.Name="PlayerHL"
+G.FillTransparency=0.5
+G.OutlineTransparency=0
+G.DepthMode=Enum.HighlightDepthMode.AlwaysOnTop
+G.FillColor=F
+G.OutlineColor=F
+G.Adornee=D
+G.Parent=x
+G.Enabled=true
+A[C]=G
+end
+end
+
+
+function RefreshNames()
+for B,C in ipairs(x:GetChildren())do
+if C:IsA"BillboardGui"and C.Name:match"_Name$"then C:Destroy()end
+end
+if not _G.ESP.EnabledPlayers()then return end
+
+for B,C in ipairs(j:GetPlayers())do
+if C==k then continue end
+local D=C.Character
+if not D or not D:FindFirstChild"Head"then continue end
+
+local E=GetRole(C)
+local F=GetColor(E)
+local G=Instance.new"BillboardGui"
+G.Name=C.Name.."_Name"
+G.Size=UDim2.new(0,120,0,24)
+G.StudsOffset=Vector3.new(0,2.0,0)
+G.AlwaysOnTop=true
+G.Adornee=D.Head
+G.Parent=x
+local H=Instance.new"TextLabel"
+H.Size=UDim2.new(1,0,1,0)
+H.BackgroundTransparency=1
+H.Text=C.DisplayName
+H.TextScaled=false
+H.TextSize=14
+H.Font=Enum.Font.GothamMedium
+H.TextColor3=F
+H.TextStrokeTransparency=0
+H.TextStrokeColor3=Color3.fromRGB(0,0,0)
+H.Parent=G
+G.Enabled=true
+end
+end
+
+
+function RefreshAll()
+RefreshHighlights()
+RefreshNames()
+if UpdatePlayerCheckboxes then UpdatePlayerCheckboxes()end
+if RefreshTargetInfo then RefreshTargetInfo()end
+end
+
+function SetupPlayerTracking(B)
+if not B then return end
+
+local function onChanged()
+RefreshAll()
+end
+
+B.CharacterAdded:Connect(onChanged)
+B.CharacterRemoving:Connect(onChanged)
+
+local function onToolAdded(C)
+if C:IsA"Tool"and(C.Name=="Knife"or C.Name=="Gun")then
+onChanged()
+end
+end
+
+if B.Character then
+B.Character.ChildAdded:Connect(onToolAdded)
+end
+B.CharacterAdded:Connect(function(C)
+C.ChildAdded:Connect(onToolAdded)
+local D=B:FindFirstChild"Backpack"
+if D then
+D.ChildAdded:Connect(onToolAdded)
+else
+B.ChildAdded:Connect(function(E)
+if E.Name=="Backpack"then
+E.ChildAdded:Connect(onToolAdded)
+end
+end)
+end
+end)
+end
+
+for B,C in ipairs(j:GetPlayers())do
+SetupPlayerTracking(C)
+end
+j.PlayerAdded:Connect(SetupPlayerTracking)
+
+j.PlayerRemoving:Connect(function(B)
+if A[B]then A[B]:Destroy()end
+end)
+
+_G.ESP.EnabledPlayers=makeSetting(false,RefreshAll)
+
+
+local B=_G.ESP._refreshAll or RefreshAll
+
+B()
+
+task.spawn(function()
+while true do
+task.wait(0.5)
+RefreshAll()
+end
+end)
+
+
+
+local C=false
+local D=true
+local E=true
+local F=false
+
+
+local G={window=0.18,accW=0.5,turnW=0.4}
+
+
+
+
+local H=1
+local I=0.08
+local J=0.725
+local K=8
+
+
+local L=0.1
+local M=250
+local N=6
+local O=1
+local P=3.333333333333333E-2
+local Q=20
+local R=1.2
+local S=3
+local T=20
+
+
+local U=150
+local V=60
+
+
+local W={0.12,0.18,0.25}
+local X={0,0.5,1}
+local Y={0,0.4,0.8}
+local Z=10
+local _=0.05
+local aa=0.005
+local ab=300
+local ac=1
+
+local ad=true
+local ae=0.08
+local af=150
+local ag=0.97
+local ah=0.01
+local ai=40
+local aj=0.5
+local ak=3
+local al=2.0
+local am=0.95
+
+
+local an=math.max(table.unpack(W))+0.05
+
+local ao={}
+local ap={}
+
+local aq=Instance.new"Folder"
+aq.Name="PredictMarkers"
+aq.Parent=workspace
+
+
+local ar={}
+for as,at in ipairs(W)do
+for au,av in ipairs(X)do
+for aw,ax in ipairs(Y)do
+table.insert(ar,{wi=as,window=at,accW=av,turnW=ax})
+end
+end
+end
+
+local as={}
+local at=0
+local au={window=G.window,accW=G.accW,turnW=G.turnW}
+local av
+local aw=0
+
+
+
+local ax=7
+
+local function newModel()
+local ay={n=0,wf={},ws={}}
+for az=1,ax do
+ay.wf[az]=0
+ay.ws[az]=0
+end
+return ay
+end
+
+local ay=newModel()
+
+local function getState(az)
+local aA=ao[az]
+if not aA then
+aA={
+hist={},queue={},epoch=0,
+model=newModel(),
+revCount=0,stopCount=0,meanRev=1,wasMoving=false,
+}
+ao[az]=aA
+end
+return aA
+end
+
+
+local function getPing()
+local az=p.Network.ServerStatsItem:FindFirstChild"Data Ping"
+return az and az:GetValue()/1000 or 0
+end
+
+local function wrapAngle(az)
+return(az+math.pi)%(2*math.pi)-math.pi
+end
+
+local function headingOf(az)
+return math.atan2(az.X,az.Z)
+end
+
+
+local function buildRayParams()
+local az=RaycastParams.new()
+az.FilterType=Enum.RaycastFilterType.Exclude
+local aA={aq}
+for aB,aC in ipairs(j:GetPlayers())do
+if aC.Character then
+table.insert(aA,aC.Character)
+end
+end
+az.FilterDescendantsInstances=aA
+return az
+end
+
+
+
+local function resetMotion(az)
+table.clear(az.hist)
+table.clear(az.queue)
+az.epoch+=1
+az.vel,az.acc,az.turn=nil,nil,nil
+az.stableHead,az.lastRev,az.wasMoving=nil,nil,false
+az.predPos,az.predDir=nil,nil
+end
+
+local function pushSample(az,aA,aB)
+local aC=az.hist
+local aD=aC[#aC]
+if aD and(aB-aD.pos).Magnitude>T then
+resetMotion(az)
+end
+table.insert(aC,{t=aA,pos=aB})
+while#aC>2 and aA-aC[1].t>an do
+table.remove(aC,1)
+end
+end
+
+
+
+local function estimateMotion(az,aA)
+local aB=#az
+if aB<4 then return nil end
+
+local aC=az[aB]
+local aD=aB
+for aE=1,aB do
+if aC.t-az[aE].t<=aA then
+aD=aE
+break
+end
+end
+if aB-aD+1<4 then return nil end
+
+local aE=az[aD]
+local aF=aC.t-aE.t
+if aF<aA*0.6 then return nil end
+
+local aG=aE.t+aF/2
+local aH=aE
+for aI=aD+1,aB do
+if az[aI].t>=aG then
+aH=az[aI]
+break
+end
+end
+
+local aI,aJ=aH.t-aE.t,aC.t-aH.t
+if aI<0.03 or aJ<0.03 then return nil end
+
+local aK=(aH.pos-aE.pos)/aI
+local aL=(aC.pos-aH.pos)/aJ
+local aM=(aI+aJ)/2
+
+local aN=(aL-aK)/aM
+if aN.Magnitude>M then
+aN=aN.Unit*M
+end
+local aO=aL+aN*(aJ/2)
+
+local aP=Vector3.new(aK.X,0,aK.Z)
+local aQ=Vector3.new(aL.X,0,aL.Z)
+local aR=0
+if aP.Magnitude>O and aQ.Magnitude>O then
+aR=math.clamp(wrapAngle(headingOf(aQ)-headingOf(aP))/aM,-N,N)
+end
+
+return aO,aN,aR
+end
+
+local function updateMotion(az)
+local aA,aB,aC=estimateMotion(az.hist,au.window)
+if aA then
+az.vel,az.acc,az.turn=aA,aB,aC
+end
+end
+
+
+
+
+
+
+
+local function groundDisplacement(az,aA,aB,aC,aD,aE,aF)
+local aG=Vector3.new(az.X,0,az.Z)
+local aH=Vector3.new(aA.X,0,aA.Z)*aC
+local aI=aB*aD
+local aJ=math.max(aF,aG.Magnitude)
+local aK=Vector3.zero
+local aL=0
+while aL<aE do
+local aM=math.min(P,aE-aL)
+aL+=aM
+if aL<=L then
+aG+=aH*aM
+end
+if aI~=0 and aG.Magnitude>O then
+local aN=aI*aM
+local aO,aP=math.cos(aN),math.sin(aN)
+aG=Vector3.new(aG.X*aO+aG.Z*aP,0,-aG.X*aP+aG.Z*aO)
+end
+if aG.Magnitude>aJ then
+aG=aG.Unit*aJ
+end
+aK+=aG*aM
+end
+return aK
+end
+
+local function isGroundedNormal(az)
+if az.Sit or az.FloorMaterial==Enum.Material.Air then
+return false
+end
+local aA=az:GetState()
+return aA~=Enum.HumanoidStateType.Climbing and aA~=Enum.HumanoidStateType.Swimming
+end
+
+
+
+
+
+
+
+local function updatePattern(az,aA,aB)
+local aC=az.vel
+if not aC then return end
+local aD=Vector3.new(aC.X,0,aC.Z)
+local aE=aD.Magnitude
+if aE>=ak then
+az.wasMoving=true
+az.avgSpeed=az.avgSpeed and(az.avgSpeed+(aE-az.avgSpeed)*(1-math.exp(-0.5*aB)))or aE
+local aF=headingOf(aD)
+if not az.stableHead then
+az.stableHead=aF
+elseif math.abs(wrapAngle(aF-az.stableHead))>al then
+
+if az.lastRev then
+local aG=aA-az.lastRev
+if aG<3 then
+az.meanRev+=(math.clamp(aG,0.1,2)-az.meanRev)*0.2
+end
+end
+az.lastRev=aA
+az.revCount+=1
+az.stableHead=aF
+else
+az.stableHead+=wrapAngle(aF-az.stableHead)*(1-math.exp(-6*aB))
+end
+elseif aE<O and az.wasMoving then
+az.wasMoving=false
+az.stopCount+=1
+end
+end
+
+local function dotw(az,aA)
+local aB=0
+for aC=1,ax do
+aB+=az[aC]*aA[aC]
+end
+return aB
+end
+
+
+
+local function buildFeatures(az,aA,aB)
+local aC=az.vel
+if not aC then return nil end
+local aD=Vector3.new(aC.X,0,aC.Z)
+local aE=aD.Magnitude
+if aE<O then return nil end
+
+local aF=aD/aE
+local aG=Vector3.new(aF.Z,0,-aF.X)
+local aH=az.acc or Vector3.zero
+local aI=aE/math.max(aA,1)
+local aJ=0
+if az.revCount>=3 and az.lastRev then
+aJ=math.clamp((aB-az.lastRev)/az.meanRev,0,2)-1
+end
+
+local aK={
+1,
+aI,
+aH:Dot(aF)/M,
+aH:Dot(aG)/M,
+(az.turn or 0)/N,
+aJ,
+aJ*aI,
+}
+return aK,aF,aG
+end
+
+
+
+local function learnUpdate(az,aA,aB)
+local aC=aA.T
+if aC<0.02 then return end
+local aD=aA.x
+
+local aE,aF=dotw(az.wf,aD),dotw(az.ws,aD)
+local aG=aA.base+(aA.fwd*aE+aA.side*aF)*aC
+local aH=math.min((aB-aA.base).Magnitude,Z)
+local aI=math.min((aB-aG).Magnitude,Z)
+
+az.n+=1
+local aJ=math.max(ah,1/az.n)
+local aK,aL=az.eBase or aH,az.eCorr or aI
+az.eBase=aK+(aH-aK)*aJ
+az.eCorr=aL+(aI-aL)*aJ
+
+
+local aM=aB-aA.base
+local aN=aM:Dot(aA.fwd)/aC-aE
+local aO=aM:Dot(aA.side)/aC-aF
+local aP=1e-3
+for aQ=1,ax do
+aP+=aD[aQ]*aD[aQ]
+end
+for aQ=1,ax do
+az.wf[aQ]=math.clamp(az.wf[aQ]+ae*aN*aD[aQ]/aP,-ai,ai)
+az.ws[aQ]=math.clamp(az.ws[aQ]+ae*aO*aD[aQ]/aP,-ai,ai)
+end
+end
+
+local function modelUsable(az)
+return az.n>=af and az.eBase~=nil and az.eCorr~=nil and az.eCorr<az.eBase*ag
+end
+
+
+local function learnedCorrection(az,aA,aB,aC)
+if not ad or not az.vel or not isGroundedNormal(aA)then return nil end
+local aD,aE,aF=buildFeatures(az,aA.WalkSpeed,aB)
+if not aD then return nil end
+
+local aG
+if modelUsable(az.model)then
+aG=az.model
+end
+if modelUsable(ay)and(not aG or ay.eCorr<aG.eCorr)then
+aG=ay
+end
+if not aG then return nil end
+
+local aH=(aE*dotw(aG.wf,aD)+aF*dotw(aG.ws,aD))*aC
+local aI=Vector3.new(az.vel.X,0,az.vel.Z).Magnitude
+local aJ=aj*aI*aC
+if aH.Magnitude>aJ and aH.Magnitude>0 then
+aH=aH.Unit*aJ
+end
+return aH
+end
+
+local function logShadow(az,aA,aB,aC,aD)
+if az.nextSample and aC<az.nextSample then return end
+az.nextSample=aC+_
+if not isGroundedNormal(aA)then return end
+
+local aE={}
+for aF,aG in ipairs(W)do
+local aH,aI,aJ=estimateMotion(az.hist,aG)
+if not aH then return end
+aE[aF]={v=aH,a=aI,tr=aJ}
+end
+local aF=aE[math.ceil(#W/2)].v
+if Vector3.new(aF.X,0,aF.Z).Magnitude<O then return end
+
+local aG=aA.WalkSpeed
+local aH=table.create(#ar)
+for aI,aJ in ipairs(ar)do
+local aK=aE[aJ.wi]
+aH[aI]=groundDisplacement(aK.v,aK.a,aK.tr,aJ.accW,aJ.turnW,aD,aG)
+end
+
+
+local aI
+if ad and az.vel then
+local aJ,aK,aL=buildFeatures(az,aG,aC)
+if aJ then
+local aM=groundDisplacement(az.vel,az.acc or Vector3.zero,az.turn or 0,
+au.accW,au.turnW,aD,aG)
+aI={x=aJ,fwd=aK,side=aL,base=aM,T=aD}
+end
+end
+
+table.insert(az.queue,{
+due=aC+aD,
+start=aB.Position,
+preds=aH,
+learn=aI,
+epoch=az.epoch,
+})
+end
+
+local function scoreQueue(az,aA,aB,aC)
+local aD=az.queue
+while aD[1]and aC>=aD[1].due do
+local aE=table.remove(aD,1)
+
+if aE.epoch==az.epoch and isGroundedNormal(aA)then
+local aF=aB.Position
+local aG=Vector3.new(aF.X-aE.start.X,0,aF.Z-aE.start.Z)
+at+=1
+local aH=math.max(aa,1/at)
+for aI,aJ in ipairs(aE.preds)do
+local aK=math.min((aG-aJ).Magnitude,Z)
+local aL=as[aI]or aK
+as[aI]=aL+(aK-aL)*aH
+end
+if aE.learn then
+learnUpdate(az.model,aE.learn,aG)
+learnUpdate(ay,aE.learn,aG)
+end
+end
+end
+end
+
+local function selectBest(az)
+if not E then return end
+if az-aw<ac or at<ab then return end
+aw=az
+
+local aA,aB=math.huge
+for aC=1,#ar do
+local aD=as[aC]
+if aD and aD<aA then
+aB,aA=aC,aD
+end
+end
+if not aB then return end
+if av and as[av]and aA>=as[av]*am then
+return
+end
+
+av=aB
+local aC=ar[aB]
+au={window=aC.window,accW=aC.accW,turnW=aC.turnW}
+if F then
+print(string.format("[Predict] window=%.2f acc=%.1f turn=%.1f  ошибка=%.2f studs (замеров: %d)",
+aC.window,aC.accW,aC.turnW,aA,at))
+end
+end
+
+
+_G.GetPredictStats=function()
+return au,av and as[av]or nil,at
+end
+
+
+
+
+local function simulate(az,aA,aB,aC,aD)
+local aE=aB.Position
+local aF=az.vel or Vector3.zero
+local aG=Vector3.new(aF.X,0,aF.Z)
+local aH=aF.Y
+local aI=az.acc or Vector3.zero
+local aJ=Vector3.new(aI.X,0,aI.Z)*au.accW
+local aK=(az.turn or 0)*au.turnW
+local aL=workspace.Gravity
+local aM=aA.FloorMaterial~=Enum.Material.Air
+
+
+local aN=aA:GetState()
+if aA.Sit or aN==Enum.HumanoidStateType.Climbing or aN==Enum.HumanoidStateType.Swimming then
+return aE+aF*aC,aG
+end
+
+
+if aM then
+local aO=workspace:Raycast(aE,Vector3.new(0,-20,0),aD)
+if aO then
+az.offset=aE.Y-aO.Position.Y
+end
+end
+local aO=az.offset or(aA.HipHeight+1)
+
+
+if aM and aH>Q then
+aM=false
+elseif aM then
+aH=0
+end
+
+local aP=math.max(aA.WalkSpeed,aG.Magnitude)
+
+local aQ=0
+while aQ<aC do
+local aR=math.min(P,aC-aQ)
+aQ+=aR
+
+
+if aM then
+if aQ<=L then
+aG+=aJ*aR
+end
+if aK~=0 and aG.Magnitude>O then
+local aS=aK*aR
+local aT,aU=math.cos(aS),math.sin(aS)
+aG=Vector3.new(aG.X*aT+aG.Z*aU,0,-aG.X*aU+aG.Z*aT)
+end
+if aG.Magnitude>aP then
+aG=aG.Unit*aP
+end
+end
+
+
+local aS=aG*aR
+local aT=aS.Magnitude
+if aT>1e-4 then
+local aU=aS/aT
+local aV=workspace:Raycast(aE,aU*(aT+R),aD)
+if aV and math.abs(aV.Normal.Y)<0.7 then
+local aW=math.max(0,aV.Distance-R)
+aE+=aU*math.min(aT,aW)
+local aX=Vector3.new(aV.Normal.X,0,aV.Normal.Z)
+if aX.Magnitude>1e-3 then
+aX=aX.Unit
+local aY=aG:Dot(aX)
+if aY<0 then
+aG-=aX*aY
+end
+end
+else
+aE+=aS
+end
+end
+
+
+if aM then
+local aU=workspace:Raycast(aE,Vector3.new(0,-(aO+S),0),aD)
+if aU then
+aE=Vector3.new(aE.X,aU.Position.Y+aO,aE.Z)
+aH=0
+else
+aM=false
+aH=0
+end
+else
+aH-=aL*aR
+local aU=aH*aR
+if aH<=0 then
+local aV=workspace:Raycast(aE,Vector3.new(0,-(-aU+aO+0.1),0),aD)
+if aV then
+aE=Vector3.new(aE.X,aV.Position.Y+aO,aE.Z)
+aH=0
+aM=true
+else
+aE+=Vector3.new(0,aU,0)
+end
+else
+local aV=workspace:Raycast(aE,Vector3.new(0,aU+1.5,0),aD)
+if aV then
+aH=0
+else
+aE+=Vector3.new(0,aU,0)
+end
+end
+end
+end
+
+return aE,aG
+end
+
+
+
+local function createMarker(az)
+local aA=Instance.new"Part"
+aA.Name="PredictMarker_"..az.Name
+aA.Size=Vector3.new(2,5,1)
+aA.Anchored=true
+aA.CanCollide=false
+aA.CanQuery=false
+aA.CanTouch=false
+aA.CastShadow=false
+aA.Transparency=0.6
+aA.Color=Color3.fromRGB(255,80,80)
+aA.Material=Enum.Material.Neon
+aA.Parent=aq
+return aA
+end
+
+local function removeMarker(az)
+local aA=ap[az]
+if aA then
+aA:Destroy()
+ap[az]=nil
+end
+end
+
+local function removeAll(az)
+removeMarker(az)
+ao[az]=nil
+end
+
+
+
+
+local function getPredictedPosition(az)
+local aA=ao[az]
+if not aA or not aA.predPos then
+return nil,nil,nil
+end
+return aA.predPos,aA.predDir,av and as[av]or nil
+end
+
+
+_G.GetPredictedPosition=getPredictedPosition
+
+
+
+
+
+_G.GetMovementProfile=function(az)
+local aA=ao[az]
+if not aA then return nil end
+local aB=aA.model
+return{
+avgSpeed=aA.avgSpeed,
+reversals=aA.revCount,
+reversalInterval=aA.revCount>=3 and aA.meanRev or nil,
+stops=aA.stopCount,
+samples=aB.n,
+errBase=aB.eBase,
+errCorr=aB.eCorr,
+correctionActive=ad and(modelUsable(aB)or modelUsable(ay)),
+}
+end
+
+local az
+local aA=0
+
+o.RenderStepped:Connect(function(aB)
+local aC=os.clock()
+
+
+local aD=getPing()
+az=az and(az+(aD-az)*(1-math.exp(-K*aB)))or aD
+local aE=math.clamp(az*H+I,0,J)
+
+local aF=1-math.exp(-U*aB)
+local aG=1-math.exp(-V*aB)
+local aH=buildRayParams()
+
+selectBest(aC)
+
+if F and aC-aA>5 then
+aA=aC
+print(string.format("[Predict] обучение: замеров=%d  ошибка базы=%.2f  с поправкой=%.2f studs",
+ay.n,ay.eBase or 0,ay.eCorr or 0))
+end
+
+for aI,aJ in ipairs(j:GetPlayers())do
+if aJ==j.LocalPlayer and not D then
+removeMarker(aJ)
+continue
+end
+
+local aK=getState(aJ)
+local aL=aJ.Character
+local aM=aL and aL:FindFirstChild"UpperTorso"
+local aN=aL and aL:FindFirstChildOfClass"Humanoid"
+
+if not(aM and aN)then
+resetMotion(aK)
+removeMarker(aJ)
+continue
+end
+
+pushSample(aK,aC,aM.Position)
+
+if aN.Health<=0 then
+aK.predPos,aK.predDir=nil,nil
+removeMarker(aJ)
+continue
+end
+
+scoreQueue(aK,aN,aM,aC)
+updateMotion(aK)
+updatePattern(aK,aC,aB)
+logShadow(aK,aN,aM,aC,aE)
+
+local aO,aP=simulate(aK,aN,aM,aE,aH)
+
+
+local aQ=learnedCorrection(aK,aN,aC,aE)
+if aQ then
+aO+=aQ
+end
+
+
+local aR
+if aP.Magnitude>O then
+aR=aP.Unit
+else
+local aS=aM.CFrame.LookVector
+local aT=Vector3.new(aS.X,0,aS.Z)
+if aT.Magnitude>0.01 then
+aR=aT.Unit
+end
+end
+if aR then
+aK.dir=aK.dir and aK.dir:Lerp(aR,aG).Unit or aR
+end
+local aS=aK.dir or Vector3.new(0,0,-1)
+
+
+aK.predPos,aK.predDir=aO,aS
+
+if not C then
+removeMarker(aJ)
+continue
+end
+
+local aT=ap[aJ]
+if not aT then
+aT=createMarker(aJ)
+ap[aJ]=aT
+end
+
+local aU=CFrame.lookAt(aO,aO+aS)
+if(aT.Position-aO).Magnitude>50 then
+aT.CFrame=aU
+else
+aT.CFrame=aT.CFrame:Lerp(aU,aF)
+end
+end
+end)
+
+j.PlayerRemoving:Connect(removeAll)
+
+
+
+local aB=128
+local aC=1
+local aD=0.1
+local aE=3
+local aF=1.5
+local aG=6
+
+
+local aH={}
+local function buildDirections(aI)
+local aJ={}
+local aK=math.pi*(3-math.sqrt(5))
+for aL=0,aI-1 do
+local aM=1-(aL/math.max(aI-1,1))*2
+local aN=math.sqrt(1-aM*aM)
+local aO=aK*aL
+table.insert(aJ,Vector3.new(math.cos(aO)*aN,aM,math.sin(aO)*aN))
+end
+return aJ
+end
+aH=buildDirections(aB)
+
+local function getAllCharacters()
+local aI={}
+for aJ,aK in ipairs(j:GetPlayers())do
+if aK.Character then
+table.insert(aI,aK.Character)
+end
+end
+return aI
+end
+
+local function buildParams(aI)
+local aJ=RaycastParams.new()
+aJ.FilterType=Enum.RaycastFilterType.Exclude
+aJ.FilterDescendantsInstances=aI
+return aJ
+end
+
+
+local function hasLineOfSight(aI,aJ,aK)
+return n:Raycast(aI,aJ-aI,aK)==nil
+end
+
+
+local function findGround(aI,aJ)
+local aK=aI+Vector3.new(0,aG,0)
+local aL=n:Raycast(aK,Vector3.new(0,-(aG+20),0),aJ)
+if not aL then return nil end
+return aL.Position+Vector3.new(0,aE,0)
+end
+
+
+local function getCandidate(aI,aJ,aK,aL)
+local aM=n:Raycast(aI,aJ*aK,aL)
+if not aM then
+return aI+aJ*aK
+end
+local aN=(aM.Position-aI).Magnitude-aF
+if aN<aC then
+return nil
+end
+return aI+aJ*aN
+end
+
+
+
+
+
+function getAvailableSpace(aI:Vector3,aJ:number,aK:{Instance}?):Vector3
+local aL=buildParams(aK or getAllCharacters())
+
+local aM=aJ
+while aM>=aC do
+for aN,aO in ipairs(aH)do
+local aP=getCandidate(aI,aO,aM,aL)
+if aP then
+local aQ=findGround(aP,aL)
+if aQ
+and(aQ-aI).Magnitude>=aC
+and hasLineOfSight(aI,aQ,aL)then
+return aQ
+end
+end
+end
+aM-=aD
+end
+
+
+return aI
+end
+
+
+function getAvailableSpaceFor(aI:Player,aJ:number):Vector3?
+local aK=aI.Character
+local aL=aK and aK:FindFirstChild"HumanoidRootPart"
+if not aL then return nil end
+return getAvailableSpace(aL.Position,aJ,{aK})
+end
+
+
+
+local function shootMurderer(aI)
+
+if aI==nil then
+aI=findMurderer()
+end
+
+if k~=findSheriff()then return end
+
+if not aI.Character or not aI then return end
+local aJ=k.Character:FindFirstChild"Gun"
+if not aJ then
+local aK=k:FindFirstChild"Backpack"
+if aK then
+aJ=aK:FindFirstChild"Gun"
+if aJ then
+local aL=k.Character:FindFirstChild"Humanoid"
+if aL then
+aL:EquipTool(aJ)
+end
+end
+end
+if not aJ then
+return
+end
+end
+
+local aK=k.Character:FindFirstChild"RightHand"
+if not aK then
+return
+end
+
+
+local aL=aJ:FindFirstChild"Shoot"
+if aI==findMurderer()then
+if _G.Combat.WallbangSheriff()then
+aL:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(aI),15)),CFrame.new((_G.GetPredictedPosition(aI))))
+else
+aL:FireServer(CFrame.new(aK.Position),CFrame.new((_G.GetPredictedPosition(aI))))
+end
+else
+aL:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(aI),15)),CFrame.new((_G.GetPredictedPosition(aI))))
+end
+end
+
+_G.Combat.WallbangSheriff=makeSetting(false,RefreshAll)
+_G.Combat.AutoGrabGun=makeSetting(false,RefreshAll)
+_G.Movement.SpeedGlitchEnabled=makeSetting(false,RefreshAll)
+
+
+_G.Movement.SpeedGlitchSpeed=5
+
+local aI
+
+
+local function startSpeedGlitch(aJ,aK)
+if aI or not _G.Movement.SpeedGlitchEnabled()then return end
+
+aI=o.Heartbeat:Connect(function(aL)
+if not(aJ and aK and aK.Parent)then
+return
+end
+
+if aK.MoveDirection.Magnitude>0 then
+aJ:TranslateBy(aK.MoveDirection*_G.Movement.SpeedGlitchSpeed*aL*10)
+end
+end)
+end
+
+
+local function stopSpeedGlitch()
+if aI then
+aI:Disconnect()
+aI=nil
+end
+end
+
+
+local function SpeedGlitchsetupCharacter(aJ)
+stopSpeedGlitch()
+
+local aK=aJ:WaitForChild"Humanoid"
+
+
+aK.StateChanged:Connect(function(aL,aM)
+if aM==Enum.HumanoidStateType.Freefall or aM==Enum.HumanoidStateType.Jumping then
+startSpeedGlitch(aJ,aK)
+elseif aM==Enum.HumanoidStateType.Landed or aM==Enum.HumanoidStateType.Running then
+stopSpeedGlitch()
+end
+end)
+
+
+aK.Died:Connect(stopSpeedGlitch)
+end
+
+
+if l.Character then
+SpeedGlitchsetupCharacter(l.Character)
+end
+
+
+l.CharacterAdded:Connect(SpeedGlitchsetupCharacter)
+
+
+
+
+local aJ=workspace.FallenPartsDestroyHeight
+pcall(function()
+workspace.FallenPartsDestroyHeight=-5E4
+end)
+
+local aK=false
+local aL
+
+local function applyHorizontalFling(aM,aN,aO,aP)
+local aQ=Vector3.new(aN.X*aO,0,aN.Z*aO)
+for aR,aS in ipairs(aM:GetDescendants())do
+if aS:IsA"BasePart"then
+aS.AssemblyLinearVelocity=aQ
+aS.AssemblyAngularVelocity=aP>0 and Vector3.new(0,aP,0)or Vector3.zero
+end
+end
+end
+
+local function StopFling()
+aK=false
+
+local aM=l.Character
+local aN=aM and aM:FindFirstChild"HumanoidRootPart"
+local aO=aM and aM:FindFirstChildOfClass"Humanoid"
+
+if q and aO then
+q.CameraSubject=aO
+end
+if aN and aN.Parent and aL then
+applyHorizontalFling(aM,Vector3.zero,0,0)
+task.delay(0.05,function()
+if aN and aN.Parent and aL then
+aN.CFrame=aL
+aL=nil
+end
+if aO and aO.Parent then
+aO:ChangeState(Enum.HumanoidStateType.GettingUp)
+end
+if aM and aM.Parent then
+applyHorizontalFling(aM,Vector3.zero,0,0)
+u.enabled=u.fling
+end
+end)
+end
+end
+
+local function flingPlayer(aM)
+if aK then StopFling()return end
+if not aM then return end
+
+aK=true
+u.fling=u.enabled
+u.enabled=false
+o.RenderStepped:Wait()
+o.RenderStepped:Wait()
+o.RenderStepped:Wait()
+pcall(function()
+workspace.FallenPartsDestroyHeight=-5E4
+end)
+
+local aN=l.Character
+local aO=aN and aN:FindFirstChild"HumanoidRootPart"
+aL=aO and aO.CFrame
+
+local aP=0.1
+local aQ=0
+local aR
+
+while aK do
+local aS=o.Heartbeat:Wait()
+if aS<=0 then aS=0.016 end
+u.enabled=false
+local aT=aM and aM.Character
+local aU=aT and aT:FindFirstChild"HumanoidRootPart"
+local aV=aT and aT:FindFirstChildOfClass"Humanoid"
+
+if not(aU and aV)or aV.Health<=0 then
+break
+end
+
+local aW=aU.AssemblyLinearVelocity
+local aX=aW.Magnitude
+
+if aX>850 or(aX-aQ)>610 then
+break
+end
+aQ=aX
+
+if aU.Position.Y<=(aJ+15)then
+break
+end
+
+if q then
+q.CameraSubject=aV
+end
+
+local aY=l.Character
+local aZ=aY and aY:FindFirstChild"HumanoidRootPart"
+
+if not(aY and aY.Parent and aZ and aZ.Parent)then
+continue
+end local
+
+a_, a0=aZ.CFrame:ToEulerAnglesYXZ()
+
+local a1=Vector3.new(aU.CFrame.LookVector.X,0,aU.CFrame.LookVector.Z)
+if a1.Magnitude>0 then a1=a1.Unit end
+
+local a2=Vector3.new(aU.CFrame.RightVector.X,0,aU.CFrame.RightVector.Z)
+if a2.Magnitude>0 then a2=a2.Unit end
+
+local a3=0
+local a4=0
+local a5=0
+
+if aR and a1.Magnitude>0 then
+a4=(a1-aR).Magnitude
+a3=aR:Cross(a1).Y
+a5=math.asin(math.clamp(a3,-1,1))/aS
+end
+aR=a1
+
+local a6=aU.AssemblyAngularVelocity.Y
+local a7=math.abs(a6)>math.abs(a5)and a6 or a5
+
+local a8=(a3<-1.2E-2)or(a7<-0.4)
+local a9=(a3>0.012)or(a7>0.4)
+local ba=a8 or a9 or(a4>0.015)
+
+
+local bb
+if a8 then
+
+bb=a2
+elseif a9 then
+
+bb=-a2
+else
+
+bb=-a2
+end
+
+
+local bc=-bb
+
+local bd
+if aX>1 or ba then
+local be=0.03
+pcall(function()be=l:GetNetworkPing()end)
+
+local bf=(be*1.5)+0.015
+local bg=aX>100 and(aW.Unit*100)or aW
+
+local bh=bg
+if ba then
+local bi=math.clamp(a7*bf*1.0,-1,1.0)
+if aX>2 then
+bh=(CFrame.Angles(0,bi,0)*bg)+(bb*3)
+else
+bh=(CFrame.Angles(0,bi,0)*a1*10)+(bb*3)
+end
+end
+
+local bi=(bh*2.8)*bf
+local bj=aU.Position-(bi*0.01)
+local bk=aU.Position+(bi*2.5)
+
+local bl=os.clock()
+local bm=6
+local bn=(math.sin(bl*bm*math.pi*2)+1)*0.5
+bd=bj:Lerp(bk,bn)
+else
+bd=aU.Position
+end
+
+local be=Vector3.new(bd.X,aU.Position.Y,bd.Z)+(bb*1.1)
+local bf=CFrame.new(be)*CFrame.Angles(0,a0,0)
+
+aZ.CFrame=bf
+applyHorizontalFling(aY,bc,90000,9999)
+
+o.RenderStepped:Wait()
+if aY and aY.Parent and aZ and aZ.Parent then
+aZ.CFrame=bf
+applyHorizontalFling(aY,bc,90000,9999)
+end
+
+o.Stepped:Wait()
+if aY and aY.Parent and aZ and aZ.Parent then
+aZ.CFrame=bf
+applyHorizontalFling(aY,Vector3.new(1,0,0),aP,0)
+aP=-aP
+end
+end
+StopFling()
+end
+
+
+workspace.DescendantAdded:Connect(function(aM)
+if aM.Name=="GunDrop"then
+local aN=GetRole(k)
+if _G.Combat.AutoGrabGun()and aN=="Innocent"then
+if not aM.Parent then return end
+local aO=k.Character
+if not aO then return end
+aM:PivotTo(aO.PrimaryPart.CFrame)
+end
+end
+end)
+
+
+local aM=s:WaitForChild"ClientServices".WeaponService:WaitForChild"GunFired"
+_G.Visuals.TRClifeTime=2
+_G.Visuals.TRCFADE_STUDS=0.25
+_G.Visuals.TRCENABLED=makeSetting(false,B())
+_G.Visuals.TRCLOCALONLY=makeSetting(false,B())
+_G.Visuals.TRCCOLOR=ColorSequence.new(Color3.fromHex"ff80e1")
+
+aM.OnClientEvent:Connect(function(aN,aO,aP)
+if not aN or not aP or not _G.Visuals.TRCENABLED()then return end
+local aQ
+if k.Character:FindFirstChild(aN.Parent.Name)then aQ=aN.Position else aQ=k.Character.RightHand.Position end
+local aR=aP
+local aS
+if k.Character:FindFirstChild(aN.Parent.Name)then aS=aN.Parent.Parent else aS=aN.Parent.Parent.Parent end
+if _G.Visuals.TRCLOCALONLY()and aS.Name~=k.Name then return end
+
+local aT=(aR-aQ).Magnitude
+if aT<0.1 then return end
+
+
+local aU=math.clamp(_G.Visuals.TRCFADE_STUDS/aT,0.001,0.49)
+
+
+local aV=Instance.new"Attachment"
+aV.WorldPosition=aQ
+aV.Parent=workspace.Terrain
+
+local aW=Instance.new"Attachment"
+aW.WorldPosition=aR
+aW.Parent=workspace.Terrain
+
+
+local aX=Instance.new"Beam"
+aX.Attachment0=aV
+aX.Attachment1=aW
+aX.Width0=0.5
+aX.Width1=0.5
+aX.Texture="rbxassetid://13797539713"
+aX.TextureMode=Enum.TextureMode.Stretch
+aX.LightEmission=1
+aX.LightInfluence=0
+aX.FaceCamera=true
+aX.Color=_G.Visuals.TRCCOLOR
+aX.Transparency=NumberSequence.new{
+NumberSequenceKeypoint.new(0,1),
+NumberSequenceKeypoint.new(aU,0),
+NumberSequenceKeypoint.new(1-aU,0),
+NumberSequenceKeypoint.new(1,1)
+}
+aX.Parent=workspace.Terrain
+
+
+local aY=Instance.new"NumberValue"
+aY.Value=0
+
+local aZ=aY.Changed:Connect(function(aZ)
+aX.Transparency=NumberSequence.new{
+NumberSequenceKeypoint.new(0,1),
+NumberSequenceKeypoint.new(aU,aZ),
+NumberSequenceKeypoint.new(1-aU,aZ),
+NumberSequenceKeypoint.new(1,1)
+}
+end)
+
+local a_=TweenInfo.new(_G.Visuals.TRClifeTime/2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out)
+local a0=r:Create(aY,a_,{Value=1})
+task.delay(_G.Visuals.TRClifeTime/2,function()
+a0:Play()
+
+
+a0.Completed:Once(function()
+aZ:Disconnect()
+aY:Destroy()
+aX:Destroy()
+aV:Destroy()
+aW:Destroy()
+end)
+end)
+end)
+
+
+local aN=game:GetService"AssetService"
+local aO=game:GetService"PathfindingService"
+local aP=game:GetService"AnimationClipProvider"
+
+
+
+
+local aQ=0.75
+local aR=6
+local aS=80
+local aT=6
+
+
+
+local aU=true
+
+
+
+
+local aV=139118942165678
+local aW=16369992173
+local aX=0
+local aY=0
+
+
+local aZ=Color3.fromRGB(255,255,255)
+
+
+local a_={
+12333387301,
+129243679434579,
+13735114082,
+}
+
+
+local a0=282
+
+
+local a1=true
+
+local a2=0
+local a3=0
+local a4=0
+local a5=0
+local a6=0
+local a7=0
+
+
+local a8=0
+
+local a9={
+Idle=742637544,
+Walk=742640026,
+Run=742638842,
+Jump=742637942,
+Fall=742637151,
+Climb=742636889,
+Swim=742638445,
+SwimIdle=742639220,
+}
+
+local ba={
+Idle=507766666,
+Walk=507777826,
+Run=507767714,
+Jump=507765000,
+Fall=507767968,
+Climb=507765644,
+Swim=507784897,
+SwimIdle=507785072,
+}
+
+local bb=2
+
+
+
+
+local bc={}
+
+
+local function getBundleDescription(bd)
+if bc[bd]~=nil then
+return bc[bd]or nil
+end
+
+local be=false
+
+local bf,bg=pcall(function()
+return aN:GetBundleDetailsAsync(bd)
+end)
+
+if bf and bg and bg.Items then
+for bh,bi in ipairs(bg.Items)do
+if bi.Type=="UserOutfit"then
+local bj,bk=pcall(function()
+return j:GetHumanoidDescriptionFromOutfitId(bi.Id)
+end)
+if bj and bk then
+be=bk
+break
+end
+end
+end
+
+end
+
+bc[bd]=be
+return be or nil
+end
+
+local bd={"Head","Torso","LeftArm","RightArm","LeftLeg","RightLeg"}
+
+
+local be
+
+local function resolveAnimations()
+if be then
+return be
+end
+
+local bf={}
+for bg,bh in pairs(a9)do
+bf[bg]=bh
+end
+
+if a8>0 then
+local bg=getBundleDescription(a8)
+if bg then
+for bh in pairs(a9)do
+
+local bi,bj=pcall(function()
+return bg[bh.."Animation"]
+end)
+if bi and type(bj)=="number"and bj>0 then
+bf[bh]=bj
+end
+end
+end
+end
+
+be=bf
+return bf
+end
+
+
+
+
+local function buildDescription()
+local bf=Instance.new"HumanoidDescription"
+
+bf.Shirt=aV
+bf.Pants=aW
+bf.GraphicTShirt=aX
+bf.Face=aY
+
+if aZ then
+bf.HeadColor=aZ
+bf.TorsoColor=aZ
+bf.LeftArmColor=aZ
+bf.RightArmColor=aZ
+bf.LeftLegColor=aZ
+bf.RightLegColor=aZ
+end
+
+
+local bg=false
+if a0>0 then
+local bh=getBundleDescription(a0)
+if bh then
+bg=true
+for bi,bj in ipairs(bd)do
+bf[bj]=bh[bj]
+end
+if a1 then
+bf.Head=0
+elseif a2>0 then
+bf.Head=a2
+end
+
+
+if aY==0 and not a1 and bh.Face>0 then
+bf.Face=bh.Face
+end
+end
+end
+
+if not bg then
+if a2>0 then bf.Head=a2 end
+if a3>0 then bf.Torso=a3 end
+if a4>0 then bf.LeftArm=a4 end
+if a5>0 then bf.RightArm=a5 end
+if a6>0 then bf.LeftLeg=a6 end
+if a7>0 then bf.RightLeg=a7 end
+end
+
+
+if#a_>0 then
+local bh={}
+for bi,bj in ipairs(a_)do
+table.insert(bh,tostring(bj))
+end
+bf.HatAccessory=table.concat(bh,",")
+end
+
+return bf
+end
+
+
+
+
+
+
+local function finishTrack(bf,bg,bh,bi)
+local bj,bk=pcall(function()
+return bf:LoadAnimation(bg)
+end)
+if not bj or not bk then
+return nil
+end
+
+local bl=0
+while bk.Length==0 and bl<bb do
+bl+=task.wait(0.1)
+end
+if bk.Length==0 then
+bk:Destroy()
+return nil
+end
+
+bk.Looped=bh
+bk.Priority=bi
+return bk
+end
+
+
+local function loadTrackDirect(bf,bg,bh,bi)
+local bj=Instance.new"Animation"
+bj.AnimationId="rbxassetid://"..tostring(bg)
+return finishTrack(bf,bj,bh,bi)
+end
+
+
+local function loadTrackViaClip(bf,bg,bh,bi)
+local bj,bk=pcall(function()
+return aP:GetAnimationClipAsync("rbxassetid://"..tostring(bg))
+end)
+if not bj or not bk then
+return nil
+end
+
+local bl,bm=pcall(function()
+return aP:RegisterAnimationClip(bk)
+end)
+if not bl or not bm then
+return nil
+end
+
+local bn=Instance.new"Animation"
+bn.AnimationId=bm
+return finishTrack(bf,bn,bh,bi)
+end
+
+local function loadTrack(bf,bg,bh,bi)
+if not bg or bg==0 then
+return nil
+end
+
+local bj=loadTrackDirect(bf,bg,bh,bi)
+if bj then
+return bj
+end
+
+bj=loadTrackViaClip(bf,bg,bh,bi)
+if bj then
+return bj
+end
+
+return nil
+end
+
+
+
+
+local bf
+local bg={}
+local bh=0
+
+local function applyVisibility()
+if not bf then
+return
+end
+local bi=aU and 0 or 1
+for bj,bk in ipairs(bf:GetDescendants())do
+if bk:IsA"BasePart"or bk:IsA"Decal"then
+bk.LocalTransparencyModifier=bi
+end
+end
+end
+
+
+local function setFollowerVisible(bi)
+aU=bi and true or false
+applyVisibility()
+end
+
+local function cleanup()
+bh+=1
+for bi,bj in ipairs(bg)do
+bj:Disconnect()
+end
+table.clear(bg)
+if bf then
+bf:Destroy()
+end
+bf=nil
+end
+
+local function spawnFollower(bi)
+cleanup()
+local bj=bh
+
+local bk=bi:WaitForChild"HumanoidRootPart"
+local bl=bi:WaitForChild"Humanoid"
+
+local bm=resolveAnimations()
+
+local bn=j:CreateHumanoidModelFromDescription(buildDescription(),Enum.HumanoidRigType.R15)
+bn.Name="Follower_"..l.Name
+
+local bo=bn:WaitForChild"Humanoid"
+local bp=bn:WaitForChild"HumanoidRootPart"
+bo.DisplayDistanceType=Enum.HumanoidDisplayDistanceType.None
+
+
+if bh~=bj then
+bn:Destroy()
+return
+end
+
+bn:PivotTo(bk.CFrame*CFrame.new(3,0,3))
+bn.Parent=workspace
+bf=bn
+
+
+local bq=bi:GetScale()*aQ
+bn:ScaleTo(bq)
+
+
+applyVisibility()
+table.insert(bg,bn.DescendantAdded:Connect(function(br)
+if br:IsA"BasePart"or br:IsA"Decal"then
+br.LocalTransparencyModifier=aU and 0 or 1
+end
+end))
+
+
+
+local function noCollide(br,bs)
+local bt=Instance.new"NoCollisionConstraint"
+bt.Part0=br
+bt.Part1=bs
+bt.Parent=br
+end
+
+for br,bs in ipairs(bn:GetDescendants())do
+if bs:IsA"BasePart"then
+for bt,bu in ipairs(bi:GetDescendants())do
+if bu:IsA"BasePart"then
+noCollide(bs,bu)
+end
+end
+end
+end
+
+
+table.insert(bg,bi.DescendantAdded:Connect(function(br)
+if br:IsA"BasePart"then
+for bs,bt in ipairs(bn:GetDescendants())do
+if bt:IsA"BasePart"then
+noCollide(bt,br)
+end
+end
+end
+end))
+
+table.insert(bg,bn.DescendantAdded:Connect(function(br)
+if br:IsA"BasePart"then
+for bs,bt in ipairs(bi:GetDescendants())do
+if bt:IsA"BasePart"then
+noCollide(br,bt)
+end
+end
+end
+end))
+
+
+
+
+local br=bo:FindFirstChildOfClass"Animator"
+if not br then
+br=Instance.new"Animator"
+br.Parent=bo
+end
+
+local bs,bt,bu,bv,bw,bx,by,bz
+local bA
+
+local function play(bB)
+if bA==bB then
+return
+end
+if bA then
+bA:Stop(0.15)
+end
+bA=bB
+if bB then
+bB:Play(0.15)
+end
+end
+
+local function updateLocomotion(bB)
+local bC=bo:GetState()
+if bC==Enum.HumanoidStateType.Freefall
+or bC==Enum.HumanoidStateType.Climbing
+or bC==Enum.HumanoidStateType.Swimming then
+return
+end
+if bB>0.5 then
+if bB>18 and bu then
+play(bu)
+else
+play(bt or bu)
+end
+else
+play(bs)
+end
+end
+
+
+local bB=Enum.AnimationPriority
+local bC={
+{"Idle",true,bB.Idle,function(bC)bs=bC end},
+{"Walk",true,bB.Core,function(bC)bt=bC end},
+{"Run",true,bB.Core,function(bC)bu=bC end},
+{"Jump",false,bB.Action,function(bC)bv=bC end},
+{"Fall",true,bB.Action,function(bC)bw=bC end},
+{"Climb",true,bB.Action,function(bC)bx=bC end},
+{"Swim",true,bB.Action,function(bC)by=bC end},
+{"SwimIdle",true,bB.Action,function(bC)bz=bC end},
+}
+
+for bD,bE in ipairs(bC)do
+task.spawn(function()
+local bF,bG,bH,bI=bE[1],bE[2],bE[3],bE[4]
+
+local bJ=loadTrack(br,bm[bF],bG,bH)
+if not bJ then
+if bm[bF]and bm[bF]>0 then
+end
+bJ=loadTrack(br,ba[bF],bG,bH)
+end
+
+if bh~=bj then
+return
+end
+
+bI(bJ)
+
+local bK=bp.AssemblyLinearVelocity
+updateLocomotion(Vector3.new(bK.X,0,bK.Z).Magnitude)
+end)
+end
+
+table.insert(bg,bo.Running:Connect(updateLocomotion))
+
+table.insert(bg,bo.Climbing:Connect(function(bD)
+if bx then
+play(bx)
+bx:AdjustSpeed(bD/5)
+end
+end))
+
+table.insert(bg,bo.Swimming:Connect(function(bD)
+if bD>1 and by then
+play(by)
+else
+play(bz or by)
+end
+end))
+
+local bD=Enum.HumanoidStateType
+local bE=0
+
+local function currentSpeed()
+local bF=bp.AssemblyLinearVelocity
+return Vector3.new(bF.X,0,bF.Z).Magnitude
+end
+
+table.insert(bg,bo.StateChanged:Connect(function(bF,bG)
+if bG==bD.Jumping then
+bE=os.clock()
+play(bv or bw)
+elseif bG==bD.Freefall then
+
+local bH=0
+if bv and bA==bv then
+bH=math.max(0,0.3-(os.clock()-bE))
+end
+if bH>0 then
+task.delay(bH,function()
+if bh==bj and bo:GetState()==bD.Freefall then
+play(bw)
+end
+end)
+else
+play(bw)
+end
+elseif bG==bD.Climbing then
+play(bx)
+elseif bG==bD.Swimming then
+play(bz or by)
+elseif bG==bD.Landed or bG==bD.Running or bG==bD.RunningNoPhysics then
+
+updateLocomotion(currentSpeed())
+end
+end))
+
+
+
+
+task.spawn(function()
+local function alive()
+return bh==bj and bn.Parent~=nil
+end
+
+local bF={
+AgentRadius=2*bq,
+AgentHeight=5*bq,
+AgentCanJump=true,
+AgentCanClimb=true,
+WaypointSpacing=math.max(2,4*bq),
+Costs={Water=20},
+}
+
+local bG
+local bH=pcall(function()
+bG=aO:CreatePath(bF)
+end)
+if not bH or not bG then
+bF.AgentCanClimb=nil
+bG=aO:CreatePath(bF)
+end
+
+local function isSwimming()
+return bo:GetState()==Enum.HumanoidStateType.Swimming
+end
+
+
+local bI=RaycastParams.new()
+bI.FilterType=Enum.RaycastFilterType.Exclude
+bI.FilterDescendantsInstances={bn,bi}
+bI.RespectCanCollide=true
+
+
+local function castAhead(bJ,bK)
+local bL=workspace:Raycast(bJ,bK,bI)
+if bL then
+local bM=bL.Instance:FindFirstAncestorOfClass"Model"
+if not(bM and bM:FindFirstChildOfClass"Humanoid")then
+return bL
+end
+end
+return nil
+end
+
+local function maxJumpHeight()
+if bo.UseJumpPower then
+return bo.JumpPower^2/(2*workspace.Gravity)
+end
+return bo.JumpHeight
+end
+
+
+local function analyzeObstacle(bJ)
+local bK=bp.Position
+local bL=Vector3.new(bJ.X-bK.X,0,bJ.Z-bK.Z)
+if bL.Magnitude<0.1 then
+return false,false,0
+end
+local bM=bL.Unit*(3.5*bq)
+
+
+local bN
+for bO,bP in ipairs{0,-2.2*bq}do
+local bQ=castAhead(bK+Vector3.new(0,bP,0),bM)
+if bQ and(not bN or bQ.Distance<bN.Distance)then
+bN=bQ
+end
+end
+if not bN then
+return false,false,0
+end
+
+
+
+local bO=bK.Y-(bo.HipHeight+bp.Size.Y/2)
+local bP=bO+maxJumpHeight()*0.85
+local bQ=castAhead(Vector3.new(bK.X,bP,bK.Z),bM)
+
+return true,bQ==nil,bN.Distance
+end
+
+local bJ=0
+local bK=0
+
+local bL=3
+
+local function inAir()
+local bM=bo:GetState()
+return bM==Enum.HumanoidStateType.Freefall or bM==Enum.HumanoidStateType.Jumping
+end
+
+
+local function doJump()
+if not inAir()and not isSwimming()then
+bo:ChangeState(Enum.HumanoidStateType.Jumping)
+end
+end
+
+
+local function waitForLanding()
+local bM=0
+while alive()and inAir()and bM<3 do
+task.wait(0.05)
+bM+=0.05
+end
+end
+
+
+local function walkWaypoints(bM,bN)
+for bO=2,#bM do
+if not alive()then
+return
+end
+
+local bP=bM[bO]
+local bQ=bP.Action==Enum.PathWaypointAction.Jump
+bo:MoveTo(bP.Position)
+
+local bR=false
+local bS=bo.MoveToFinished:Connect(function()
+bR=true
+end)
+
+local bT=0
+local bU=false
+while alive()and not bR and bT<2 do
+task.wait(0.05)
+bT+=0.05
+
+
+if bQ and not bU then
+local bV=bp.Position-bP.Position
+if Vector3.new(bV.X,0,bV.Z).Magnitude<bL*bq then
+bU=true
+doJump()
+end
+end
+
+
+if(bk.Position-bN).Magnitude>aT and not inAir()then
+break
+end
+if isSwimming()then
+break
+end
+end
+bS:Disconnect()
+
+
+if bQ and not bU then
+bU=true
+doJump()
+end
+
+
+if bU then
+local bV=bM[bO+1]
+if bV then
+bo:MoveTo(bV.Position)
+end
+task.wait(0.05)
+waitForLanding()
+end
+
+if not alive()then
+return
+end
+if(bk.Position-bN).Magnitude>aT then
+return
+end
+if isSwimming()or(not bR and not bU)then
+return
+end
+end
+end
+
+while alive()do
+
+bo.WalkSpeed=bl.WalkSpeed
+bo.UseJumpPower=bl.UseJumpPower
+if bl.UseJumpPower then
+bo.JumpPower=bl.JumpPower
+else
+bo.JumpHeight=bl.JumpHeight
+end
+
+if not(bk.Parent and bp.Parent)then
+task.wait(0.2)
+continue
+end
+
+local bM=bp.Position
+local bN=bk.Position
+local bO=bN-bM
+local bP=Vector3.new(bO.X,0,bO.Z).Magnitude
+
+
+if inAir()and bO.Magnitude<=aS then
+task.wait(0.05)
+continue
+end
+
+
+
+local bQ,bR,bS=false,false,0
+if bP>aR and not isSwimming()then
+bQ,bR,bS=analyzeObstacle(bN)
+if bQ and not bR then
+bJ=os.clock()+2
+end
+end
+
+if bO.Magnitude>aS then
+bn:PivotTo(bk.CFrame*CFrame.new(3,0,3))
+task.wait(0.2)
+elseif bP<=aR and math.abs(bO.Y)<6 then
+
+bo:MoveTo(bM)
+task.wait(0.2)
+elseif isSwimming()then
+
+bo:MoveTo(bN)
+task.wait(0.15)
+elseif os.clock()>=bJ then
+
+bo:MoveTo(bN)
+if bQ and bR and bS<3.3*bq then
+doJump()
+end
+task.wait(0.1)
+
+
+if bp.AssemblyLinearVelocity.Magnitude<1 then
+bK+=0.1
+if bK>0.5 then
+doJump()
+bK=0
+end
+else
+bK=0
+end
+else
+local bT=pcall(function()
+bG:ComputeAsync(bM,bN)
+end)
+
+if bT and bG.Status==Enum.PathStatus.Success then
+walkWaypoints(bG:GetWaypoints(),bN)
+else
+
+bo:MoveTo(bN)
+task.wait(0.4)
+if bp.AssemblyLinearVelocity.Magnitude<1 then
+doJump()
+end
+end
+end
+end
+end)
+end
+
+
+
+
+l.CharacterAdded:Connect(spawnFollower)
+l.CharacterRemoving:Connect(cleanup)
+
+if l.Character then
+task.spawn(spawnFollower,l.Character)
+end
+
+
+
+local bi=j.LocalPlayer
+local bj={}
+
+_G.Main.Antifling=false
+
+local function setupCharacterCollision(bk)
+local function disableCollide(bl)
+if _G.Main.Antifling and bl:IsA"BasePart"then
+bl.CanCollide=false
+end
+end
+
+for bl,bm in ipairs(bk:GetChildren())do
+disableCollide(bm)
+end
+
+local bl=bk.ChildAdded:Connect(disableCollide)
+
+local bm=o.Stepped:Connect(function()
+if _G.Main.Antifling and bk:IsDescendantOf(workspace)then
+for bm,bn in ipairs(bk:GetChildren())do
+if bn:IsA"BasePart"and bn.CanCollide then
+bn.CanCollide=false
+end
+end
+end
+end)
+
+bk.Destroying:Connect(function()
+bl:Disconnect()
+bm:Disconnect()
+end)
+end
+
+local function trackPlayer(bk)
+if bk==bi then return end
+local bl=bk.CharacterAdded:Connect(setupCharacterCollision)
+if bk.Character then
+setupCharacterCollision(bk.Character)
+end
+bj[bk]=bl
+end
+
+local function untrackPlayer(bk)
+if bj[bk]then
+bj[bk]:Disconnect()
+bj[bk]=nil
+end
+end
+
+for bk,bl in ipairs(j:GetPlayers())do
+trackPlayer(bl)
+end
+
+j.PlayerAdded:Connect(trackPlayer)
+j.PlayerRemoving:Connect(untrackPlayer)
+
+
+
+local bk
+
+local function StartWalkFling()
+function getRoot(bl)
+if bl and bl:FindFirstChildOfClass"Humanoid"then
+return bl:FindFirstChildOfClass"Humanoid".RootPart
+else
+return nil
+end
+end
+
+if bk then return end
+
+bk=task.spawn(function()
+local bl=0.1
+
+while true do
+o.Heartbeat:Wait()
+local bm=l.Character
+local bn=getRoot(bm)
+
+while not(bm and bm.Parent and bn and bn.Parent)do
+o.Heartbeat:Wait()
+bm=l.Character
+bn=getRoot(bm)
+end
+
+local bo=bn.Velocity
+bn.Velocity=bo*10000+Vector3.new(0,-1E4,0)
+
+o.RenderStepped:Wait()
+if bm and bm.Parent and bn and bn.Parent then
+bn.Velocity=bo
+end
+
+o.Stepped:Wait()
+if bm and bm.Parent and bn and bn.Parent then
+bn.Velocity=bo+Vector3.new(0,bl,0)
+bl=bl*-1
+end
+end
+end)
+end
+
+local function StopWalkFling()
+if bk then
+task.cancel(bk)
+for bl,bm in ipairs(bi.Character:GetDescendants())do
+if bm:IsA"BasePart"then
+bm.AssemblyLinearVelocity=Vector3.zero
+bm.AssemblyAngularVelocity=Vector3.zero
+end
+end
+bk=nil
+end
+end
+
+
+
+o.Heartbeat:Connect(function()
+if u.enabled and bi.Character then
+local bl=bi.Character
+local bm=bl:WaitForChild"HumanoidRootPart"
+if bm then
+u.old=true
+for bn,bo in pairs(bi.Character:GetChildren())do
+if bo:IsA"BasePart"and bo.Name~="HumanoidRootPart"then
+bo.LocalTransparencyModifier=0.5
+bo.Reflectance=0
+end
+end
+u.loc=bm.CFrame
+if bm.AssemblyLinearVelocity.Magnitude<0.01 then
+bm.AssemblyLinearVelocity=Vector3.new(0,0.01,0)
+end
+local bn=u.loc*CFrame.new(math.random(-1E3,1000),math.random(10000,11000),math.random(-1E3,1000))
+bm.CFrame=bn
+o.RenderStepped:Wait()
+bm.CFrame=u.loc
+end
+end
+if not u.enabled and u.old then
+for bl,bm in pairs(bi.Character:GetChildren())do
+if bm:IsA"BasePart"and bm.Name~="HumanoidRootPart"then
+bm.LocalTransparencyModifier=0
+end
+end
+u.old=false
+end
+end)
+
+local bl
+bl=hookmetamethod(game,"__index",newcclosure(function(bm,bn)
+if u.enabled and not checkcaller()and bn=="CFrame"and bi.Character and bm==bi.Character.HumanoidRootPart then
+return u.loc
+end
+return bl(bm,bn)
+end))
+
+
+
+d:SetLibrary(b)
+d:SetFolder"femboy.gg/themes"
+
+d.BuiltInThemes.Default={
+1,
+{
+FontColor="cdd6f4",
+MainColor="1e1e2e",
+AccentColor="ff80e1",
+BackgroundColor="181825",
+OutlineColor="313244",
+}
+}
+d:ApplyTheme"Default"
+
+c:SetLibrary(b)
+c:SetFolder"femboy.gg/cfgs"
+
+local bm=b:CreateWindow{
+Title="femboy.gg",
+Footer="Ver. 0.2.2 Public beta • t.me/femboy_ggs",
+Icon="paw-print",
+NotifySide="Right",
+Animations={
+ToggleWindow=true,
+TabSwitch=true,
+Groupbox=true,
+Dropdown=true,
+KeyPicker=true
+},
+
+TabTransitionTime=0.22,
+TabSwipeOffset=26,
+TabSwipeFrom="bottom",
+CornerRadius=15,
+ToggleKeybind=Enum.KeyCode.LeftAlt,
+Resizable=false,
+ShowMobileButtons=false
+}
+
+
+local bn=""
+if isfile(g)then
+local bo=getcustomasset or loadcustomasset
+bn=bo(g)
+end
+
+local bo=(gethui and gethui())or m
+local bp
+
+for bq,br in ipairs(bo:GetDescendants())do
+if br:IsA"TextLabel"and br.Text:find"femboy.gg"then
+local bs=br.Parent
+while bs and bs~=bo do
+if(bs:IsA"Frame"or bs:IsA"CanvasGroup")
+and bs.AbsoluteSize.X>=450
+and bs.AbsoluteSize.X<=950 then
+bp=bs
+end
+bs=bs.Parent
+end
+if bp then break end
+end
+end
+
+if bp and bn~=""then
+bp.ClipsDescendants=false
+
+local bq=Instance.new"ImageButton"
+bq.Name="CustomEdgeAsset"
+bq.BackgroundTransparency=1
+bq.AutoButtonColor=false
+bq.Image=bn
+bq.ScaleType=Enum.ScaleType.Stretch
+
+local br=UDim2.fromOffset(230,380)
+local bs=UDim2.fromOffset(250,320)
+
+bq.Size=br
+bq.Position=UDim2.new(0,10,0,-30)
+bq.AnchorPoint=Vector2.new(0.5,0.5)
+bq.ZIndex=100
+bq.Parent=bp
+
+
+local bt=game:GetService"SoundService"
+local bu=Instance.new"Sound"
+bu.Name="MascotClickSound"
+bu.SoundId="rbxassetid://5852470908"
+bu.Volume=1
+bu.Parent=bt
+
+task.spawn(function()
+pcall(function()
+game:GetService"ContentProvider":PreloadAsync{bu}
+end)
+end)
+
+
+local bv
+
+bq.InputBegan:Connect(function(bw)
+if bw.UserInputType==Enum.UserInputType.MouseButton1 or bw.UserInputType==Enum.UserInputType.Touch then
+bt:PlayLocalSound(bu)
+
+if bv then bv:Cancel()end
+bv=r:Create(
+bq,
+TweenInfo.new(0.08,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+{Size=bs}
+)
+bv:Play()
+end
+end)
+
+local function restoreSize()
+if bv then bv:Cancel()end
+bv=r:Create(
+bq,
+TweenInfo.new(0.35,Enum.EasingStyle.Elastic,Enum.EasingDirection.Out),
+{Size=br}
+)
+bv:Play()
+end
+
+bq.InputEnded:Connect(function(bw)
+if bw.UserInputType==Enum.UserInputType.MouseButton1 or bw.UserInputType==Enum.UserInputType.Touch then
+restoreSize()
+end
+end)
+bq.MouseLeave:Connect(restoreSize)
+
+
+local bw=b.Toggled
+local bx
+
+bq.Visible=bw
+bq.ImageTransparency=bw and 0 or 1
+
+local by
+by=o.RenderStepped:Connect(function()
+if not bq or not bq.Parent then
+by:Disconnect()
+return
+end
+
+local bz=b.Toggled
+if bz~=bw then
+bw=bz
+if bx then bx:Cancel()end
+
+if bz then
+bq.Visible=true
+bx=r:Create(
+bq,
+TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+{ImageTransparency=0}
+)
+bx:Play()
+else
+bx=r:Create(
+bq,
+TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+{ImageTransparency=1}
+)
+bx:Play()
+bx.Completed:Connect(function()
+if not bw then
+bq.Visible=false
+end
+end)
+end
+end
+end)
+end
+
+
+
+local bq={
+Main=bm:AddTab("Main","house"),
+Combat=bm:AddTab("Combat","sword"),
+Visuals=bm:AddTab("Visuals","eye"),
+Misc=bm:AddTab("Misc","circle-question-mark"),
+Troll=bm:AddTab("Troll","face-grinning"),
+Configs=bm:AddTab("Configs","settings"),
+}
+
+d:ApplyToTab(bq.Configs)
+d:LoadDefault()
+c:BuildConfigSection(bq.Configs)
+
+local br=bq.Main:AddGroupbox{
+Side="Left",
+Name="Info",
+Description="Credits and info.",
+IconName="heart",
+DisableCollapsing=true,
+
+}
+
+
+local bs=j.LocalPlayer
+local bt=bs.Name
+local bu=bs.DisplayName
+local bv=tostring(bs.UserId)
+local bw=tostring(bs.AccountAge).." days"
+local bx=(identifyexecutor and identifyexecutor())or(getexecutorname and getexecutorname())or"Неизвестно"
+local by=game.JobId~=""and game.JobId or"Studio / Local"
+
+
+local bz=os.time()
+local bA=os.date"%H:%M:%S"
+local bB="00:00:00"
+local bC=0
+local bD=0
+
+
+br:AddLabel("Username: "..bt)
+br:AddLabel("Display Name: "..bu)
+br:AddLabel("User ID: "..bv)
+br:AddLabel("Account Age: "..bw)
+br:AddDivider()
+br:AddLabel("Executor: "..bx)
+br:AddDivider()
+
+local bE=br:AddLabel("Time: "..bA)
+local bF=br:AddLabel("In game: "..bB)
+local bG=br:AddLabel"Ping: 0 мс"
+local bH=br:AddLabel"FPS: 0"
+
+br:AddButton{
+Text="Copy User ID",
+Func=function()
+if setclipboard then
+setclipboard(bv)
+b:Notify{Title="Copied",Description="CurrentUserId copied.",Time=3}
+end
+end,
+}
+
+br:AddButton{
+Text="Copy Job ID",
+Func=function()
+if setclipboard then
+setclipboard(by)
+b:Notify{Title="Copied",Description="CurrentUserJobId copied.",Time=3}
+end
+end,
+}
+
+
+local bI=0
+local bJ=tick()
+
+o.RenderStepped:Connect(function()
+bI+=1
+if tick()-bJ>=1 then
+bD=bI
+bI=0
+bJ=tick()
+end
+end)
+
+
+task.spawn(function()
+while task.wait(0.5)do
+bA=os.date"%H:%M:%S"
+
+local bK=os.time()-bz
+local bL=math.floor(bK/3600)
+local bM=math.floor((bK%3600)/60)
+local bN=bK%60
+bB=string.format("%02d:%02d:%02d",bL,bM,bN)
+
+pcall(function()
+bC=math.round(p.Network.ServerStatsItem["Data Ping"]:GetValue())
+end)
+
+bE:SetText("Time: "..bA)
+bF:SetText("In game: "..bB)
+bG:SetText("Ping: "..tostring(bC).." ms")
+bH:SetText("FPS: "..tostring(bD))
+end
+end)
+
+local bK=true
+local bL="https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Main"
+
+
+
+
+
+
+
+
+
+
+
+br:AddButton{
+Text="Rejoin",
+Func=function()
+local bM=game:GetService"TeleportService"
+
+if bK then
+local bN=queue_on_teleport or(syn and syn.queue_on_teleport)or(fluxus and fluxus.queue_on_teleport)
+
+if bN then
+bN('loadstring(game:HttpGet("'..bL..'"))()')
+else
+b:Notify{
+Title="Error",
+Description="Your executor does not support Auto-Execute.",
+Time=4,
+}
+end
+end
+
+b:Notify{
+Title="Rejoin",
+Description=bK and"Rejoining..."or"Rejoining...",
+Time=3,
+}
+
+if#j:GetPlayers()<=1 then
+bM:Teleport(game.PlaceId,bs)
+else
+bM:TeleportToPlaceInstance(game.PlaceId,game.JobId,bs)
+end
+end,
+}
+
+br:AddDivider()
+
+br:AddLabel([[<font color="#ff00ff">femboy.gg</font> is a <b>free</b>, <b>open-source</b> script created by <font color="#ff00ff">undefinedfemboy</font>, inspired by <b>headshotees</b>. Credits: <b>lucide.dev</b> for the icons, <b>randomstring0</b> for PShade, and <b>mspaint</b> for the Obsidian Library.]],true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local bM=bq.Main:AddGroupbox{
+Side="Right",
+Name="Links",
+Description="Links, telegram channel.",
+IconName="link",
+DisableCollapsing=true,
+
+}
+
+bM:AddButton{
+Text="femboy.gg Telegram",
+Icon="send",
+Func=function()
+setclipboard"https://t.me/femboy_ggs"
+b:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4,}
+end
+}
+
+bM:AddButton{
+Text="headshotees Telegram",
+Icon="send",
+Func=function()
+setclipboard"https://t.me/headshotees"
+b:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4,}
+end
+}
+
+bM:AddButton{
+Text="mspaint.cc",
+Icon="palette",
+Func=function()
+setclipboard"https://www.mspaint.cc/"
+b:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4,}
+end
+}
+
+bM:AddButton{
+Text="Lucide Icons",
+Icon="house",
+Func=function()
+setclipboard"https://lucide.dev/icons"
+b:Notify{Title="Copied",Description="Link copied to the clipboard.",Time=4,}
+end
+}
+
+local bN=bq.Main:AddGroupbox{
+Side="Right",
+Name="Anti",
+Description="Anti-fling, anti-void, etc.",
+IconName="shield",
+DisableCollapsing=true,
+
+}
+
+bN:AddToggle("AntiFlingToggle",{
+Text="Anti-Fling",
+Default=false,
+Callback=function(bO)
+_G.Main.Antifling=bO
+end
+})
+
+_G.Main.Antivoid=false
+
+workspace:GetPropertyChangedSignal"FallenPartsDestroyHeight":Connect(function()
+if _G.Main.Antivoid then
+workspace.FallenPartsDestroyHeight=-5E4
+end
+end)
+
+bN:AddToggle("AntiVoidToggle",{
+Text="Anti-Void",
+Default=false,
+Callback=function(bO)
+_G.Main.Antivoid=bO
+end
+})
+
+local function getFPS()
+local bO=p.FrameRateManager.RenderAverage:GetValue()
+if bO>0 then
+return math.floor(1000/bO)
+end
+return 0
+end
+
+local function getPing()
+
+local bO=p.Network.ServerStatsItem["Data Ping"]:GetValue()
+return math.floor(bO)
+end
+
+local bO=b:AddDraggableLabel("femboy.gg | "..getFPS().."FPS | "..getPing().."ms","paw-print","Left")
+
+task.spawn(function()
+while task.wait(1)do
+bO:SetText("femboy.gg | "..getFPS().."FPS | "..getPing().."ms")
+end
+end)
+
+b:Notify("Welcome, "..game.Players.LocalPlayer.Name,4)
+
+local bP=bq.Combat:AddGroupbox{
+Side="Left",
+Name="Sheriff",
+Description="Silent aim and etc.",
+IconName="bow-arrow",
+}
+
+local bQ=bP:AddButton{
+Text="Shot Murderer",
+Icon="bow-arrow",
+Func=function()
+shootMurderer()
+end
+}
+
+bQ:AddKeyPicker("Shot Keybind",{
+Text="Shot Keybind",
+Default="C",
+Mode="Press",
+})
+
+bP:AddToggle("Wallbang",{
+Text="Wallbang",
+Default=false,
+Callback=function(bR)
+_G.Combat.WallbangSheriff(bR)
+end
+})
+
+bP:AddToggle("Auto Grab Gun",{
+Text="Auto Grab Gun",
+Default=false,
+Callback=function(bR)
+_G.Combat.AutoGrabGun(bR)
+end
+})
+
+local bR=bq.Combat:AddGroupbox{
+Side="Right",
+Name="Murderer",
+Description="Kill aura and etc.",
+IconName="sword",
+}
+
+bR:AddButton{
+Text="Kill All",
+Icon="swords",
+Func=function()
+if not bi.Backpack:FindFirstChild"Knife"and not bi.Character:FindFirstChild"Knife"then return end
+if bi.Backpack:FindFirstChild"Knife"then bi.Character:FindFirstChild"Humanoid":EquipTool(bi.Backpack:FindFirstChild"Knife")end
+bi.Character.Knife.Events.KnifeStabbed:FireServer()
+for bS,bT in j:GetChildren()do
+if bT.Character then
+bi.Character.Knife.Events.HandleTouched:FireServer(bT.Character.PrimaryPart)
+end
+end
+end
+}
+
+local bS=bq.Visuals:AddGroupbox{
+Side="Left",
+Name="ESP",
+Description="Names, chams and etc.",
+IconName="scan-eye",
+}
+
+local bT=bq.Visuals:AddTabbox{
+Side="Right",
+Name="Extra",
+}
+
+local bU=bT:AddTab("Main","home")
+local bV=bT:AddTab("Shaders","lens",450)
+
+local bW=bU:AddToggle("Tracers Enabled",{
+Text="Tracers Enabled",
+Default=false,
+Callback=function(bW)
+_G.Visuals.TRCENABLED(bW)
+end
+})
+
+bW:AddColorPicker("TracerColorPicker",{
+Default=Color3.fromHex"ff80e1",
+Title="Tracer Color",
+Resizable=false,
+Callback=function(bX)
+_G.Visuals.TRCCOLOR=ColorSequence.new(bX)
+end
+})
+
+local bX=bW:AddSettings{
+Width=220,
+}
+
+if b.IsMobile then
+b:AddDraggableButton(
+"GG",
+function(bY)
+b:Toggle()
+end,
+false
+)
+end
+
+
+bX:AddSlider("Tracer Lifetime",{
+Text="Tracer Lifetime",
+Default=2,
+Min=0.1,
+Max=10,
+Rounding=1,
+Suffix=" Seconds",
+Callback=function(bY)
+_G.Visuals.TRClifeTime=bY
+end
+})
+
+bX:AddToggle("Tracer Local Only",{
+Text="Tracer Local Only",
+Default=false,
+Callback=function(bY)
+_G.Visuals.TRCLOCALONLY(bY)
+end
+})
+
+bU:AddToggle("Boykisser Enabled",{
+Text="Boykisser Enabled",
+Default=false,
+Callback=function(bY)
+setFollowerVisible(bY)
+end
+})
+
+bS:AddToggle("Esp Enabled",{
+Text="ESP Enabled",
+Default=false,
+Callback=function(bY)
+_G.ESP.EnabledPlayers(bY)
+end
+})
+
+task.delay(0.1,function()
+c:LoadAutoloadConfig()
+end)
+
+local bY=bq.Misc:AddGroupbox{
+Side="Left",
+Name="Movement",
+IconName="footprints",
+}
+
+local bZ=bY:AddToggle("Speed Glitch Toggle",{
+Text="Enable Speed Glitch",
+Default=false,
+Callback=function(bZ)
+_G.Movement.SpeedGlitchEnabled(bZ)
+if not bZ then
+stopSpeedGlitch()
+end
+end
+})
+
+
+local b_=bZ:AddSettings{
+Width=220,
+}
+
+b_:AddSlider("SpeedGlitchSpeedSlider",{
+Text="Speed",
+Default=5,
+Min=1,
+Max=15,
+Rounding=0,
+Callback=function(b0)
+_G.Movement.SpeedGlitchSpeed=b0
+end
+})
+
+local b0=bY:AddToggle("Invisibility Toggle",{
+Text="Invisibility",
+Default=false,
+Callback=function(b0)
+u.enabled=b0
+end
+})
+
+b0:AddKeyPicker("InvisKeybind",{
+Default="G",
+Text="Invisibility",
+Mode="Toggle",
+Modes={"Toggle","Hold"},
+SyncToggleState=true,
+Callback=function(b1)
+end,
+})
+
+local b1=bq.Troll:AddTabbox{
+Side="Left",
+Name="Trolls",
+
+}
+
+
+
+
+
+
+
+
+
+local b2=game
+local b3=b2:GetService"Workspace"
+local b4=b3.CurrentCamera
+local b5=b2:GetService"Lighting"
+local b6=b3:FindFirstChildOfClass"Terrain"
+local b7=b2:GetService"RunService"
+local b8=b2:GetService"Players"
+local b9=b8.LocalPlayer
+local ca=b9:WaitForChild"PlayerGui"
+
+local cb=getfenv()
+local cc=cb.sethiddenproperty or cb.sethiddenprop or cb.set_hidden_property or function()end
+local cd=cb.gethiddenproperty or cb.gethiddenprop or function()return"ShadowMap"end
+local ce=function(ce)return loadstring(b2:HttpGet(ce))()end
+
+local cf='https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/'
+local cg=cf..'sky/'
+local ch=cd(b5,'Technology')or'ShadowMap'
+
+
+local ci={}
+local cj={}
+
+local function setupEffect(ck,cl)
+local cm=cl:FindFirstChildOfClass(ck)
+if cm then
+local cn={}
+if ck~="Sky"and ck~="Atmosphere"and ck~="Clouds"then
+cn.Enabled=cm.Enabled
+if ck=="BlurEffect"then
+cn.Size=cm.Size
+elseif ck=="DepthOfFieldEffect"then
+cn.FarIntensity=cm.FarIntensity
+cn.NearIntensity=cm.NearIntensity
+cn.FocusDistance=cm.FocusDistance
+cn.InFocusRadius=cm.InFocusRadius
+end
+end
+table.insert(ci,{instance=cm,props=cn})
+
+local co=cm:Clone()
+co.Parent=cl
+if ck~="Sky"and ck~="Atmosphere"and ck~="Clouds"then
+co.Enabled=false
+end
+table.insert(cj,co)
+return co
+else
+local cn=Instance.new(ck,cl)
+if ck~="Sky"and ck~="Atmosphere"and ck~="Clouds"then
+cn.Enabled=false
+end
+table.insert(cj,cn)
+return cn
+end
+end
+
+local ck=setupEffect("BloomEffect",b5)
+local cl=setupEffect("Sky",b5)
+local cm=setupEffect("Atmosphere",b5)
+local cn=setupEffect("BlurEffect",b5)
+local co=setupEffect("DepthOfFieldEffect",b5)
+local cp=setupEffect("ColorCorrectionEffect",b5)
+local cq=setupEffect("SunRaysEffect",b5)
+local cr=setupEffect("Clouds",b6)
+
+
+local cs={
+lighting={
+ClockTime=b5.ClockTime,Ambient=b5.Ambient,Brightness=b5.Brightness,
+ColorShift_Bottom=b5.ColorShift_Bottom,ColorShift_Top=b5.ColorShift_Top,
+EnvironmentDiffuseScale=b5.EnvironmentDiffuseScale,EnvironmentSpecularScale=b5.EnvironmentSpecularScale,
+GlobalShadows=b5.GlobalShadows,OutdoorAmbient=b5.OutdoorAmbient,
+GeographicLatitude=b5.GeographicLatitude,ExposureCompensation=b5.ExposureCompensation,
+FogEnd=b5.FogEnd,FogColor=b5.FogColor,FogStart=b5.FogStart
+},
+terrain={
+WaterReflectance=b6.WaterReflectance,WaterTransparency=b6.WaterTransparency,
+WaterWaveSize=b6.WaterWaveSize,WaterWaveSpeed=b6.WaterWaveSpeed
+}
+}
+
+
+local ct={
+yfbghj=b5.Ambient,tgvbyd=b5.ClockTime,ghuybhuyhj=b5.GeographicLatitude,
+khnbfth=b5.Brightness,hgyghkg=b5.ColorShift_Bottom,yfbhjku=b5.ColorShift_Top,
+ygyyfgvhbjytrt=b5.EnvironmentDiffuseScale,sdfcddc=b5.EnvironmentSpecularScale,
+hgnujuu7thgr=b5.GlobalShadows,hyhnngtf=b5.OutdoorAmbient,hdfr7thgr=b5.ExposureCompensation,
+fhnchvhfjsd=cp.Brightness,ugtbbjhygt=cp.Contrast,
+tfbghuugbnjhg=cp.Saturation,fvrtccvghghj=cp.TintColor,
+jnfdhbnfcvh=ck.Intensity,fvtyghj=ck.Size,ygbhnj=ck.Threshold,
+njnfg=cn.Size,jdfkd=co.FarIntensity,fvgsdfg=co.FocusDistance,
+sdkvkflv=co.InFocusRadius,hbjhd=co.NearIntensity,
+gyhgtg=cr.Cover,ygbhggv=cr.Density,jghbjhgyfd=cr.Color,
+shdbsnjfc=cm.Density,skdjfkdm=cm.Offset,sjdjncdjf=cm.Color,
+efjdjfk=cm.Decay,sejfd=cm.Glare,jddfjsd=cm.Haze,
+sr_int=cq.Intensity,sr_spr=cq.Spread
+}
+
+local cu=table.clone(ct)
+local cv=false
+local cw={
+reflect=0,
+waterSpeed=b6.WaterWaveSpeed,
+waterSize=b6.WaterWaveSize,
+waterTrans=b6.WaterTransparency
+}
+
+local cx={
+dof=false,
+cor=true,
+bl=true,
+blr=false,
+rays=false,
+sflare=false,
+mblur=false,
+tech="ShadowMap",
+customAtmosColor=false,
+atmosColor=Color3.fromRGB(199,210,255),
+customTintColor=false,
+tintColor=Color3.fromRGB(255,255,255),
+mblurMax=26
+}
+
+local cy={
+bk=cl.SkyboxBk,dn=cl.SkyboxDn,ft=cl.SkyboxFt,
+lt=cl.SkyboxLf,rt=cl.SkyboxRt,up=cl.SkyboxUp
+}
+local cz={
+bk='rbxassetid://9544505500',dn='rbxassetid://9544547905',ft='rbxassetid://9544504852',
+lt='rbxassetid://9544547694',rt='rbxassetid://9544547542',up='rbxassetid://9544547398'
+}
+
+
+local cA={}
+local cB={default=cz,game=cy}
+
+task.spawn(function()
+local cC={
+"morning","midday","afternoon","night","midnight",
+"morning1","midday1","afternoon1","evening1","night1","midnight1",
+"black","green","red","yellow","pink","gray","white","purple",
+"black1","green1","red1","yellow1","pink1","gray1","white1","purple1",
+"rain","snow","fog","sunny","cloudy","storm",
+"autumn","spring","summer","winter"
+}
+for cD,cE in ipairs(cC)do
+pcall(function()
+cA[cE]=ce(cf..'shr/'..cE..'.json')
+end)
+end
+pcall(function()cA.evening=ce(cf..'shr/evening%2Cjson')end)
+
+local cD={morning='m',midday='n',afternoon='a',evening='e',rain='r',cloudy='c'}
+for cE,cF in pairs(cD)do
+pcall(function()cB[cE]=ce(cg..cF..'.json')end)
+end
+end)
+
+
+local cC,cD,cE={1.7,0.3,-0.3,-0.9},{0.7,0.2,1.2,0.45},{0.8,0.7,0.9,0.6}
+local cF,cG,cH,cI={},Instance.new('ScreenGui',ca),Instance.new'ImageLabel',1
+cG.Name='PShadeFlare'
+cG.Enabled=false
+cG.ResetOnSpawn=false
+cH.Parent=cG
+cH.SizeConstraint='RelativeYY'
+cH.BackgroundTransparency=1
+cH.Image='rbxassetid://277033149'
+cH.ImageColor3=Color3.new(1,1,0.95)
+cH.Size=UDim2.new(3,0,3,0)
+
+for cJ=1,#cC do
+local cK=Instance.new('ImageLabel',cG)
+cK.Size=UDim2.new(cD[cJ]*0.2,0,cD[cJ]*0.2,0)
+cK.SizeConstraint='RelativeYY'
+cK.BackgroundTransparency=1
+cK.ImageTransparency=cE[cJ]
+cK.Rotation=-25
+cK.Image='rbxassetid://15164863822'
+cK.ImageColor3=Color3.new(1,1,0.8)
+cF[#cF+1]=cK
+end
+
+local cJ=Instance.new("BlurEffect",b4)
+cJ.Size=0
+cJ.Enabled=false
+local cK=b4.CFrame.LookVector
+
+
+local function resetAllCustomEffects()
+cJ.Size=0
+cJ.Enabled=false
+cG.Enabled=false
+
+co.Enabled=false
+co.FarIntensity=0
+co.NearIntensity=0
+
+cn.Enabled=false
+cn.Size=0
+
+ck.Enabled=false
+cp.Enabled=false
+cq.Enabled=false
+end
+
+
+local cL
+local function toggleShadersState(cM)
+cv=cM
+
+for cN,cO in pairs(b3:GetDescendants())do
+if cO:IsA"BasePart"then
+cO.Reflectance=cv and cw.reflect or 0
+end
+end
+
+if cv then
+for cN,cO in ipairs(ci)do
+if cO.instance and cO.instance.Parent then
+if not cO.instance:IsA"Atmosphere"and not cO.instance:IsA"Sky"and not cO.instance:IsA"Clouds"then
+cO.instance.Enabled=false
+end
+end
+end
+
+cc(b5,"Technology",cx.tech)
+
+if cL then cL:Disconnect()end
+cL=b7.PreRender:Connect(function()
+if not cv then return end
+
+
+if cx.mblur then
+cJ.Enabled=true
+local cN=(b4.CFrame.LookVector-cK).Magnitude
+cJ.Size=math.clamp(math.abs(cN)*11*5/2,0,cx.mblurMax)
+cK=b4.CFrame.LookVector
+else
+cJ.Size=0
+cJ.Enabled=false
+end
+
+
+cG.Enabled=cx.sflare
+if cx.sflare then
+local cN=b4:WorldToScreenPoint(b4.CFrame.Position+b5:GetSunDirection())
+local cO,cP=Vector2.new(cN.X,cN.Y),cN.Z>0
+local cQ=b3:FindPartOnRay(Ray.new(b4.CFrame.Position,b5:GetSunDirection()*900),b9.Character)
+local cR=(cQ==nil)and 1 or 0
+cI=cI*0.5+cR*0.5
+local cS=b4.ViewportSize/2
+local cT=cO-cS
+for cU,cV in ipairs(cF)do
+cV.ImageTransparency=1-cI+cE[cU]*cI
+local cW,cX=cV.AbsoluteSize,cS+cT*cC[cU]
+cV.Position=UDim2.new(0.004,cX.X-cW.X/2,0.004,cX.Y-cW.Y/2)
+cV.Visible=cP
+end
+local cU=cH.AbsoluteSize
+cH.Position=UDim2.new(0.004,cO.X-cU.X/2,0.004,cO.Y-cU.Y/2)
+cH.Visible=cP
+end
+
+
+if cu then
+cl.SkyboxBk,cl.SkyboxDn,cl.SkyboxFt=cz.bk,cz.dn,cz.ft
+cl.SkyboxLf,cl.SkyboxRt,cl.SkyboxUp=cz.lt,cz.rt,cz.up
+
+
+cp.Enabled=cx.cor
+if cx.cor then
+cp.Brightness=cu.fhnchvhfjsd
+cp.Contrast=cu.ugtbbjhygt
+cp.Saturation=cu.tfbghuugbnjhg
+cp.TintColor=cx.customTintColor and cx.tintColor or cu.fvrtccvghghj
+end
+
+
+cn.Enabled=cx.blr
+cn.Size=cx.blr and cu.njnfg or 0
+
+
+ck.Enabled=cx.bl
+if cx.bl then
+ck.Intensity=cu.jnfdhbnfcvh
+ck.Size=cu.fvtyghj
+ck.Threshold=cu.ygbhnj
+end
+
+
+co.Enabled=cx.dof
+if cx.dof then
+co.FarIntensity=cu.jdfkd
+co.FocusDistance=cu.fvgsdfg
+co.InFocusRadius=cu.sdkvkflv
+co.NearIntensity=cu.hbjhd
+else
+co.FarIntensity=0
+co.NearIntensity=0
+end
+
+
+cq.Enabled=cx.rays
+if cx.rays then
+cq.Intensity=cu.sr_int or 0.15
+cq.Spread=cu.sr_spr or 0.5
+end
+
+
+b5.Ambient=cu.yfbghj
+b5.ClockTime=cu.tgvbyd
+b5.GeographicLatitude=cu.ghuybhuyhj
+b5.Brightness=cu.khnbfth
+b5.ColorShift_Bottom=cu.hgyghkg
+b5.ColorShift_Top=cu.yfbhjku
+b5.EnvironmentDiffuseScale=cu.ygyyfgvhbjytrt
+b5.EnvironmentSpecularScale=cu.sdfcddc
+b5.GlobalShadows=cu.hgnujuu7thgr
+b5.OutdoorAmbient=cu.hyhnngtf
+b5.ExposureCompensation=cu.hdfr7thgr
+b5.FogEnd=math.huge
+b5.FogStart=math.huge
+
+
+b6.WaterWaveSpeed=cw.waterSpeed
+b6.WaterWaveSize=cw.waterSize
+b6.WaterTransparency=cw.waterTrans
+
+
+cr.Cover=cu.gyhgtg
+cr.Density=cu.ygbhggv
+cr.Color=cu.jghbjhgyfd
+
+
+cm.Density=cu.shdbsnjfc
+cm.Offset=cu.skdjfkdm
+cm.Color=cx.customAtmosColor and cx.atmosColor or cu.sjdjncdjf
+cm.Decay=cu.efjdjfk
+cm.Glare=cu.sejfd
+cm.Haze=cu.jddfjsd
+end
+end)
+else
+if cL then
+cL:Disconnect()
+cL=nil
+end
+
+resetAllCustomEffects()
+cc(b5,"Technology",ch)
+
+cl.SkyboxBk,cl.SkyboxDn,cl.SkyboxFt=cy.bk,cy.dn,cy.ft
+cl.SkyboxLf,cl.SkyboxRt,cl.SkyboxUp=cy.lt,cy.rt,cy.up
+
+for cN,cO in pairs(cs.lighting)do b5[cN]=cO end
+for cN,cO in pairs(cs.terrain)do b6[cN]=cO end
+
+cm.Density=ct.shdbsnjfc
+cm.Offset=ct.skdjfkdm
+cm.Color=ct.sjdjncdjf
+cm.Decay=ct.efjdjfk
+cm.Glare=ct.sejfd
+cm.Haze=ct.jddfjsd
+
+cr.Cover=ct.gyhgtg
+cr.Density=ct.ygbhggv
+cr.Color=ct.jghbjhgyfd
+
+for cN,cO in ipairs(ci)do
+if cO.instance and cO.instance.Parent then
+for cP,cQ in pairs(cO.props)do
+cO.instance[cP]=cQ
+end
+end
+end
+end
+end
+
+
+
+
+bU:AddToggle("ShadersEnabled",{
+Text="Shaders Enabled",
+Default=false,
+Tooltip="Toggle PShade Ultimate shaders on or off",
+Callback=function(cM)
+toggleShadersState(cM)
+end
+})
+
+
+
+
+bV:AddLabel"Presets & World"
+
+bV:AddDropdown("ShaderPreset",{
+Values={
+"default",
+"morning","midday","afternoon","evening","night","midnight",
+"morning1","midday1","afternoon1","evening1","night1","midnight1",
+"rain","snow","fog","sunny","cloudy","storm",
+"autumn","spring","summer","winter",
+"black","green","red","yellow","pink","gray","white","purple",
+"black1","green1","red1","yellow1","pink1","gray1","white1","purple1"
+},
+Default=1,
+Text="Shader Preset",
+Callback=function(cM)
+if cM=="default"then
+cu=table.clone(ct)
+elseif cA[cM]then
+cu=table.clone(cA[cM])
+else
+if b and b.Notify then
+end
+end
+end
+})
+
+bV:AddDropdown("ShaderTech",{
+Values={"ShadowMap","Future","Compatibility","Voxel","Legacy"},
+Default=1,
+Text="Lighting Technology",
+Callback=function(cM)
+cx.tech=cM
+if cv then cc(b5,"Technology",cM)end
+end
+})
+
+bV:AddDropdown("SkyboxPreset",{
+Values={"default","game","morning","midday","afternoon","evening","rain","cloudy"},
+Default=1,
+Text="Skybox",
+Callback=function(cM)
+if cB[cM]then
+cz=cB[cM]
+end
+end
+})
+
+bV:AddSlider("Reflectance",{
+Text="Reflectance",
+Default=0,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cw.reflect=cM
+if cv then
+for cN,cO in pairs(b3:GetDescendants())do
+if cO:IsA"BasePart"then cO.Reflectance=cM end
+end
+end
+end
+})
+
+bV:AddSlider("WaterWaveSpeed",{
+Text="Water Wave Speed",
+Default=math.floor(b6.WaterWaveSpeed),
+Min=0,
+Max=100,
+Rounding=0,
+Callback=function(cM)
+cw.waterSpeed=cM
+end
+})
+
+bV:AddSlider("WaterWaveSize",{
+Text="Water Wave Size",
+Default=math.floor(b6.WaterWaveSize),
+Min=0,
+Max=40,
+Rounding=0,
+Callback=function(cM)
+cw.waterSize=cM
+end
+})
+
+bV:AddSlider("WaterTransparency",{
+Text="Water Transparency",
+Default=b6.WaterTransparency,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cw.waterTrans=cM
+end
+})
+
+bV:AddDivider()
+bV:AddLabel"Lighting, Atmosphere & Clouds"
+
+bV:AddSlider("ClockTime",{
+Text="Clock Time",
+Default=14,
+Min=0,
+Max=24,
+Rounding=1,
+Callback=function(cM)
+cu.tgvbyd=cM
+end
+})
+
+bV:AddSlider("GeoLatitude",{
+Text="Geographic Latitude",
+Default=math.floor(b5.GeographicLatitude),
+Min=0,
+Max=180,
+Rounding=0,
+Callback=function(cM)
+cu.ghuybhuyhj=cM
+end
+})
+
+bV:AddSlider("LightingBrightness",{
+Text="Brightness",
+Default=2,
+Min=0,
+Max=10,
+Rounding=2,
+Callback=function(cM)
+cu.khnbfth=cM
+end
+})
+
+bV:AddSlider("ExposureComp",{
+Text="Exposure Compensation",
+Default=0,
+Min=-3,
+Max=3,
+Rounding=2,
+Callback=function(cM)
+cu.hdfr7thgr=cM
+end
+})
+
+bV:AddToggle("GlobalShadowsToggle",{
+Text="Global Shadows",
+Default=b5.GlobalShadows,
+Callback=function(cM)
+cu.hgnujuu7thgr=cM
+end
+})
+
+bV:AddToggle("CustomAtmosToggle",{
+Text="Custom Atmosphere Color",
+Default=false,
+Callback=function(cM)
+cx.customAtmosColor=cM
+end
+}):AddColorPicker("AtmosphereColorPicker",{
+Default=Color3.fromRGB(199,210,255),
+Title="Atmosphere Color",
+Callback=function(cM)
+cx.atmosColor=cM
+end
+})
+
+bV:AddSlider("AtmosphereDensity",{
+Text="Atmosphere Density",
+Default=0.3,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.shdbsnjfc=cM
+end
+})
+
+bV:AddSlider("AtmosphereOffset",{
+Text="Atmosphere Offset",
+Default=0.25,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.skdjfkdm=cM
+end
+})
+
+bV:AddSlider("AtmosphereGlare",{
+Text="Atmosphere Glare",
+Default=0,
+Min=0,
+Max=10,
+Rounding=2,
+Callback=function(cM)
+cu.sejfd=cM
+end
+})
+
+bV:AddSlider("AtmosphereHaze",{
+Text="Atmosphere Haze",
+Default=0,
+Min=0,
+Max=10,
+Rounding=2,
+Callback=function(cM)
+cu.jddfjsd=cM
+end
+})
+
+bV:AddSlider("CloudsCover",{
+Text="Clouds Cover",
+Default=0,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.gyhgtg=cM
+end
+})
+
+bV:AddSlider("CloudsDensity",{
+Text="Clouds Density",
+Default=0,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.ygbhggv=cM
+end
+})
+
+bV:AddDivider()
+bV:AddLabel"Depth of Field (DOF)"
+
+bV:AddToggle("DOFToggle",{
+Text="Enable Depth of Field",
+Default=false,
+Callback=function(cM)
+cx.dof=cM
+if not cM then
+co.Enabled=false
+co.FarIntensity=0
+co.NearIntensity=0
+end
+end
+})
+
+bV:AddSlider("DOFFarIntensity",{
+Text="DOF Far Intensity",
+Default=0.1,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.jdfkd=cM
+end
+})
+
+bV:AddSlider("DOFNearIntensity",{
+Text="DOF Near Intensity",
+Default=0,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.hbjhd=cM
+end
+})
+
+bV:AddSlider("DOFFocusDistance",{
+Text="DOF Focus Distance",
+Default=10,
+Min=0,
+Max=200,
+Rounding=1,
+Callback=function(cM)
+cu.fvgsdfg=cM
+end
+})
+
+bV:AddSlider("DOFInFocusRadius",{
+Text="DOF In-Focus Radius",
+Default=30,
+Min=0,
+Max=50,
+Rounding=1,
+Callback=function(cM)
+cu.sdkvkflv=cM
+end
+})
+
+bV:AddDivider()
+bV:AddLabel"Bloom & Color Correction"
+
+bV:AddToggle("BloomToggle",{
+Text="Enable Bloom",
+Default=true,
+Callback=function(cM)
+cx.bl=cM
+if not cM then
+ck.Enabled=false
+end
+end
+})
+
+bV:AddSlider("BloomIntensity",{
+Text="Bloom Intensity",
+Default=0.4,
+Min=0,
+Max=2,
+Rounding=2,
+Callback=function(cM)
+cu.jnfdhbnfcvh=cM
+end
+})
+
+bV:AddSlider("BloomSize",{
+Text="Bloom Size",
+Default=24,
+Min=0,
+Max=56,
+Rounding=0,
+Callback=function(cM)
+cu.fvtyghj=cM
+end
+})
+
+bV:AddSlider("BloomThreshold",{
+Text="Bloom Threshold",
+Default=0.8,
+Min=0,
+Max=4,
+Rounding=2,
+Callback=function(cM)
+cu.ygbhnj=cM
+end
+})
+
+bV:AddToggle("ColorCorToggle",{
+Text="Enable Color Correction",
+Default=true,
+Callback=function(cM)
+cx.cor=cM
+if not cM then
+cp.Enabled=false
+end
+end
+})
+
+bV:AddToggle("CustomTintToggle",{
+Text="Custom Tint Color",
+Default=false,
+Callback=function(cM)
+cx.customTintColor=cM
+end
+}):AddColorPicker("TintColorPicker",{
+Default=Color3.fromRGB(255,255,255),
+Title="Tint Color",
+Callback=function(cM)
+cx.tintColor=cM
+end
+})
+
+bV:AddSlider("ColorBrightness",{
+Text="Color Brightness",
+Default=0,
+Min=-1,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.fhnchvhfjsd=cM
+end
+})
+
+bV:AddSlider("ColorContrast",{
+Text="Color Contrast",
+Default=0,
+Min=-1,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.ugtbbjhygt=cM
+end
+})
+
+bV:AddSlider("ColorSaturation",{
+Text="Color Saturation",
+Default=0,
+Min=-1,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.tfbghuugbnjhg=cM
+end
+})
+
+bV:AddDivider()
+bV:AddLabel"Blur & Sun Effects"
+
+bV:AddToggle("StaticBlurToggle",{
+Text="Enable Static Blur",
+Default=false,
+Callback=function(cM)
+cx.blr=cM
+if not cM then
+cn.Enabled=false
+cn.Size=0
+end
+end
+})
+
+bV:AddSlider("StaticBlurSize",{
+Text="Static Blur Size",
+Default=0,
+Min=0,
+Max=56,
+Rounding=0,
+Callback=function(cM)
+cu.njnfg=cM
+end
+})
+
+bV:AddToggle("MotionBlurToggle",{
+Text="Enable Motion Blur",
+Default=false,
+Callback=function(cM)
+cx.mblur=cM
+if not cM then
+cJ.Size=0
+cJ.Enabled=false
+end
+end
+})
+
+bV:AddSlider("MotionBlurMax",{
+Text="Motion Blur Max Size",
+Default=26,
+Min=0,
+Max=100,
+Rounding=0,
+Callback=function(cM)
+cx.mblurMax=cM
+end
+})
+
+bV:AddToggle("SunRaysToggle",{
+Text="Enable Sun Rays",
+Default=false,
+Callback=function(cM)
+cx.rays=cM
+if not cM then
+cq.Enabled=false
+end
+end
+})
+
+bV:AddSlider("SunRaysIntensity",{
+Text="Sun Rays Intensity",
+Default=0.15,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.sr_int=cM
+end
+})
+
+bV:AddSlider("SunRaysSpread",{
+Text="Sun Rays Spread",
+Default=0.5,
+Min=0,
+Max=1,
+Rounding=2,
+Callback=function(cM)
+cu.sr_spr=cM
+end
+})
+
+bV:AddToggle("SunFlareToggle",{
+Text="Enable Sun Flare",
+Default=false,
+Callback=function(cM)
+cx.sflare=cM
+if not cM then
+cG.Enabled=false
+end
+end
+})
+
+
+
+local cM=bq.Main:AddGroupbox{
+Side="Right",
+Name="Mobile",
+IconName="smartphone"
+}
+
+local cN={
+Shoot={"Shoot",function(cN)
+shootMurderer()
+end},
+Invisibility={"Invis",function(cN)
+u.enabled=not u.enabled
+b0:SetValue(u.enabled)
+end},
+KillAll={"Kill All",function(cN)
+if not bi.Backpack:FindFirstChild"Knife"and not bi.Character:FindFirstChild"Knife"then return end
+if bi.Backpack:FindFirstChild"Knife"then bi.Character:FindFirstChild"Humanoid":EquipTool(bi.Backpack:FindFirstChild"Knife")end
+bi.Character.Knife.Events.KnifeStabbed:FireServer()
+for cO,cP in j:GetChildren()do
+if cP.Character then
+bi.Character.Knife.Events.HandleTouched:FireServer(cP.Character.PrimaryPart)
+end
+end
+end},
+}
+
+local cO={
+Shoot=nil,
+Invisibility=nil,
+KillAll=nil,
+}
+
+cM:AddToggle("ShootMobileButton",{
+Text="Shoot Button",
+Default=false,
+Callback=function(cP)
+if cP then
+cO.Shoot=b:AddDraggableButton(table.unpack(cN.Shoot))
+else
+if cO.Shoot then
+cO.Shoot:Destroy()
+cO.Shoot=nil
+end
+end
+end
+})
+
+cM:AddToggle("InvisMobileButton",{
+Text="Invisibility Button",
+Default=false,
+Callback=function(cP)
+if cP then
+cO.Invisibility=b:AddDraggableButton(table.unpack(cN.Invisibility))
+else
+if cO.Invisibility then
+cO.Invisibility:Destroy()
+cO.Invisibility=nil
+end
+end
+end
+})
+
+cM:AddToggle("KillAllMobileButton",{
+Text="Kill All Button",
+Default=false,
+Callback=function(cP)
+if cP then
+cO.KillAll=b:AddDraggableButton(table.unpack(cN.KillAll))
+else
+if cO.KillAll then
+cO.KillAll:Destroy()
+cO.KillAll=nil
+end
+end
+end
+})
+
+
+
+local cP=b1:AddTab("Target","crosshair")
+local cQ=b1:AddTab("Misc","circle-question-mark")
+
+cQ:AddToggle("WalkFlingToggle",{
+Text="Walk-Fling",
+Default=false,
+Callback=function(cR)
+if cR then StartWalkFling()else StopWalkFling()end
+end
+})
+
+local cR
+local cS={}
+local cT=false
+
+local function FormatPlayerText(cU)
+local cV=GetRole(cU)
+local cW=GetColor(cV)
+local cX="#FFFFFF"
+
+if typeof(cW)=="Color3"then
+cX="#"..cW:ToHex()
+elseif type(cW)=="string"then
+
+cX=cW:sub(1,1)=="#"and cW or("#"..cW)
+end
+
+return string.format('%s [<font color="%s">%s</font>]',cU.DisplayName,cX,tostring(cV))
+end
+
+
+local function EnableRichText(cU)
+if cU.TextLabel then
+cU.TextLabel.RichText=true
+elseif cU.Label then
+cU.Label.RichText=true
+elseif cU.Holder then
+local cV=cU.Holder:FindFirstChildWhichIsA("TextLabel",true)
+if cV then
+cV.RichText=true
+end
+end
+end
+
+
+function UpdatePlayerCheckboxes()
+for cU,cV in pairs(cS)do
+if cU and cU.Parent==j and cV then
+EnableRichText(cV)
+local cW=FormatPlayerText(cU)
+
+if cV.SetText then
+cV:SetText(cW)
+elseif cV.TextLabel then
+cV.TextLabel.Text=cW
+end
+end
+end
+end
+
+
+local function UpdateTabboxSize()
+task.wait()
+if cP.Resize then cP:Resize()end
+if b1.Resize then b1:Resize()end
+end
+
+
+local function SelectFirstAvailablePlayer()
+for cU,cV in pairs(cS)do
+if cU and cU.Parent==j then
+cR=cU
+cT=true
+cV:SetValue(true)
+cT=false
+return
+end
+end
+cR=nil
+end
+
+
+local function AddPlayerCheckbox(cU)
+if cU==k or cS[cU]then return end
+
+local cV="TrollTarget_"..cU.Name
+
+local cW=cP:AddCheckbox(cV,{
+Text=FormatPlayerText(cU),
+Default=false,
+Callback=function(cW)
+if cT then return end
+
+if cW then
+cR=cU
+cT=true
+for cX,cY in pairs(cS)do
+if cX~=cU and cY.Value then
+cY:SetValue(false)
+end
+end
+cT=false
+else
+if cR==cU and cU.Parent==j then
+task.spawn(function()
+task.wait()
+local cX=cS[cU]
+if cR==cU and cX and not cX.Value then
+cT=true
+cX:SetValue(true)
+cT=false
+end
+end)
+end
+end
+end,
+})
+
+
+EnableRichText(cW)
+cS[cU]=cW
+
+if not cR then
+cR=cU
+cT=true
+cW:SetValue(true)
+cT=false
+end
+
+UpdateTabboxSize()
+end
+
+
+local function RemovePlayerCheckbox(cU)
+local cV=cS[cU]
+if not cV then return end
+
+local cW=(cR==cU)
+if cW then
+cR=nil
+end
+
+if cV.Holder then
+cV.Holder:Destroy()
+elseif cV.Container then
+cV.Container:Destroy()
+else
+cV:SetVisible(false)
+end
+
+local cX="TrollTarget_"..cU.Name
+if b.Toggles then b.Toggles[cX]=nil end
+if b.Options then b.Options[cX]=nil end
+
+cS[cU]=nil
+
+if cW then
+SelectFirstAvailablePlayer()
+end
+
+UpdateTabboxSize()
+end
+
+
+for cU,cV in ipairs(j:GetPlayers())do
+AddPlayerCheckbox(cV)
+end
+
+if not cR then
+SelectFirstAvailablePlayer()
+end
+
+j.PlayerAdded:Connect(AddPlayerCheckbox)
+j.PlayerRemoving:Connect(RemovePlayerCheckbox)
+
+local cU=bq.Troll:AddGroupbox{
+Side="Right",
+Name="Target",
+DisableCollapsing=true,
+}
+
+
+local cV=cU:AddImage("TargetAvatar",{
+Image="rbxassetid://0",
+Height=100,
+})
+
+local cW=cU:AddLabel"Display Name: None"
+local cX=cU:AddLabel"Username: None"
+local cY=cU:AddLabel"User ID: None"
+local cZ=cU:AddLabel"Role: None"
+
+
+
+if cZ.TextLabel then
+cZ.TextLabel.RichText=true
+elseif cZ.Label then
+cZ.Label.RichText=true
+elseif cZ.Holder then
+local c_=cZ.Holder:FindFirstChildWhichIsA("TextLabel",true)
+if c_ then c_.RichText=true end
+end
+
+local function UpdateTargetInfo(c_)
+if c_ and c_.Parent==j then
+cW:SetText("Display Name: "..c_.DisplayName)
+cX:SetText("Username: @"..c_.Name)
+cY:SetText("User ID: "..tostring(c_.UserId))
+
+
+local c0=GetRole(c_)
+local c1=GetColor(c0)
+local c2="#FFFFFF"
+
+if typeof(c1)=="Color3"then
+c2="#"..c1:ToHex()
+elseif type(c1)=="string"then
+c2=c1:sub(1,1)=="#"and c1 or("#"..c1)
+end
+
+cZ:SetText(string.format('Role: <font color="%s">%s</font>',c2,tostring(c0)))
+
+
+task.spawn(function()
+local c3,c4=pcall(function()
+return j:GetUserThumbnailAsync(
+c_.UserId,
+Enum.ThumbnailType.HeadShot,
+Enum.ThumbnailSize.Size150x150
+)
+end)
+
+
+if c3 and c4 and cR==c_ then
+if cV.SetImage then
+cV:SetImage(c4)
+elseif cV.ImageLabel then
+cV.ImageLabel.Image=c4
+end
+end
+end)
+else
+cW:SetText"Display Name: -"
+cX:SetText"Username: -"
+cY:SetText"User ID: -"
+cZ:SetText"Role: -"
+
+if cV.SetImage then
+cV:SetImage"rbxassetid://0"
+elseif cV.ImageLabel then
+cV.ImageLabel.Image="rbxassetid://0"
+end
+end
+end
+
+
+function RefreshTargetInfo()
+UpdateTargetInfo(cR)
+end
+
+
+local c_=false
+
+o.Heartbeat:Connect(function()
+if cR~=c_ then
+c_=cR
+UpdateTargetInfo(cR)
+end
+end)
+
+local c0="Shoot"
+
+cU:AddDropdown("TrollSelectDropdown",{
+Values={"Shoot","Bang"},
+Default="Shoot",
+Multi=false,
+Text="Troll Mode",
+Callback=function(c1)
+c0=c1
+end
+})
+
+cU:AddButton{
+Text="Fling",
+Icon="skull",
+Func=function()
+flingPlayer(cR)
+end
+}:AddButton{
+Text="Troll",
+Icon="face-grinning",
+Func=function()
+if c0=="Shoot"then
+shootMurderer(cR)
+elseif c0=="Bang"then
+b:Notify("Under Development!",2)
+end
+end
+}
+end
