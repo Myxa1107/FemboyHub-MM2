@@ -5,7 +5,6 @@ femboy.gg x headshotees, hueta ebanaya
 ------------------------------------------------------------
 																																																														]]
 
-do
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
 local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
@@ -1307,27 +1306,22 @@ end
 
 -- (Cum)Shot
 
-local function shootMurderer()
-	local localplayer = game.Players.LocalPlayer
+local function shootMurderer(trg)
 
-	if localplayer ~= findSheriff() then
-		return
+	if trg == nil then
+		trg = findMurderer()
 	end
 
-	local murderer = findMurderer()
-	if not murderer then
-		return
-	end
+	if LocalPlayer ~= findSheriff() then return end
 
-	local murdererTorso = murderer.Character.UpperTorso
-	-- Достаём пистолет (если его нет в руках)
-	local gun = localplayer.Character:FindFirstChild("Gun")
+	if not trg.Character or not trg then return end
+	local gun = LocalPlayer.Character:FindFirstChild("Gun")
 	if not gun then
-		local backpack = localplayer:FindFirstChild("Backpack")
+		local backpack = LocalPlayer:FindFirstChild("Backpack")
 		if backpack then
 			gun = backpack:FindFirstChild("Gun")
 			if gun then
-				local hum = localplayer.Character:FindFirstChild("Humanoid")
+				local hum = LocalPlayer.Character:FindFirstChild("Humanoid")
 				if hum then
 					hum:EquipTool(gun)
 				end
@@ -1338,20 +1332,21 @@ local function shootMurderer()
 		end
 	end
 
-	local rightHand = localplayer.Character:FindFirstChild("RightHand")
-	if not rightHand then	
+	local rightHand = LocalPlayer.Character:FindFirstChild("RightHand")
+	if not rightHand then
 		return
 	end
 
 	-- Отправляем выстрел через RemoteEvent "Shoot"
 	local shootEvent = gun:FindFirstChild("Shoot")	
-	if shootEvent and shootEvent:IsA("RemoteEvent") then
+	if trg == findMurderer() then
 		if _G.Combat.WallbangSheriff() then
-			shootEvent:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(murderer), 15)), CFrame.new((_G.GetPredictedPosition(murderer))))
-			else
-			shootEvent:FireServer(CFrame.new(rightHand.Position), CFrame.new((_G.GetPredictedPosition(murderer))))
+			shootEvent:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(trg), 15)), CFrame.new((_G.GetPredictedPosition(trg))))
+		else
+			shootEvent:FireServer(CFrame.new(rightHand.Position), CFrame.new((_G.GetPredictedPosition(trg))))
 		end
 	else
+		shootEvent:FireServer(CFrame.new(getAvailableSpace(_G.GetPredictedPosition(trg), 15)), CFrame.new((_G.GetPredictedPosition(trg))))
 	end
 end
 
@@ -1488,7 +1483,7 @@ local function flingPlayer(targetPlayer)
 	while activeFlingRunning do
 		local dt = RunService.Heartbeat:Wait()
 		if dt <= 0 then dt = 0.016 end
-
+		invisT.enabled = false
 		local targetChar = targetPlayer and targetPlayer.Character
 		local targetRoot = targetChar and targetChar:FindFirstChild("HumanoidRootPart")
 		local targetHumanoid = targetChar and targetChar:FindFirstChildOfClass("Humanoid")
@@ -1709,6 +1704,8 @@ end)
 	end)
 
 -- Companion
+local FOLLOWER_VISIBLE = true
+do
 local AssetService = game:GetService("AssetService")
 local PathfindingService = game:GetService("PathfindingService")
 local AnimationClipProvider = game:GetService("AnimationClipProvider")
@@ -1723,7 +1720,6 @@ local REPATH_DISTANCE = 6       -- если игрок сдвинулся на �
 
 -- Виден ли человечек (true - виден, false - скрыт, но продолжает ходить).
 -- Для смены во время игры используй функцию setFollowerVisible(true/false) ниже.
-local FOLLOWER_VISIBLE = true
 
 --------------------------------------------------------------------
 -- АЙДИ ПРЕДМЕТОВ
@@ -2510,7 +2506,7 @@ player.CharacterRemoving:Connect(cleanup)
 if player.Character then
 	task.spawn(spawnFollower, player.Character)
 end
-
+end
 -- Antifling
 
 local localPlayer = Players.LocalPlayer
@@ -2630,11 +2626,11 @@ local function StopWalkFling()
 end
 
 -- Desync -- Invis
-
+do
 RunService.Heartbeat:Connect(function()
     if invisT.enabled and localPlayer.Character then
         local character = localPlayer.Character
-        local root = character:FindFirstChild("HumanoidRootPart")
+        local root = character:WaitForChild("HumanoidRootPart")
         if root then
 			invisT.old = true
 			for _,v in pairs(localPlayer.Character:GetChildren()) do
@@ -2670,7 +2666,7 @@ desynchook = hookmetamethod(game, "__index", newcclosure(function(self, key)
     end
     return desynchook(self, key)
 end))
-
+end
 -- UI
 
 ThemeManager:SetLibrary(Library)
@@ -2693,7 +2689,7 @@ SaveManager:SetFolder("femboy.gg/cfgs")
 
 local Window = Library:CreateWindow({
     Title = "femboy.gg",
-    Footer = "Ver. 0.2.1 Public beta • t.me/femboy_ggs",
+    Footer = "Ver. 0.2.2 Public beta • t.me/femboy_ggs",
     Icon = "paw-print",
     NotifySide = "Right",
     Animations = {
@@ -2713,7 +2709,18 @@ local Window = Library:CreateWindow({
 	ShowMobileButtons = false
 })
 
+if Library.IsMobile then
+	Library:AddDraggableButton(
+    "GG",
+    function(self)
+        Library:Toggle()
+    end,
+    false
+	)
+end
+
 -- Mascot
+do
 local assetId = ""
 if isfile(mascotPath) then
     local getAsset = getcustomasset or loadcustomasset
@@ -2848,7 +2855,7 @@ if windowFrame and assetId ~= "" then
         end
     end)
 end
-
+end
 -- Back to UI
 
 local Tabs = {
@@ -3224,18 +3231,7 @@ local TracerToggleSettings = TracerToggleT:AddSettings({
     Width = 220,
 })
 
-if Library.IsMobile then
-	Library:AddDraggableButton(
-    "GG",
-    function(self)
-        Library:Toggle()
-    end,
-    false
-	)
-end
-
-
-local TracerLifetimeSlider = TracerToggleSettings:AddSlider("Tracer Lifetime", {
+TracerLifetimeSlider = TracerToggleSettings:AddSlider("Tracer Lifetime", {
     Text = "Tracer Lifetime",
     Default = 2,
     Min = 0.1,
@@ -3247,7 +3243,7 @@ local TracerLifetimeSlider = TracerToggleSettings:AddSlider("Tracer Lifetime", {
 	end
 })
 
-local LocalTracerToggleT = TracerToggleSettings:AddToggle("Tracer Local Only", {
+LocalTracerToggleT = TracerToggleSettings:AddToggle("Tracer Local Only", {
     Text = "Tracer Local Only",
     Default = false,
 	Callback = function(state)
@@ -3255,7 +3251,7 @@ local LocalTracerToggleT = TracerToggleSettings:AddToggle("Tracer Local Only", {
 	end
 })
 
-local BoykisserToggle = ExtraVisualsTab:AddToggle("Boykisser Enabled", {
+BoykisserToggle = ExtraVisualsTab:AddToggle("Boykisser Enabled", {
 	Text = "Boykisser Enabled",
 	Default = false,
 	Callback = function(state)
@@ -3263,7 +3259,7 @@ local BoykisserToggle = ExtraVisualsTab:AddToggle("Boykisser Enabled", {
 	end
 })
 
-local ESPToggle = ESPGroupBox:AddToggle("Esp Enabled", {
+ESPToggle = ESPGroupBox:AddToggle("Esp Enabled", {
 	Text = "ESP Enabled",
 	Default = false,
 	Callback = function(state)
@@ -3333,6 +3329,7 @@ local TargetTabBox = Tabs.Troll:AddTabbox({
 })
 
 -- Pshade Shaders LOL
+do
 -- ==========================================
 -- PSHADE ULTIMATE MODULE FOR OBSIDIAN UI
 -- Requires:
@@ -4223,7 +4220,7 @@ ShadersTab:AddToggle("SunFlareToggle", {
         end
     end
 })
-
+end
 -- Mobile
 
 local MobileGroupBox = Tabs.Main:AddGroupbox({
@@ -4265,8 +4262,10 @@ MobileGroupBox:AddToggle("ShootMobileButton", {
 		if state then
 			MobileButtons.Shoot = Library:AddDraggableButton(table.unpack(EMobileButtons.Shoot))
 		else
-			MobileButtons.Shoot:Destroy()
-			MobileButtons.Shoot = nil
+			if MobileButtons.Shoot then
+				MobileButtons.Shoot:Destroy()
+				MobileButtons.Shoot = nil
+			end
 		end
 	end
 })
@@ -4278,8 +4277,10 @@ MobileGroupBox:AddToggle("InvisMobileButton", {
 		if state then
 			MobileButtons.Invisibility = Library:AddDraggableButton(table.unpack(EMobileButtons.Invisibility))
 		else
-			MobileButtons.Invisibility:Destroy()
-			MobileButtons.Invisibility = nil
+			if MobileButtons.Invisibility then
+				MobileButtons.Invisibility:Destroy()
+				MobileButtons.Invisibility = nil
+			end
 		end
 	end
 })
@@ -4291,8 +4292,10 @@ MobileGroupBox:AddToggle("KillAllMobileButton", {
 		if state then
 			MobileButtons.KillAll = Library:AddDraggableButton(table.unpack(EMobileButtons.KillAll))
 		else
-			MobileButtons.KillAll:Destroy()
-			MobileButtons.KillAll = nil
+			if MobileButtons.KillAll then
+				MobileButtons.KillAll:Destroy()
+				MobileButtons.KillAll = nil
+			end
 		end
 	end
 })
@@ -4569,6 +4572,18 @@ RunService.Heartbeat:Connect(function()
     end
 end)
 
+local CurrentTroll = "Shoot"
+
+TargetInfoGroupBox:AddDropdown("TrollSelectDropdown", {
+    Values = { "Shoot", "Bang" },
+    Default = "Shoot",
+    Multi = false,
+    Text = "Troll Mode",
+	Callback = function(value)
+		CurrentTroll = value
+	end
+})
+
 TargetInfoGroupBox:AddButton({
     Text = "Fling",
     Icon = "skull",
@@ -4579,9 +4594,12 @@ TargetInfoGroupBox:AddButton({
     Text = "Troll",
     Icon = "face-grinning",
     Func = function()
-		Library:Notify("Under Development!", 2)
+		if CurrentTroll == "Shoot" then
+			shootMurderer(SelectedTarget)
+		elseif CurrentTroll == "Bang" then
+			Library:Notify("Under Development!", 2)
+		end
     end
 })
-end
 
 -- Ya ebal
