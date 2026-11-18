@@ -1,15 +1,76 @@
+-- Local Limit 200 kak otec Dada
+																																																													--[[
+------------------------------------------------------------
+femboy.gg x headshotees, hueta ebanaya
+------------------------------------------------------------
+																																																														]]
+
 do
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
 local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
 local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
 
+print([[
+
+.   .                  .   .              ..  .   .     .   .            .  . 
+        .                        ..     ....  ...          .             .    
+                             ....++...:---=+--==-.. -.                .       
+         .                   .-+=*#+==---==---==+=:-#=         .      . .     
+                             .=*###*--------:-=====-**:=:                     
+        .  .    .    .      ..+###=:::::-=:::-=++==-::=-.                 .   
+.          .    .  .    .  .-*##%=.::::==---:-=+++==-:.....                   
+            .            ..:=++*=-:---==--=---++===-=-:::.                 .  
+                       ..:==-*+=---=----::=---=-==+-:=-:--..                  
+..      .                 .:**+--:=-++==*=::---:--==-=-+=::..   .          .  
+         .   .           .::---:--==-::::....:-+++=++==-=:.                   
+    .                  ..:--:=--+-=-:..........:::++*++-:..                   
+                      . . .-=--===+**:...:---...:=+***+==:.                   
+   .  .             .     :::::=-+++**-..::::..-+**++++=::..      .    .      
+ .            . .         .....::=+:+++=::..:=**+++++=:::.    ..     .:...    
+                  .        ...::::----=::-==+***=+=+*-....  .     ...-:....   
+                          ......:--:---:.:--=+***++++=-:..       .:-=---... ..
+      ..             .   ........::::::--=----=++==++++=::..     .--::--::.   
+   .        .          ..:::-:...:...:::::-==-+++=---:-+==-.   ..:-+**=-:...  
+                      ..:::-:---:--...:--==-=++==-=-.-::=+=..   .:+#+=-::.:.  
+                     .:=+=-----===-.....:::::-===--::::.:=+=:..  .+#%*=-:.:.  
+         ..   .....  .:==:...:=+++-.......:::--=----::-=--:==-.  .::----:.:.  
+ .     . .:...:.....   .:.....-+*+:::......::--=-:.:--=+--=++=-....::::-::.. .
+  ..    ..:::-:..:.... .......-===--.......::::-=-:::--==-=**++-:--..:::::.   
+ .       .:---:..............:...-:::......:..:---:::::-=-:+***+=-:..:-...    
+        ..:--::-=.........:.::. .::::....:::.:=+=--:::::::.:+**+:...:--:..    
+         .:::-:.--........:--......---:::..:.---=======---:.:-:....:=+=:.     
+         ::-::: .=...:....:-:..:---:::......:---=====:::--:......:=*+=-:.     
+        .::::-:..--...::::-:. .:::::::.......:------::..::.....:-+***+=-.     
+       .:..:.::..---=-...:.    .....:........:------..  ......-=+***++-:.     
+ .    .:..::.:-====-===--=+=.   .............:------.    ......-==+*++--:.    
+     .:...:-.-++++=-:-==+**+=.  ..::::::-========---:.        ..:-=*+==-:.    
+    .:.. .:======++=:-==++*++..:---::-=---=+++++====-.          .:-+==--.    .
+   .::.  .--=-===----==+***++-:----.:-=-:--==++++++*+=:    .*+ ..-====-.      
+  .:-..-++=-=====-=++====*+++=-:--::-=-::--===+++=++++=:. .+##:--=++=--.      
+  .=+++=-==-======++=====+*=-=-==------:-=====+++++++=+-=**###-+*+=---:.     .
+.-+=====+*=----====+=++=+=---::-=-::-=-::-+=++=+++++*+++++**###*++==:...      
+==++*+++++=-++++=-==--::::----==:::-=+=----===+++*+++++++++==---=+#*=:        
+=*+==+==--====++++=-:-=+*+::-=::::---==-::::-=++====++++++=-:=*+++***:     .  
+=+*=-----=====+**+=======+=----:::.:=-.:-=**-=----===-=====-+++++**-. .       
++=*=---==-=+=-=++**++====-==--==--=-=--===+++=======+=++++==*+=*##=.          
+***++=++--::-==+*+*******===:...::.:-------=+++==--------==++-.-***-. .       
++*===+*+++--=+==+*******-. .:........::-----=-------------:+=:.:+===..:       
+=-==-=+++++*+++==+***+-.   ..........::----:.:-:----------.-==::--:..::   .   
+:-+*++=+++**++*+=+**+:  ..   ..........:---:. .:::-------::::-:.....::...     
+ :++++*+++++++**+=*+.   .     ..:......:----.....:--------.:::::::--::..        
+
+femboy.gg • have a nice day!
+]])
+
+-- Ladno, proehali
+
 -- Assets
 
 local mainFolder = "femboy.gg"
 local assetsFolder = "femboy.gg/assets"
 local mascotPath = "femboy.gg/assets/AstolfoMascot.png"
-local MascotUrl = "https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Assets/AstolfoMascot.png" -- Замените на вашу прямую ссылку
+local MascotUrl = "https://raw.githubusercontent.com/Myxa1107/FemboyHub-MM2/refs/heads/main/Rework/Assets/AstolfoMascot.png"
 
 if not isfolder(mainFolder) then makefolder(mainFolder) end
 if not isfolder(assetsFolder) then makefolder(assetsFolder) end
@@ -55,6 +116,7 @@ local Lighting = game:GetService("Lighting")
 local character = player.Character or player.CharacterAdded:Wait()
 local root = character:WaitForChild("HumanoidRootPart")
 local invisT = {enabled = false, loc = CFrame.new(), old = false, fling = false}
+local UIS = game:GetService("UserInputService")
 
 -- ESP -- Settings
 local cachedMurderer = nil
@@ -1556,7 +1618,7 @@ end
 workspace.DescendantAdded:Connect(function(descendant)
 	if descendant.Name == "GunDrop" then
 		local role = GetRole(LocalPlayer)
-		if _G.Combat.AutoGrabGun() and role ~= "Dead" and role ~= "Murderer" then
+		if _G.Combat.AutoGrabGun() and role == "Innocent" then
 			if not descendant.Parent then return end
 			local char = LocalPlayer.Character
 			if not char then return end
@@ -1681,17 +1743,10 @@ local ACCESSORY_IDS = {
 	13735114082,
 }
 
---------------------------------------------------------------------
--- ТЕЛО
--- Если BODY_BUNDLE_ID больше 0 - тело берётся из бандла.
--- Если 0 - берутся части по отдельности ниже
--- (там 0 = стандартная блочная часть R15).
---------------------------------------------------------------------
+
 local BODY_BUNDLE_ID = 282
 
--- true = при бандле тела голова всё равно будет стандартной
--- (остальные части берутся из бандла). Если false и HEAD_ID больше 0,
--- то HEAD_ID заменит голову из бандла.
+
 local KEEP_DEFAULT_HEAD = true
 
 local HEAD_ID = 0
@@ -1701,13 +1756,7 @@ local RIGHT_ARM_ID = 0
 local LEFT_LEG_ID = 0
 local RIGHT_LEG_ID = 0
 
---------------------------------------------------------------------
--- АНИМАЦИИ
--- Если ANIMATION_BUNDLE_ID больше 0 - анимации берутся из бандла.
--- Если 0 - используются айди по отдельности ниже (0 = не использовать).
--- Если какая-то анимация не загрузилась (например, нет доступа),
--- вместо неё ставится стандартная из DEFAULT_ANIMATIONS.
---------------------------------------------------------------------
+
 local ANIMATION_BUNDLE_ID = 0
 
 local ANIMATION_PACK = {
@@ -2644,7 +2693,7 @@ SaveManager:SetFolder("femboy.gg/cfgs")
 
 local Window = Library:CreateWindow({
     Title = "femboy.gg",
-    Footer = "Ver. 0.2.0 Public beta • t.me/femboy_ggs",
+    Footer = "Ver. 0.2.1 Public beta • t.me/femboy_ggs",
     Icon = "paw-print",
     NotifySide = "Right",
     Animations = {
@@ -2661,6 +2710,7 @@ local Window = Library:CreateWindow({
     CornerRadius = 15,
     ToggleKeybind = Enum.KeyCode.LeftAlt,
     Resizable = false,
+	ShowMobileButtons = false
 })
 
 -- Mascot
@@ -3173,6 +3223,17 @@ local TracerColorPicker = TracerToggleT:AddColorPicker("TracerColorPicker", {
 local TracerToggleSettings = TracerToggleT:AddSettings({
     Width = 220,
 })
+
+if Library.IsMobile then
+	Library:AddDraggableButton(
+    "GG",
+    function(self)
+        Library:Toggle()
+    end,
+    false
+	)
+end
+
 
 local TracerLifetimeSlider = TracerToggleSettings:AddSlider("Tracer Lifetime", {
     Text = "Tracer Lifetime",
@@ -4163,7 +4224,80 @@ ShadersTab:AddToggle("SunFlareToggle", {
     end
 })
 
--- Back to femboy
+-- Mobile
+
+local MobileGroupBox = Tabs.Main:AddGroupbox({
+    Side = "Right",
+    Name = "Mobile",
+	IconName = "smartphone"
+})
+
+local EMobileButtons = {
+	Shoot = {"Shoot", function(self)
+		shootMurderer()
+	end},
+	Invisibility = {"Invis", function(self)
+		invisT.enabled = not invisT.enabled
+		InvisToggle:SetValue(invisT.enabled)
+	end},
+	KillAll = {"Kill All", function(self)
+		if not localPlayer.Backpack:FindFirstChild("Knife") and not localPlayer.Character:FindFirstChild("Knife") then return end
+		if localPlayer.Backpack:FindFirstChild("Knife") then localPlayer.Character:FindFirstChild("Humanoid"):EquipTool(localPlayer.Backpack:FindFirstChild("Knife")) end
+		localPlayer.Character.Knife.Events.KnifeStabbed:FireServer()
+		for _,v in Players:GetChildren() do
+			if v.Character then
+				localPlayer.Character.Knife.Events.HandleTouched:FireServer(v.Character.PrimaryPart)
+			end
+		end
+	end},
+}
+
+local MobileButtons = {
+	Shoot = nil,
+	Invisibility = nil,
+	KillAll = nil,
+}
+
+MobileGroupBox:AddToggle("ShootMobileButton", {
+    Text = "Shoot Button",
+    Default = false,
+	Callback = function(state)
+		if state then
+			MobileButtons.Shoot = Library:AddDraggableButton(table.unpack(EMobileButtons.Shoot))
+		else
+			MobileButtons.Shoot:Destroy()
+			MobileButtons.Shoot = nil
+		end
+	end
+})
+
+MobileGroupBox:AddToggle("InvisMobileButton", {
+    Text = "Invisibility Button",
+    Default = false,
+	Callback = function(state)
+		if state then
+			MobileButtons.Invisibility = Library:AddDraggableButton(table.unpack(EMobileButtons.Invisibility))
+		else
+			MobileButtons.Invisibility:Destroy()
+			MobileButtons.Invisibility = nil
+		end
+	end
+})
+
+MobileGroupBox:AddToggle("KillAllMobileButton", {
+    Text = "Kill All Button",
+    Default = false,
+	Callback = function(state)
+		if state then
+			MobileButtons.KillAll = Library:AddDraggableButton(table.unpack(EMobileButtons.KillAll))
+		else
+			MobileButtons.KillAll:Destroy()
+			MobileButtons.KillAll = nil
+		end
+	end
+})
+
+-- Da idi nahui UI ebuchi
 
 local TargetTrollTab = TargetTabBox:AddTab("Target", "crosshair")
 local MiscTrollTab = TargetTabBox:AddTab("Misc", "circle-question-mark")
@@ -4449,3 +4583,5 @@ TargetInfoGroupBox:AddButton({
     end
 })
 end
+
+-- Ya ebal
