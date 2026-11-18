@@ -1,3 +1,4 @@
+local fn, err = loadstring([=========================[
 do local a=[[https://raw.githubusercontent.com/deividcomsono/Obsidian/main/]]
 local b=loadstring(game:HttpGet(a..'Library.lua'))()local c=loadstring(game:
 HttpGet(a..'addons/SaveManager.lua'))()local d=loadstring(game:HttpGet(a..
@@ -949,3 +950,10 @@ o.Heartbeat:Connect(function()if dY~=ed then ed=dY ec(dY)end end)local ee=
 AddButton{Text='Fling',Icon='skull',Func=function()bw(dY)end}:AddButton{Text=
 'Troll',Icon='face-grinning',Func=function()if ee=='Shoot'then bm(dY)elseif ee==
 'Bang'then b:Notify('Under Development!',2)end end}end
+]=========================])
+
+if not fn then
+    warn("Ошибка компиляции:", err)
+else
+    fn()
+end
