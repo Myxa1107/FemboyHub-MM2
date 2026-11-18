@@ -2509,8 +2509,8 @@ end
 end
 -- Antifling
 
-local localPlayer = Players.LocalPlayer
-local connections = {}
+localPlayer = Players.LocalPlayer
+connections = {}
 
 _G.Main.Antifling = false
 
@@ -2568,7 +2568,7 @@ Players.PlayerRemoving:Connect(untrackPlayer)
 
 -- WalkFling
 
-local flingThread = nil
+flingThread = nil
 
 local function StartWalkFling()
 	function getRoot(char)
@@ -2659,7 +2659,7 @@ RunService.Heartbeat:Connect(function()
 	end
 end)
 
-local desynchook = nil
+desynchook = nil
 desynchook = hookmetamethod(game, "__index", newcclosure(function(self, key)
     if invisT.enabled and not checkcaller() and key == "CFrame" and localPlayer.Character and self == localPlayer.Character.HumanoidRootPart then
         return invisT.loc -- Возвращаем сохраненную позицию
